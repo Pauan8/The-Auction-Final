@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -17,6 +18,8 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
+
+    private LocalDate dateOfBirth;
 
     @OneToOne
     private UserInfo userInfo;
@@ -38,13 +41,22 @@ public class User {
                 String firstName,
                 String lastName,
                 String email,
-                UserInfo userInfo) {
+                UserInfo userInfo, LocalDate dateOfBirth) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.userInfo = userInfo;
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public List<SalesItem> getSalesItemList() {

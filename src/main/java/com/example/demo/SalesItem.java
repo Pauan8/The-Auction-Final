@@ -18,17 +18,19 @@ public class SalesItem {
     private Auction auction;
     @ManyToOne
     private User user;
+    private String pictureAddress;
 
     public SalesItem(String title,
                      String description,
                      String keyWords,
                      User user,
-                     Auction auction) {
+                     Auction auction, String pictureAddress) {
         this.title = title;
         this.description = description;
         this.keyWords = keyWords;
         this.user = user;
         this.auction = auction;
+        this.pictureAddress = pictureAddress;
     }
 
     public SalesItem() {
@@ -66,4 +68,11 @@ public class SalesItem {
         this.user = user;
     }
 
+    public String getPictureAddress() {
+        return pictureAddress;
+    }
+
+    public void setPictureAddress(String pictureAddress) {
+        this.pictureAddress = pictureAddress;
+    }
 }
