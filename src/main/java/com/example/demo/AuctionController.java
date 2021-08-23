@@ -4,6 +4,7 @@ package com.example.demo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class AuctionController {
@@ -19,8 +20,19 @@ public class AuctionController {
         return "register";
     }
 
+    @PostMapping("/register")
+    public String postRegister(){
+        return "register";
+    }
+
     @PostMapping("/login")
     public String login(){
+        return "index";
+    }
+
+    @GetMapping("/search")
+    public String search(@RequestParam(required = false) String searchText){
+
         return "index";
     }
 
