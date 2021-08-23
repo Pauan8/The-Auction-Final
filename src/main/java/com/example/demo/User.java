@@ -21,74 +21,30 @@ public class User {
 
     private LocalDate dateOfBirth;
 
-    @OneToOne
-    private UserInfo userInfo;
-
-    @OneToOne
-    private Invoice invoice;
-
-    @OneToMany
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Bid> bidList;
 
-    @OneToMany
-    private List<SalesItem> salesItemList;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Auction> auctionList;
+
+    private String address;
+    private String zipCode;
+    private String city;
+    private String rating;
 
     public User() {
     }
 
-    public User(String username,
-                String password,
-                String firstName,
-                String lastName,
-                String email,
-                UserInfo userInfo, LocalDate dateOfBirth) {
+    public User(String username, String password, String firstName, String lastName, String email, LocalDate dateOfBirth, String address, String zipCode, String city) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.userInfo = userInfo;
         this.dateOfBirth = dateOfBirth;
-    }
-
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public List<SalesItem> getSalesItemList() {
-        return salesItemList;
-    }
-
-    public void setSalesItemList(List<SalesItem> salesItemList) {
-        this.salesItemList = salesItemList;
-    }
-
-    public Invoice getInvoice() {
-        return invoice;
-    }
-
-    public void setInvoice(Invoice invoice) {
-        this.invoice = invoice;
-    }
-
-    public UserInfo getUserInfo() {
-        return userInfo;
-    }
-
-    public void setUserInfo(UserInfo userInfo) {
-        this.userInfo = userInfo;
-    }
-
-    public List<Bid> getBidList() {
-        return bidList;
-    }
-
-    public void setBidList(List<Bid> bidList) {
-        this.bidList = bidList;
+        this.address = address;
+        this.zipCode = zipCode;
+        this.city = city;
     }
 
     public Long getId() {
@@ -139,5 +95,60 @@ public class User {
         this.email = email;
     }
 
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
 
+    public void setDateOfBirth(String dateOfBirth) {
+
+        this.dateOfBirth = LocalDate.parse(dateOfBirth);
+    }
+
+    public List<Bid> getBidList() {
+        return bidList;
+    }
+
+    public void setBidList(List<Bid> bidList) {
+        this.bidList = bidList;
+    }
+
+    public List<Auction> getAuctionList() {
+        return this.auctionList;
+    }
+
+    public void setAuctionList(List<Auction> AuctionList) {
+        this.auctionList = auctionList;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getRating() {
+        return rating;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
 }

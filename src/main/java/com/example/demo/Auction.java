@@ -10,33 +10,35 @@ public class Auction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToMany
+    @OneToMany(mappedBy = "auction", cascade = CascadeType.ALL)
     private List<Bid> bidList;
-    @OneToOne
-    private SalesItem salesItem;
     @OneToOne
     private Invoice invoice;
 
     private int startPrice;
     private int reservationPrice;
-    private LocalDateTime startDateTime;
+    //private LocalDateTime startDateTime;
     private LocalDateTime endDateTime;
+
+    private String title;
+    private String description;
+    private String keyWords;
+
+    @ManyToOne
+    private User user;
+
+    private String pictureAddress;
 
     public Auction() {
     }
 
-    public Auction(SalesItem salesItem,
-                   int startPrice,
-                   int reservationPrice,
-                   LocalDateTime startDateTime,
-                   LocalDateTime endDateTime,
-                   Invoice invoice) {
-        this.salesItem = salesItem;
+    public Auction(int startPrice, int reservationPrice, LocalDateTime endDateTime, String title, String description, String keyWords) {
         this.startPrice = startPrice;
         this.reservationPrice = reservationPrice;
-        this.startDateTime = startDateTime;
         this.endDateTime = endDateTime;
-        this.invoice = invoice;
+        this.title = title;
+        this.description = description;
+        this.keyWords = keyWords;
     }
 
     public Long getId() {
@@ -63,14 +65,6 @@ public class Auction {
         this.invoice = invoice;
     }
 
-    public SalesItem getSalesItem() {
-        return salesItem;
-    }
-
-    public void setSalesItem(SalesItem salesItem) {
-        this.salesItem = salesItem;
-    }
-
     public int getStartPrice() {
         return startPrice;
     }
@@ -87,19 +81,51 @@ public class Auction {
         this.reservationPrice = reservationPrice;
     }
 
-    public LocalDateTime getStartDateTime() {
-        return startDateTime;
-    }
-
-    public void setStartDateTime(LocalDateTime startDateTime) {
-        this.startDateTime = startDateTime;
-    }
-
     public LocalDateTime getEndDateTime() {
         return endDateTime;
     }
 
-    public void setEndDateTime(LocalDateTime endDateTime) {
-        this.endDateTime = endDateTime;
+    public void setEndDateTime(String endDateTime) {
+        this.endDateTime = LocalDateTime.parse(endDateTime);
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getKeyWords() {
+        return keyWords;
+    }
+
+    public void setKeyWords(String keyWords) {
+        this.keyWords = keyWords;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getPictureAddress() {
+        return pictureAddress;
+    }
+
+    public void setPictureAddress(String pictureAddress) {
+        this.pictureAddress = pictureAddress;
     }
 }
