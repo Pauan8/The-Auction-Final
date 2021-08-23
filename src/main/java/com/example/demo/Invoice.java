@@ -1,9 +1,6 @@
 package com.example.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Invoice {
@@ -11,14 +8,16 @@ public class Invoice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Bid bidId;
+    @OneToOne
+    private User user;
+    @OneToOne
+    private Auction auction;
     private int shipping;
 
     public Invoice() {
     }
 
-    public Invoice(Bid bidId, int shipping) {
-        this.bidId = bidId;
+    public Invoice( int shipping) {
         this.shipping = shipping;
     }
 
@@ -30,13 +29,6 @@ public class Invoice {
         this.id = id;
     }
 
-    public Bid getBidId() {
-        return bidId;
-    }
-
-    public void setBidId(Bid bidId) {
-        this.bidId = bidId;
-    }
 
     public int getShipping() {
         return shipping;

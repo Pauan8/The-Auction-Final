@@ -1,9 +1,6 @@
 package com.example.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
 @Entity
@@ -11,21 +8,40 @@ public class UserInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    private Long id;
 
     private String address;
     private String zipCode;
     private String city;
     private String rating;
+    @OneToOne
+    private User user;
 
-    public UserInfo(String address, String zipCode, String city, String rating) {
+    public UserInfo(String address, String zipCode, String city, String rating,User user) {
         this.address = address;
         this.zipCode = zipCode;
         this.city = city;
         this.rating = rating;
+        this.user = user;
     }
 
     public UserInfo() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getAddress() {

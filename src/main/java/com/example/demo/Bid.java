@@ -1,9 +1,6 @@
 package com.example.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -12,15 +9,19 @@ public class Bid {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private User userId;
+    @ManyToOne
+    private Auction auction;
+    @ManyToOne
+    private User user;
     private int amount;
     private LocalDateTime bidDateTime;
 
     public Bid() {
     }
 
-    public Bid(User userId, int amount, LocalDateTime bidDateTime) {
-        this.userId = userId;
+    public Bid(Auction auction, User user, int amount, LocalDateTime bidDateTime) {
+        this.auction = auction;
+        this.user = user;
         this.amount = amount;
         this.bidDateTime = bidDateTime;
     }
@@ -33,12 +34,12 @@ public class Bid {
         this.id = id;
     }
 
-    public User getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(User userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public int getAmount() {

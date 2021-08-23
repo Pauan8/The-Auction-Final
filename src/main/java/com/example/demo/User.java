@@ -1,9 +1,7 @@
 package com.example.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -20,15 +18,65 @@ public class User {
     private String lastName;
     private String email;
 
+    @OneToOne
+    private UserInfo userInfo;
+
+    @OneToOne
+    private Invoice invoice;
+
+    @OneToMany
+    private List<Bid> bidList;
+
+    @OneToMany
+    private List<SalesItem> salesItemList;
+
     public User() {
     }
 
-    public User(String username, String password, String firstName, String lastName, String email) {
+    public User(String username,
+                String password,
+                String firstName,
+                String lastName,
+                String email,
+                UserInfo userInfo) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.userInfo = userInfo;
+    }
+
+    public List<SalesItem> getSalesItemList() {
+        return salesItemList;
+    }
+
+    public void setSalesItemList(List<SalesItem> salesItemList) {
+        this.salesItemList = salesItemList;
+    }
+
+    public Invoice getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
+    }
+
+    public UserInfo getUserInfo() {
+        return userInfo;
+    }
+
+    public void setUserInfo(UserInfo userInfo) {
+        this.userInfo = userInfo;
+    }
+
+    public List<Bid> getBidList() {
+        return bidList;
+    }
+
+    public void setBidList(List<Bid> bidList) {
+        this.bidList = bidList;
     }
 
     public Long getId() {
@@ -78,4 +126,6 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+
 }

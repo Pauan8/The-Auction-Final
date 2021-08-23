@@ -1,10 +1,8 @@
 package com.example.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 public class Auction {
@@ -12,8 +10,13 @@ public class Auction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Bid bidId;
+    @OneToMany
+    private List<Bid> bidList;
+    @OneToOne
     private SalesItem salesItem;
+    @OneToOne
+    private Invoice invoice;
+
     private int startPrice;
     private int reservationPrice;
     private LocalDateTime startDateTime;
@@ -22,13 +25,18 @@ public class Auction {
     public Auction() {
     }
 
-    public Auction(Bid bidId, SalesItem salesItem, int startPrice, int reservationPrice, LocalDateTime startDateTime, LocalDateTime endDateTime) {
-        this.bidId = bidId;
+    public Auction(SalesItem salesItem,
+                   int startPrice,
+                   int reservationPrice,
+                   LocalDateTime startDateTime,
+                   LocalDateTime endDateTime,
+                   Invoice invoice) {
         this.salesItem = salesItem;
         this.startPrice = startPrice;
         this.reservationPrice = reservationPrice;
         this.startDateTime = startDateTime;
         this.endDateTime = endDateTime;
+        this.invoice = invoice;
     }
 
     public Long getId() {
@@ -39,12 +47,20 @@ public class Auction {
         this.id = id;
     }
 
-    public Bid getBidId() {
-        return bidId;
+    public List<Bid> getBidList() {
+        return bidList;
     }
 
-    public void setBidId(Bid bidId) {
-        this.bidId = bidId;
+    public void setBidList(List<Bid> bidList) {
+        this.bidList = bidList;
+    }
+
+    public Invoice getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
     }
 
     public SalesItem getSalesItem() {

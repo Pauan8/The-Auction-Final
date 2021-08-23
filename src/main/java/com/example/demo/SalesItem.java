@@ -1,41 +1,45 @@
 package com.example.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
 @Entity
 public class SalesItem {
 
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    private String title;
     private String description;
     private String keyWords;
-    private User userid;
+    @OneToOne
+    private Auction auction;
+    @ManyToOne
+    private User user;
 
-    public SalesItem(String name,
+    public SalesItem(String title,
                      String description,
                      String keyWords,
-                     User userid) {
-        this.name = name;
+                     User user,
+                     Auction auction) {
+        this.title = title;
         this.description = description;
         this.keyWords = keyWords;
-        this.userid = userid;
+        this.user = user;
+        this.auction = auction;
     }
 
     public SalesItem() {
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
@@ -54,12 +58,12 @@ public class SalesItem {
         this.keyWords = keyWords;
     }
 
-    public User getUserid() {
-        return userid;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserid(User userid) {
-        this.userid = userid;
+    public void setUser(User user) {
+        this.user = user;
     }
 
 }
