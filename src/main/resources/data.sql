@@ -3,6 +3,8 @@
 ('Bildskärm gaming','En bildskärm för gaming i mycket find skick','hemelektronik;gaming;skärm;bild';)
 
 
+
+/*
     private String title;
     private String description;
     private String keyWords;

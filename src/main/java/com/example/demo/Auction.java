@@ -24,6 +24,8 @@ public class Auction {
     private String description;
     private String keyWords;
 
+    private boolean finished=false;
+
     @ManyToOne
     private User user;
 
@@ -39,6 +41,9 @@ public class Auction {
         this.title = title;
         this.description = description;
         this.keyWords = keyWords;
+    }
+    public void addBid(Bid bid){
+        bidList.add(bid);
     }
 
     public Long getId() {

@@ -21,8 +21,8 @@ public class User {
 
     private LocalDate dateOfBirth;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Bid> bidList;
+/*    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Bid> bidList;*/
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Auction> auctionList;
@@ -104,6 +104,7 @@ public class User {
         this.dateOfBirth = LocalDate.parse(dateOfBirth);
     }
 
+    /*
     public List<Bid> getBidList() {
         return bidList;
     }
@@ -111,6 +112,8 @@ public class User {
     public void setBidList(List<Bid> bidList) {
         this.bidList = bidList;
     }
+
+     */
 
     public List<Auction> getAuctionList() {
         return this.auctionList;

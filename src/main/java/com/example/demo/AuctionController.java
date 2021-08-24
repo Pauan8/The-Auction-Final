@@ -4,10 +4,7 @@ package com.example.demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -19,6 +16,9 @@ public class AuctionController {
 
     @Autowired
     AuctionRepository auctionRepository;
+
+    @Autowired
+    AuctionService auctionService;
 
     @GetMapping("/")
     public String home(HttpSession session){
@@ -50,8 +50,17 @@ public class AuctionController {
         return "index";
     }
 
-    @GetMapping("/detail")
-    public String detail(){
+    @GetMapping("/detail/{id}")
+    public String detail(Model model, @PathVariable(required = true) Long id){
+        Bid bid = new Bid();
+        if(auctionRepository.findById(id).isPresent()){
+            bid.setAuction(auctionRepository.findById(id).get());
+            Auction auction = auctionRepository.findById(id).get();
+            model.addAttribute("highestBid", auctionService.getTopBid(auction));
+            model.addAttribute("auction",auction);
+        }
+
+        model.addAttribute("bid",bid);
         return "detail";
     }
 
@@ -69,7 +78,6 @@ public class AuctionController {
         return "redirect:/";
     }
 
-
     @GetMapping("/profile")
     public String profile(){
         return "profile";
@@ -81,8 +89,17 @@ public class AuctionController {
     }
 
     @PostMapping("/bid")
-    public String postBid(){
-        return "detail";
+    public String postBid(@ModelAttribute Bid bid, HttpSession session, Model model){
+        User user = (User)session.getAttribute("user");
+        Auction auction = bid.getAuction();
+        if(auctionService.isBidHighEnough(bid, bid.getAuction())) {
+
+            auction.addBid(bid);
+            auctionRepository.save(auction);
+            model.addAttribute("highestBid", auctionService.getTopBid(auction));
+        }
+
+        return "redirect:/detail/"+auction.getId();
     }
 
 

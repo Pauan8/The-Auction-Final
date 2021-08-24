@@ -1,10 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<p th:text="'Starting price: '+${auction.startPrice}+' kr'"> </p>
+<p th:text="${highestBid}+' kr'"></p>
+<form method="post" action="/bid" th:object="${bid}">
+    <input type="text" name="bid" th:field="*{amount}" >
+    <input type="hidden" name="auction" th:field="*{auction}">
+    <button type="submit" class="btn btn-primary"
+            style="margin-top:20px;">Bid
+    </button>
+</form>
 
 </body>
 </html>
+
+
+
+<!--
+<div class="container">
+    <div class="row align-items-start">
+        <div class="row">
+            <div class="col">
+                <img class="imgDetail" th:src="@{${'../images/' + currentConcert.id + '.jpg'}}" src="../images/1.jpg" alt="Summer reading" width="400">
+                <h1 th:text="${currentConcert.artist + ' på ' + currentConcert.arena.arenaName}">Exempel Artist på Arena</h1>
+                <p >
+                <p th:text="${currentConcert.concertDescription}">Example Description</p>
+                <span th:text="'Datum: ' + ${currentConcert.date}">Exempel Datum</span>
+                <span th:text="${currentConcert.arena.city}">Exempel Stad</span>
+                </p>
+                <p th:text="'Pris: ' + ${currentConcert.ticketPrice} + 'kr'">Example 50</p>
+
+                <span th:if="${session.wasSuccessfulPurchase != null}">
+                    <span th:if="${session.wasSuccessfulPurchase}">
+                        <div class="alert alert-success" role="alert" th:text="${session.buyAlert}"></div>
+                    </span>
+                    <span th:if="${!session.wasSuccessfulPurchase}">
+                        <div class="alert alert-danger" role="alert" th:text="${session.buyAlert}"></div>
+                    </span>
+                </span>
+                <form action="/shoppingcart" method="post">
+                    <fieldset>
+                        <div class="mb-3 col-2">
+                            <label class="form-label">Välj antal biljetter</label>
+                            <input type="number"  class="form-control" placeholder="Antal biljetter" name="ticketQuantity">
+                        </div>
+                        <button type="submit" class="btn btn-warning">Lägg i kundvagn</button>
+                    </fieldset>
+                </form>
+                &lt;!&ndash;<div class="btn-group" role="group" aria-label="Basic example">
+                    <a th:href="'/shoppingcart?concertId=' + ${currentConcert.concertId} + '&ticketQuantity=3'"><button type="button" class="btn btn-primary">Lägg i kundvagn</button></a>
+                </div>&ndash;&gt;
+            </div>
+        </div>
+    </div>
+</div>-->

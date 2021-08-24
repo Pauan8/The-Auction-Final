@@ -5,4 +5,6 @@ import org.springframework.stereotype.Service;
 
 
 public interface AuctionRepository extends CrudRepository<Auction,Long> {
+
+
 }
