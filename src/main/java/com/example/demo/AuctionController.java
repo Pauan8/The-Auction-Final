@@ -7,9 +7,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.UUID;
+
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
 import javax.validation.Valid;
 
 @Controller
@@ -25,74 +30,81 @@ public class AuctionController {
     AuctionService auctionService;
 
     @GetMapping("/")
-    public String home(HttpSession session){
+    public String home(HttpSession session) {
         return "index";
     }
 
     @GetMapping("/register")
-    public String register(Model model){
+    public String register(Model model) {
         User user = new User();
-        model.addAttribute("user",user);
+        model.addAttribute("user", user);
         return "register";
     }
 
     @PostMapping("/register")
-    public String postRegister(@ModelAttribute User user, HttpSession session){
+    public String postRegister(@ModelAttribute User user, HttpSession session) {
         userRepository.save(user);
-        session.setAttribute("user",user);
+        session.setAttribute("user", user);
         return "redirect:/";
     }
 
 
     @GetMapping("/search")
-    public String search(@RequestParam(required = false) String searchText){
+    public String search(@RequestParam(required = false) String searchText) {
 
         return "index";
     }
 
     @GetMapping("/detail/{id}")
-    public String detail(Model model, @PathVariable(required = true) Long id){
+    public String detail(Model model, @PathVariable(required = true) Long id) {
         Bid bid = new Bid();
-        if(auctionRepository.findById(id).isPresent()){
+        if (auctionRepository.findById(id).isPresent()) {
             bid.setAuction(auctionRepository.findById(id).get());
             Auction auction = auctionRepository.findById(id).get();
             model.addAttribute("highestBid", auctionService.getTopBid(auction));
-            model.addAttribute("auction",auction);
+            model.addAttribute("auction", auction);
         }
 
-        model.addAttribute("bid",bid);
+        model.addAttribute("bid", bid);
         return "detail";
     }
 
     @GetMapping("/upload")
-    public String upload(Model model){
+    public String upload(Model model) {
         Auction auction = new Auction();
         model.addAttribute("auction", auction);
         return "upload";
     }
 
     @PostMapping("/upload")
-    public String postUpload(@ModelAttribute Auction auction, HttpSession session){
-        auction.setUser((User)session.getAttribute("user"));
+    public String postUpload(@ModelAttribute Auction auction, @RequestParam("image") MultipartFile multipartFile, HttpSession session) throws IOException {
+
+        String fileName = UUID.randomUUID().toString()+"."+multipartFile.getOriginalFilename().split("\\.")[1];
+        auction.setPictureAddress(fileName);
+        String uploadDir = "src/main/resources/static/auction-photos/";
+
+        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+
+        auction.setUser((User) session.getAttribute("user"));
         auctionRepository.save(auction);
         return "redirect:/";
     }
 
     @GetMapping("/profile")
-    public String profile(){
+    public String profile() {
         return "profile";
     }
 
     @PostMapping("/profile")
-    public String profilePost(){
+    public String profilePost() {
         return "profile";
     }
 
     @PostMapping("/bid")
-    public String postBid(@ModelAttribute Bid bid, HttpSession session, Model model){
-        User user = (User)session.getAttribute("user");
+    public String postBid(@ModelAttribute Bid bid, HttpSession session, Model model) {
+        User user = (User) session.getAttribute("user");
         Auction auction = bid.getAuction();
-        if(auctionService.isBidHighEnough(bid, bid.getAuction())) {
+        if (auctionService.isBidHighEnough(bid, bid.getAuction())) {
             bid.setUser(user);
             LocalDateTime timeNow = LocalDateTime.now();
             bid.setBidDateTime(timeNow);
@@ -101,23 +113,23 @@ public class AuctionController {
             model.addAttribute("highestBid", auctionService.getTopBid(auction));
         }
 
-        return "redirect:/detail/"+auction.getId();
+        return "redirect:/detail/" + auction.getId();
     }
 
 
     @GetMapping("/login")
-    public String login(){
+    public String login() {
         return "login";
     }
 
     @PostMapping("/login")
-    public String loggingIn(@RequestParam String username, @RequestParam String password, HttpSession session,Model model){
+    public String loggingIn(@RequestParam String username, @RequestParam String password, HttpSession session, Model model) {
         User user = userRepository.findByUsername(username);
 
-        if(user == null){
+        if (user == null) {
             return "login";
         }
-        if(user.getPassword().equals(password)){
+        if (user.getPassword().equals(password)) {
             session.setAttribute("user", user);
             return "index";
         }

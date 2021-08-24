@@ -2,17 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"></meta>
-    <title>Books</title>
+    <title>Auction</title>
 </head>
 <body>
 <h1>Your Auction</h1>
 
-<form th:object="${auction}" action="/upload" method="POST">
+<form th:object="${auction}" action="/upload" method="POST" enctype="multipart/form-data">
     Title: <input type="text" th:field="*{title}"/>
     Description: <input type="text" th:field="*{description}"/>
     Start Price: <input type="text" th:field="*{startPrice}"/>
     Reservation Price: <input type="text" th:field="*{reservationPrice}"/>
     End date: <input type="datetime-local" th:field="*{endDateTime}"/>
+    Upload picture: <input type="file" name="image" accept="image/png, image/jpeg" />
+
 
     <input type="submit" value="Create auction">
 </form>
