@@ -7,6 +7,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.time.LocalDateTime;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import javax.validation.Valid;
 
 @Controller
 public class AuctionController {
@@ -39,10 +43,6 @@ public class AuctionController {
         return "redirect:/";
     }
 
-    @PostMapping("/login")
-    public String login(){
-        return "index";
-    }
 
     @GetMapping("/search")
     public String search(@RequestParam(required = false) String searchText){
@@ -93,7 +93,9 @@ public class AuctionController {
         User user = (User)session.getAttribute("user");
         Auction auction = bid.getAuction();
         if(auctionService.isBidHighEnough(bid, bid.getAuction())) {
-
+            bid.setUser(user);
+            LocalDateTime timeNow = LocalDateTime.now();
+            bid.setBidDateTime(timeNow);
             auction.addBid(bid);
             auctionRepository.save(auction);
             model.addAttribute("highestBid", auctionService.getTopBid(auction));
@@ -103,4 +105,44 @@ public class AuctionController {
     }
 
 
+    @GetMapping("/login")
+    public String login(){
+        return "login";
+    }
+
+    @PostMapping("/login")
+    public String loggingIn(@RequestParam String username, @RequestParam String password, HttpSession session,Model model){
+        User user = userRepository.findByUsername(username);
+
+        if(user == null){
+            return "login";
+        }
+        if(user.getPassword().equals(password)){
+            session.setAttribute("user", user);
+            return "index";
+        }
+        return "login";
+    }
 }
+
+
+  /*  @PostMapping("/users/login-user")
+    @ResponseBody
+    public ApiResponse<?> loginUser(@Valid @RequestBody User user){
+
+        logger.info("Inside Login User");
+        User userEmailExists = userService.findUserByEmail(user.getEmail());
+        User userMobileExists = userService.findUserByMobile((user.getMobile()));
+        String existingPassword =userEmailExists.getPassword();
+        String currentPassword=user.getPassword();
+
+        if (userEmailExists.getEmail().isEmpty()) {
+            return new ApiResponse<>("\"Oops.! User email not found, please register.\"", com.bfarming.response.ResponseStatus.getValidResponseStatus(HttpStatus.OK));
+        }else if(userMobileExists.getMobile().isEmpty()){
+            return new ApiResponse<>("\"Oops.! User mobile not found, please register.\"", com.bfarming.response.ResponseStatus.getValidResponseStatus(HttpStatus.OK));
+        }else if (bcryptGenerator.passwordDecoder(currentPassword,existingPassword)) {
+            return new ApiResponse<>("\"Password Exists, logged-in\"");
+        }else {
+            return new ApiResponse<>("\"Password didn't match, please enter the correct password, logged-in\"");
+        }
+    }*/

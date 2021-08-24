@@ -40,10 +40,19 @@ body {
     border-radius: 7px
 }
 
+.outer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(10, 200px);
+    grid-gap: 20px;
+}
+
 .card {
     border: none;
     padding: 15px;
-    cursor: pointer
+    cursor: pointer;
+    max-height: 500px;
+    max-width: 500px;
 }
 
 .time i {
@@ -53,4 +62,10 @@ col-sm-8 container mt-5 row col-md-4 .cardSize {
     float:left;
     height: calc(100vh / 1.9);
 
+}
+
+@media screen and (max-width: 1024px) {
+    .outer {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }

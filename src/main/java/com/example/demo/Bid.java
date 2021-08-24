@@ -65,4 +65,7 @@ public class Bid {
     public void setBidDateTime(LocalDateTime bidDateTime) {
         this.bidDateTime = bidDateTime;
     }
+
+
+
 }

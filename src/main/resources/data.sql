@@ -1,13 +1,26 @@
-/*INSERT INTO SalesItem (TITLE, DESCRIPTION, KEY_WORDS, AUCTION_ID, USER_ID, PICTURE_ADDRESS) VALUES())
-('Tröja','Rosa med ett hål för huvudet','Kläder', 1, )
-('Bildskärm gaming','En bildskärm för gaming i mycket find skick','hemelektronik;gaming;skärm;bild';)
+INSERT INTO USER (ADDRESS, CITY, DATE_OF_BIRTH, EMAIL, FIRST_NAME, LAST_NAME, PASSWORD, RATING, USERNAME, ZIP_CODE)
+VALUES ('Kungsgatan 3', 'Stockholm', '1999-10-10', 'test@test.com', 'Johan', 'Svensson', '123', null, 'Johan',
+        '123 12');
 
+INSERT INTO USER (ADDRESS, CITY, DATE_OF_BIRTH, EMAIL, FIRST_NAME, LAST_NAME, PASSWORD, RATING, USERNAME, ZIP_CODE)
+VALUES ('Kungsgatan 2', 'Stockholm', '1998-10-10', 'test2@test.com', 'Adam', 'Svensson', '123', null, 'Adam', '123 13');
 
+INSERT INTO Auction (DESCRIPTION, END_DATE_TIME, FINISHED, KEY_WORDS, PICTURE_ADDRESS, RESERVATION_PRICE, START_PRICE,
+                     TITLE, INVOICE_ID, USER_ID)
+VALUES ('Rosa med ett hål för huvudet', '2021-08-30 10:11:12', 0, 'kläder', 'adress/adress/adress', 150, 50,
+        'Rosa tröja', null, 1);
 
-/*
-    private String title;
-    private String description;
-    private String keyWords;
-    private Auction auction;
-    private User user;
-    private String pictureAddress;*/
+INSERT INTO Auction (DESCRIPTION, END_DATE_TIME, FINISHED, KEY_WORDS, PICTURE_ADDRESS, RESERVATION_PRICE, START_PRICE,
+                     TITLE, INVOICE_ID, USER_ID)
+VALUES ('Blå med ett hål för huvudet', '2021-08-30 10:11:12', 0, 'kläder', 'adress/adress/adress', 150, 50, 'Blå tröja',
+        null, 1);
+
+INSERT INTO Auction (DESCRIPTION, END_DATE_TIME, FINISHED, KEY_WORDS, PICTURE_ADDRESS, RESERVATION_PRICE, START_PRICE,
+                     TITLE, INVOICE_ID, USER_ID)
+VALUES ('Röd med ett hål för huvudet', '2021-08-30 10:11:12', 0, 'kläder', 'adress/adress/adress', 150, 50, 'Röd tröja',
+        null, 1);
+
+INSERT INTO Auction (DESCRIPTION, END_DATE_TIME, FINISHED, KEY_WORDS, PICTURE_ADDRESS, RESERVATION_PRICE, START_PRICE,
+                     TITLE, INVOICE_ID, USER_ID)
+VALUES ('Lila med ett hål för huvudet', '2021-08-30 10:11:12', 0, 'kläder', 'adress/adress/adress', 150, 50,
+        'Lila tröja', null, 2);
