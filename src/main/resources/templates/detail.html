@@ -16,7 +16,7 @@
 <!--"<p th:text="'Antal bud: ' + ${auction.bidList.length}"></p>-->
 <br>
 <p th:text="'Slutdatum: ' + ${auction.printEndDateTime()}"></p>
-<p hidden id="auctionEndDate" th:text="'Slutdatum: ' + ${auction.endDateTime}" ></p>
+<p hidden id="auctionEndDate" th:text="${auction.endDateTime}" ></p>
 <span id="timeRemain"></span>
 <form method="post" action="/bid" th:object="${bid}">
     <input type="text" name="bid" th:field="*{amount}" >

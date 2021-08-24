@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -13,12 +13,15 @@
 <body>
 <div class="index-container">
     <div class="header">
-        <div class="logo" src="../logo.png" alt="logo">Logo</div>
+        <div class="logo">
+            <img  class="logo" src="../logo.jpg" alt="logo">
+        </div>
     </div>
 
     <div class="search">
         <div class="search-inner">
             <div class="searchbar">
+                <form method="post" action="/search">
                 <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
                        placeholder="Search products....">
                 <div class="input-group-append">
@@ -26,6 +29,7 @@
                             class="btn btn-outline-warning btn-sm" type="button">
                         <i class="fa fa-search"></i></button>
                 </div>
+                </form>
             </div>
         </div>
     </div>
@@ -51,18 +55,18 @@
 
     <div class="products">
         <div class="outer">
-            <div class="card" th:each="item : ${auction}">
+            <div class="card" th:each="item : ${auctions}">
                 <h1 class="heading" th:text="${item.title}">
                     Rubrik
                 </h1>
-                <h2 class="subheading" th:field="${item.keyWords}">
+                <h2 class="subheading" th:text="${item.keyWords}">
                     Subrubrik
                 </h2>
                 <img class="img" th:src="@{/auction-photos/} + ${item.pictureAddress}" />
-                <p th:field="${item.description}">
+                <p th:text="${item.description}">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. A beatae illo laudantium modi natus obcaecati praesentium reiciendis sint velit voluptas!
                 </p>
-                <p th:field="${item.user.getUsername()}"></p>
+                <p th:text="${item.user.getUsername()}"></p>
             </div>
         </div>
     </div>

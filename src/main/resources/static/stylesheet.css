@@ -3,6 +3,7 @@ body {
     background-color: white;
     font-family: "Poppins", sans-serif;
     font-weight: 300
+    color: #045762;
 }
 
 .btn:hover {
@@ -34,11 +35,11 @@ body {
 .index-container {
     display: grid;
     grid-template-areas:
-    "header header header"
-    "left searchsection right"
+    "logo header header"
+    "left search right"
     "left main right";
     grid-template-columns: 1fr 4fr 1fr;
-    grid-template-rows: 100px 100px auto;
+    grid-template-rows: auto 100px auto;
     grid-column-gap: 20px;}
 
 .header {
@@ -46,6 +47,10 @@ body {
     height: 100%;
     width: 100%;
     background-color: #4E8D7C;
+}
+
+.form {
+    display: flex;
 }
 
 .search {
@@ -111,7 +116,6 @@ body {
 .heading {
     font-weight: 600;
     font-size: 24px;
-    color: #045762;
 }
 
 .subheading {
@@ -123,7 +127,6 @@ body {
 p {
     position: relative;
     height: auto;
-    color: #045762;
 }
 
 .img {
@@ -150,16 +153,20 @@ col-sm-8 container mt-5 row col-md-4 .cardSize {
     height: 275px;
 }
 
+.logo {
+    grid-area: logo;
+    width: 100%;
+    height: 100%;
+}
+
+
 @media screen and (max-width: 1500px) {
     .outer {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-.logo {
-    width: 100px;
-    height: 100px;
-}
+
 
 
 /*
