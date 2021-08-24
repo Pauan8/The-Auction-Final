@@ -9,13 +9,11 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 
 @Controller
 public class AuctionController {
@@ -30,7 +28,10 @@ public class AuctionController {
     AuctionService auctionService;
 
     @GetMapping("/")
-    public String home(HttpSession session) {
+    public String home(HttpSession session, Model model) {
+
+        List<Auction> auctions = (List)auctionRepository.findAll();
+        model.addAttribute("auctions", auctions);
         return "index";
     }
 

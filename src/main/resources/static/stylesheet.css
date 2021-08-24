@@ -35,7 +35,7 @@ body {
     display: grid;
     grid-template-areas:
     "header header header"
-    "left searchsection right"
+    "left search right"
     "left main right";
     grid-template-columns: 1fr 4fr 1fr;
     grid-template-rows: 100px 100px auto;
