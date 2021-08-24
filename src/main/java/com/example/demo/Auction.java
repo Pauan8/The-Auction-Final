@@ -3,6 +3,7 @@ package com.example.demo;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 public class Auction {
@@ -116,6 +117,11 @@ public class Auction {
 
     public void setKeyWords(String keyWords) {
         this.keyWords = keyWords;
+    }
+
+    public String printEndDateTime() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        return this.endDateTime.format(formatter);
     }
 
     public User getUser() {

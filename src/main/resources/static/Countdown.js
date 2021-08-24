@@ -1,13 +1,14 @@
 const countDown = () => {
 
-    const stringDate =
-    const countDownDate = new Date("Jan 5, 2022 15:37:25").getTime();
+    const stringDate = document.getElementById("auctionEndDate").innerText
+
+    const countDownDate = new Date(stringDate).getTime();
 
 // Update the count down every 1 second
     let x = setInterval(function() {
 
         // Get today's date and time
-        let now = new Date().getTime();
+        const now = new Date().getTime();
 
         // Find the distance between now and the count down date
         let distance = countDownDate - now;
@@ -19,13 +20,14 @@ const countDown = () => {
         let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
         // Display the result in the element with id="demo"
-        document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+        document.getElementById("timeRemain").innerHTML = days + "d " + hours + "h "
             + minutes + "m " + seconds + "s ";
 
         // If the count down is finished, write some text
         if (distance < 0) {
             clearInterval(x);
-            document.getElementById("demo").innerHTML = "EXPIRED";
+            document.getElementById("timeRemain").innerHTML = "Utgått!";
         }
     }, 1000);
 }
+countDown()
