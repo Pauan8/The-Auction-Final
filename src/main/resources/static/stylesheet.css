@@ -40,7 +40,7 @@ body {
     "left main right";
     grid-template-columns: 1fr 4fr 1fr;
     grid-template-rows: auto 100px auto;
-   }
+}
 
 .header {
     grid-area: header;
@@ -49,7 +49,7 @@ body {
     background-color: #4E8D7C;
 }
 
-form {
+.form {
     display: flex;
 }
 
@@ -57,8 +57,8 @@ form {
     grid-area: search;
     background-color: #EA97AD;
     margin-top: 20px;
-    border-radius: 5px;
     margin-left: 20px;
+    border-radius: 5px;
 }
 
 .btn-outline-warning {
@@ -70,13 +70,14 @@ form {
 .search-inner {
     display: flex;
     height: 100%;
+
     justify-content: center;
     align-items: center;
 }
 
 .left-sidebar {
     grid-area: left;
-    background-color: #EA97AD;
+    background-color: #F3F2DA;
 }
 
 .filter {
@@ -117,7 +118,6 @@ form {
 .heading {
     font-weight: 600;
     font-size: 24px;
-    color: #045762;
 }
 
 .subheading {
@@ -129,7 +129,6 @@ form {
 p {
     position: relative;
     height: auto;
-    color: #045762;
 }
 
 .img {
@@ -158,9 +157,9 @@ col-sm-8 container mt-5 row col-md-4 .cardSize {
 
 .logo {
     grid-area: logo;
-    width: 100%;
-    height: 100%;
-    background-color: #EA97AD;
+    width: 150px;
+    height: 150px;
+    background-color: #F1BBCA;
 }
 
 
@@ -184,4 +183,7 @@ col-sm-8 container mt-5 row col-md-4 .cardSize {
 #F3F2DA
 #4E8D7C
 #045762
-#EA97AD*/
+#EA97AD gammal rosa
+
+F1BBCA  ny rosa
+*/
