@@ -24,7 +24,7 @@ body {
 .searchbar {
     display:flex;
     margin: 10px;
-    width: 400px;
+    width:100%;
 }
 
 .btn {
@@ -51,6 +51,7 @@ body {
 
 form {
     display: flex;
+    width:100%;
 }
 
 .search {
@@ -112,6 +113,7 @@ form {
     cursor: pointer;
     max-height: 500px;
     max-width: 500px;
+    border-radius: 2px;
 }
 
 .heading {
@@ -156,8 +158,8 @@ col-sm-8 container mt-5 row col-md-4 .cardSize {
 
 .logo {
     grid-area: logo;
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    height: 100%;
     background-color: #F1BBCA;
 }
 
