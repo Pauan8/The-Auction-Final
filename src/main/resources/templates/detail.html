@@ -2,24 +2,25 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-   <!-- <link href="../static/stylesheet.css" th:href="stylesheet.css" rel="stylesheet">-->
+    <!-- <link href="../static/stylesheet.css" th:href="stylesheet.css" rel="stylesheet">-->
     <link rel="stylesheet" th:href="@{/stylesheet.css}"/>
 
 
     <title>Title</title>
 </head>
 <body>
-<img class="detailImage" th:src="@{/auction-photos/} + ${auction.pictureAddress}">
-<p th:text="'Utgångspris: '+${auction.startPrice}+' kr'"> </p>
+<img class="detailImage"
+     th:src="'https://auction-photos-aw.s3.eu-west-2.amazonaws.com/' + ${auction.pictureAddress}">
+<p th:text="'Utgångspris: '+${auction.startPrice}+' kr'"></p>
 <p th:text="'Reservationspris: ' + ${auction.reservationPrice+' kr'}"></p>
 <p th:text="'Aktuellt bud: '+${highestBid}+' kr'"></p>
 <!--"<p th:text="'Antal bud: ' + ${auction.bidList.length}"></p>-->
 <br>
 <p th:text="'Slutdatum: ' + ${auction.printEndDateTime()}"></p>
-<p hidden id="auctionEndDate" th:text="${auction.endDateTime}" ></p>
+<p hidden id="auctionEndDate" th:text="${auction.endDateTime}"></p>
 <span id="timeRemain"></span>
 <form method="post" action="/bid" th:object="${bid}">
-    <input type="text" name="bid" th:field="*{amount}" >
+    <input type="text" name="bid" th:field="*{amount}">
     <input type="hidden" name="auction" th:field="*{auction}">
     <button type="submit" class="btn btn-primary"
             style="margin-top:20px;">Lägg bud
@@ -28,7 +29,6 @@
 <script th:src="@{/Countdown.js}"></script>
 </body>
 </html>
-
 
 
 <!--
