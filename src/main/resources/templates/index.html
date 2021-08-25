@@ -24,8 +24,8 @@
     <div class="search">
         <div class="search-inner">
             <div class="searchbar">
-                <form class="search-form" method="post" action="/search">
-                <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                <form class="search-form" method="get" action="/search">
+                <input name="searchText" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
                        placeholder="Search products....">
                 <div class="input-group-append">
                     <button id="inputGroup-sizing-sm"
@@ -65,13 +65,16 @@
                 <h2 class="subheading" th:text="${item.keyWords}">
                     Subrubrik
                 </h2>
-                <div class="img-container">
-                    <img class="img" th:src="@{/auction-photos/} + ${item.pictureAddress}" />
-                </div>
-                <p th:text="${item.description}">
+                <a th:href="'/detail/'+ ${item.id}"><div class="img-container">
+                    <img class="img" th:src="@{/auction-photos/} + ${item.pictureAddress}"/>
+                </div></a>
+                <p class="description" th:text="${item.description}">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. A beatae illo laudantium modi natus obcaecati praesentium reiciendis sint velit voluptas!
                 </p>
                 <p th:text="${item.user.getUsername()}"></p>
+
+                <a th:href="'/detail/'+ ${item.id}" class="btn btn-primary">Mer information</a>
+
             </div>
         </div>
     </div>

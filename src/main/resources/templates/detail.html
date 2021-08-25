@@ -9,25 +9,32 @@
 </head>
 <body>
 <div class="detail-div">
-    <img class="detailImage" th:src="@{/auction-photos/} + ${auction.pictureAddress}">
-    <p th:text="'Utgångspris: '+${auction.startPrice}+' kr'"> </p>
-    <p th:text="'Reservationspris: ' + ${auction.reservationPrice+' kr'}"></p>
-    <p th:text="'Aktuellt bud: '+${highestBid}+' kr'"></p>
-    <!--"<p th:text="'Antal bud: ' + ${auction.bidList.length}"></p>-->
-    <br>
-    <p th:text="'Slutdatum: ' + ${auction.printEndDateTime()}"></p>
-    <p hidden id="auctionEndDate" th:text="${auction.endDateTime}" ></p>
-    <span id="timeRemain"></span>
-    <form method="post" action="/bid" th:object="${bid}">
-        <input type="text" name="bid" th:field="*{amount}" >
-        <input type="hidden" name="auction" th:field="*{auction}">
-        <button type="submit" class="btn btn-primary"
-                style="margin-top:20px;">Lägg bud
-        </button>
-    </form>
+    <div class="img-container">
+        <img class="detailImage" th:src="@{/auction-photos/} + ${auction.pictureAddress}">
+    </div>
+    <div class="detail-info">
+        <p th:text="'Vara: '+${auction.title}"> </p>
+        <p th:text="'Beskrivning: '+${auction.description}"> </p>
+        <p th:text="'Utgångspris: '+${auction.startPrice}+' kr'"> </p>
+        <p th:text="'Reservationspris: ' + ${auction.reservationPrice+' kr'}"></p>
+        <p th:text="'Aktuellt bud: '+${highestBid}+' kr'"></p>
+        <p th:text="'Slutdatum: ' + ${auction.printEndDateTime()}"></p>
+        <p hidden id="auctionEndDate" th:text="${auction.endDateTime}" ></p>
 
-    <a href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=http://www.example.com&p[images][0]=&p[title]=Title%20Goes%20Here&p[summary]=Description%20goes%20here!" target="_blank" onclick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false" class="fa fa-facebook"></a>
-    <a href="https://twitter.com/" class="fa fa-twitter"></a>
+        <span id="timeRemain"></span>
+        <div class="detail-button">
+             <form method="post" action="/bid" th:object="${bid}">
+             <input type="text" name="bid" th:field="*{amount}" >
+                <input type="hidden" name="auction" th:field="*{auction}">
+             <button type="submit" class="btn btn-primary"
+                style="margin-top:20px;">Lägg bud
+             </button>
+            </form>
+
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=http://www.example.com&p[images][0]=&p[title]=Title%20Goes%20Here&p[summary]=Description%20goes%20here!" target="_blank" onclick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false" class="fa fa-facebook"></a>
+            <a href="https://twitter.com/" class="fa fa-twitter"></a>
+        </div>
+    </div>
 </div>
 
 

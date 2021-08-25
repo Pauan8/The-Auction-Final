@@ -72,7 +72,6 @@ p {
     grid-template-rows: auto 100px auto;
 }
 
-
 .logo {
     grid-area: logo;
     width: 100%;
@@ -85,21 +84,6 @@ p {
     height: 100%;
     width: 100%;
     background-color: #4E8D7C;
-}
-
-.left-sidebar {
-    grid-area: left;
-    background-color: #F3F2DA;
-}
-
-.filter {
-    margin: 40px 20px;
-    display: flex;
-    flex-direction: column;
-}
-
-.right-sidebar {
-    grid-area: right;
 }
 
 .products {
@@ -130,54 +114,20 @@ p {
     align-items: center;
 }
 
-
-.search {
-    grid-area: search;
-    background-color: #EA97AD;
-    margin-top: 20px;
-    margin-left: 20px;
-    border-radius: 5px;
-}
-
-.search-inner {
-    display: flex;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-}
-
-.search-form {
-    display: flex;
-    width: 100%;
-}
-
-.searchbar .form-control {
-    border: 1px solid #F3F2DA;
-    border-radius: 5px 0 0 5px;
-}
-
-.searchbar {
-    display:flex;
-    margin: 10px;
-    width:100%;
-}
-
 .img-container {
-    position: relative;
     max-height: 300px;
     max-width: 300px;
-    min-height: 200px;
-    min-width: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    min-height: 100px;
+    min-width: 100px;
+    margin: auto;
 }
 
 .img-container img {
+    position: center;
     object-fit: cover;
-    position: absolute;
     max-width: 100%;
     max-height: 100%;
+    margin: auto;
 }
 
 /* register */
@@ -188,20 +138,6 @@ p {
    "side1 middle side2";
     grid-column-template: 1fr 4fr 1fr;
     grid-row-template: 100%;
-}
-
-.side1 {
-    grid-area: side1;
-    background-color: #F3F2DA;
-    with: 100%;
-    height: 100%;
-}
-
-.side2 {
-    grid-area: side2;
-    background-color: #F3F2DA;
-    with: 100%;
-    height: 100%;
 }
 
 .register-form {
@@ -218,24 +154,29 @@ p {
     color: #045762;
 }
 
-
 /*details */
 
 .time i {
     color: #cacacaa3
 }
 
-.detailImage {
-    width: 300px;
-    height: 275px;
+.detail-div {
+    text-align: left;
 }
 
 .detail-div {
     margin: auto;
     width: 50%;
     background-color: #F3F2DA;
-    text-align: center;
+    text-align: left;
     padding: 10px;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.detail-button {
+    margin: auto;
+    justify-content: center;
 }
 
 /* Style all font awesome icons */
@@ -246,6 +187,7 @@ p {
     text-align: center;
     text-decoration: none;
     margin-top: 10px;
+    margin-left: 10px;
 }
 
 /* Add a hover effect if you want */
