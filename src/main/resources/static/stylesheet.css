@@ -55,7 +55,7 @@ form {
 
 .search {
     grid-area: search;
-    background-color: #EA97AD;
+    background-color: #F1BBCA;
     margin-top: 20px;
     margin-left: 20px;
     border-radius: 5px;
@@ -158,7 +158,7 @@ col-sm-8 container mt-5 row col-md-4 .cardSize {
     grid-area: logo;
     width: 150px;
     height: 150px;
-    background-color: #EA97AD;
+    background-color: #F1BBCA;
 }
 
 
@@ -182,4 +182,7 @@ col-sm-8 container mt-5 row col-md-4 .cardSize {
 #F3F2DA
 #4E8D7C
 #045762
-#EA97AD*/
+#EA97AD gammal rosa
+
+F1BBCA  ny rosa
+*/
