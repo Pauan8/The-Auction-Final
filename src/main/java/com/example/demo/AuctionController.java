@@ -134,7 +134,7 @@ public class AuctionController {
     }
 
     @PostMapping("/login")
-    public String loggingIn(@RequestParam String username, @RequestParam String password, HttpSession session, Model model) {
+    public String loggingIn(@RequestParam String username, @RequestParam String password, HttpSession session) {
         User user = userRepository.findByUsername(username);
 
         if (user == null) {
