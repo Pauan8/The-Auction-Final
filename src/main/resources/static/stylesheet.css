@@ -2,7 +2,8 @@
 body {
     background-color: white;
     font-family: "Poppins", sans-serif;
-    font-weight: 300
+    font-weight: 300;
+    color: #045762;
 }
 
 .btn:hover {
@@ -34,12 +35,12 @@ body {
 .index-container {
     display: grid;
     grid-template-areas:
-    "header header header"
-    "left searchsection right"
+    "logo header header"
+    "left search right"
     "left main right";
     grid-template-columns: 1fr 4fr 1fr;
-    grid-template-rows: 100px 100px auto;
-    grid-column-gap: 20px;}
+    grid-template-rows: auto 100px auto;
+}
 
 .header {
     grid-area: header;
@@ -48,10 +49,15 @@ body {
     background-color: #4E8D7C;
 }
 
+form {
+    display: flex;
+}
+
 .search {
     grid-area: search;
-    background-color: #EA97AD;
+    background-color: #F1BBCA;
     margin-top: 20px;
+    margin-left: 20px;
     border-radius: 5px;
 }
 
@@ -64,7 +70,6 @@ body {
 .search-inner {
     display: flex;
     height: 100%;
-
     justify-content: center;
     align-items: center;
 }
@@ -95,6 +100,7 @@ body {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(10, 300px);
     grid-gap: 20px;
+    margin-left: 20px;
     justify-content: center;
     background-color: white;
 }
@@ -111,7 +117,6 @@ body {
 .heading {
     font-weight: 600;
     font-size: 24px;
-    color: #045762;
 }
 
 .subheading {
@@ -123,7 +128,6 @@ body {
 p {
     position: relative;
     height: auto;
-    color: #045762;
 }
 
 .img {
@@ -150,6 +154,14 @@ col-sm-8 container mt-5 row col-md-4 .cardSize {
     height: 275px;
 }
 
+.logo {
+    grid-area: logo;
+    width: 150px;
+    height: 150px;
+    background-color: #F1BBCA;
+}
+
+
 @media screen and (max-width: 1500px) {
     .outer {
         grid-template-columns: repeat(2, 1fr);
@@ -170,4 +182,7 @@ col-sm-8 container mt-5 row col-md-4 .cardSize {
 #F3F2DA
 #4E8D7C
 #045762
-#EA97AD*/
+#EA97AD gammal rosa
+
+F1BBCA  ny rosa
+*/
