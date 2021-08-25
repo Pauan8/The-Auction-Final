@@ -160,23 +160,17 @@ p {
     color: #cacacaa3
 }
 
-.detail-div {
-    text-align: left;
+.detailImage {
+    width: 300px;
+    height: 275px;
 }
 
 .detail-div {
     margin: auto;
     width: 50%;
     background-color: #F3F2DA;
-    text-align: left;
+    text-align: center;
     padding: 10px;
-    justify-content: center;
-    font-weight: 600;
-}
-
-.detail-button {
-    margin: auto;
-    justify-content: center;
 }
 
 /* Style all font awesome icons */
@@ -187,7 +181,6 @@ p {
     text-align: center;
     text-decoration: none;
     margin-top: 10px;
-    margin-left: 10px;
 }
 
 /* Add a hover effect if you want */

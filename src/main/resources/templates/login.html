@@ -2,13 +2,33 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/stylesheet.css}" />
     <title>Title</title>
 </head>
 <body>
-<form action="/login" method="POST">
-    Email adress: <input type="text" name="username"/>
-    Lösenord: <input type="password" name="password" />
-    <input type="submit" value="Login">
-</form>
+<div class="container-register">
+    <div class="side1"> </div>
+    <div class="register-form row justify-content-md-center align-items-center">
+        <form action="/login" method="POST">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label class="register-label" for="username">Användarnamn</label>
+                    <input type="text" class="form-control" style="width:300px;" id="username" name="username"/>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="register-label" for="password">Lösenord</label>
+                    <input type="password" class="form-control" style="width:300px;" name="password" id="password" />
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary"
+                    style="margin-top:20px;">Logga in
+            </button>
+        </form>
+    </div>
+    <div class="side2"> </div>
+</div>
 </body>
 </html>

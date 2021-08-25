@@ -93,9 +93,8 @@ public class AuctionController {
 
         String fileName = UUID.randomUUID().toString() + "." + multipartFile.getOriginalFilename().split("\\.")[1];
         auction.setPictureAddress(fileName);
-        String uploadDir = "src/main/resources/static/auction-photos/";
 
-        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+        UploadObject.upload(fileName, multipartFile);
 
         auction.setUser((User) session.getAttribute("user"));
         auctionRepository.save(auction);
@@ -135,7 +134,7 @@ public class AuctionController {
     }
 
     @PostMapping("/login")
-    public String loggingIn(@RequestParam String username, @RequestParam String password, HttpSession session, Model model) {
+    public String loggingIn(@RequestParam String username, @RequestParam String password, HttpSession session) {
         User user = userRepository.findByUsername(username);
 
         if (user == null) {
