@@ -3,31 +3,39 @@
 <head>
     <meta charset="UTF-8">
    <!-- <link href="../static/stylesheet.css" th:href="stylesheet.css" rel="stylesheet">-->
-    <link rel="stylesheet" th:href="@{/stylesheet.css}"/>
-
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" th:href="@{/stylesheetdetail.css}"/>
     <title>Title</title>
 </head>
 <body>
-<img class="detailImage" th:src="@{/auction-photos/} + ${auction.pictureAddress}">
-<p th:text="'Utgångspris: '+${auction.startPrice}+' kr'"> </p>
-<p th:text="'Reservationspris: ' + ${auction.reservationPrice+' kr'}"></p>
-<p th:text="'Aktuellt bud: '+${highestBid}+' kr'"></p>
-<!--"<p th:text="'Antal bud: ' + ${auction.bidList.length}"></p>-->
-<br>
-<p th:text="'Slutdatum: ' + ${auction.printEndDateTime()}"></p>
-<p hidden id="auctionEndDate" th:text="${auction.endDateTime}" ></p>
-<span id="timeRemain"></span>
-<form method="post" action="/bid" th:object="${bid}">
-    <input type="text" name="bid" th:field="*{amount}" >
-    <input type="hidden" name="auction" th:field="*{auction}">
-    <button type="submit" class="btn btn-primary"
-            style="margin-top:20px;">Lägg bud
-    </button>
-</form>
+<div class="detail-div">
+    <img class="detailImage" th:src="@{/auction-photos/} + ${auction.pictureAddress}">
+    <p th:text="'Utgångspris: '+${auction.startPrice}+' kr'"> </p>
+    <p th:text="'Reservationspris: ' + ${auction.reservationPrice+' kr'}"></p>
+    <p th:text="'Aktuellt bud: '+${highestBid}+' kr'"></p>
+    <!--"<p th:text="'Antal bud: ' + ${auction.bidList.length}"></p>-->
+    <br>
+    <p th:text="'Slutdatum: ' + ${auction.printEndDateTime()}"></p>
+    <p hidden id="auctionEndDate" th:text="${auction.endDateTime}" ></p>
+    <span id="timeRemain"></span>
+    <form method="post" action="/bid" th:object="${bid}">
+        <input type="text" name="bid" th:field="*{amount}" >
+        <input type="hidden" name="auction" th:field="*{auction}">
+        <button type="submit" class="btn btn-primary"
+                style="margin-top:20px;">Lägg bud
+        </button>
+    </form>
+
+    <a href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=http://www.example.com&p[images][0]=&p[title]=Title%20Goes%20Here&p[summary]=Description%20goes%20here!" target="_blank" onclick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false" class="fa fa-facebook"></a>
+    <a href="https://twitter.com/" class="fa fa-twitter"></a>
+</div>
+
+
+
 <script th:src="@{/Countdown.js}"></script>
 </body>
 </html>
+
 
 
 
