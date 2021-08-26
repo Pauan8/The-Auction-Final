@@ -35,7 +35,15 @@ public class Users {
     public Users() {
     }
 
-    public Users(String username, String password, String firstName, String lastName, String email, LocalDate dateOfBirth, String address, String zipCode, String city) {
+    public Users(String username,
+                 String password,
+                 String firstName,
+                 String lastName,
+                 String email,
+                 LocalDate dateOfBirth,
+                 String address,
+                 String zipCode,
+                 String city) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -45,6 +53,30 @@ public class Users {
         this.address = address;
         this.zipCode = zipCode;
         this.city = city;
+    }
+
+    public Users(String ADDRESS,
+                 String CITY,
+                 String DATE_OF_BIRTH,
+                 String EMAIL,
+                 String FIRST_NAME,
+                 String LAST_NAME,
+                 String PASSWORD,
+                 String RATING,
+                 String USERNAME,
+                 String ZIP_CODE) {
+
+        this.address = ADDRESS;
+        this.city = CITY;
+        this.email = EMAIL;
+        this.firstName = FIRST_NAME;
+        this.dateOfBirth = LocalDate.parse(DATE_OF_BIRTH);
+        this.lastName = LAST_NAME;
+        this.password = PASSWORD;
+        this.rating = RATING;
+        this.username = USERNAME;
+        this.zipCode = ZIP_CODE;
+
     }
 
     public Long getId() {

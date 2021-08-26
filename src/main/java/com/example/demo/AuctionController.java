@@ -37,14 +37,14 @@ public class AuctionController {
     @GetMapping("/register")
     public String register(Model model) {
         Users users = new Users();
-        model.addAttribute("user", users);
+        model.addAttribute("users", users);
         return "register";
     }
 
     @PostMapping("/register")
     public String postRegister(@ModelAttribute Users users, HttpSession session) {
         usersRepository.save(users);
-        session.setAttribute("user", users);
+        session.setAttribute("users", users);
         return "redirect:/";
     }
 
@@ -92,7 +92,7 @@ public class AuctionController {
 
         UploadObject.upload(fileName, multipartFile);
 
-        auction.setUsers((Users) session.getAttribute("user"));
+        auction.setUsers((Users) session.getAttribute("users"));
         auctionRepository.save(auction);
         return "redirect:/";
     }
@@ -109,7 +109,7 @@ public class AuctionController {
 
     @PostMapping("/bid")
     public String postBid(@ModelAttribute Bid bid, HttpSession session, Model model) {
-        Users users = (Users) session.getAttribute("user");
+        Users users = (Users) session.getAttribute("users");
         Auction auction = bid.getAuction();
         if (auctionService.isBidHighEnough(bid, bid.getAuction())) {
             bid.setUser(users);
@@ -137,7 +137,7 @@ public class AuctionController {
             return "login";
         }
         if (users.getPassword().equals(password)) {
-            session.setAttribute("user", users);
+            session.setAttribute("users", users);
             return "index";
         }
         return "login";
