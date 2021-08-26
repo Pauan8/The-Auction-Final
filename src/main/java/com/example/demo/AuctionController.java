@@ -102,7 +102,7 @@ public class AuctionController {
 
         UploadObject.upload(fileName, multipartFile);
 
-        auction.setUsers((Users) session.getAttribute("users"));
+        auction.setUsers((Users)session.getAttribute("users"));
         auctionRepository.save(auction);
         return "redirect:/";
     }
