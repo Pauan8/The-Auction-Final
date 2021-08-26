@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -17,8 +18,8 @@ public class User {
     private String password;
     private String firstName;
     private String lastName;
+    @Column(unique=true)
     private String email;
-
     private LocalDate dateOfBirth;
 
 /*    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)

@@ -4,9 +4,11 @@ package com.example.demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -42,10 +44,18 @@ public class AuctionController {
     }
 
     @PostMapping("/register")
-    public String postRegister(@ModelAttribute User user, HttpSession session) {
-        userRepository.save(user);
-        session.setAttribute("user", user);
-        return "redirect:/";
+    public String postRegister(@Valid @ModelAttribute User user, BindingResult result, HttpSession session) throws Exception{
+        try {
+            if (result.hasErrors()) {
+                return "redirect:/register";
+            }
+            userRepository.save(user);
+            session.setAttribute("user", user);
+            return "redirect:/";
+        } catch(org.springframework.dao.DataIntegrityViolationException jse){
+            System.out.println(jse);
+            return "redirect:/register";
+        }
     }
 
 
