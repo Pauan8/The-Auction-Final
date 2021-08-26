@@ -28,7 +28,7 @@ public class Auction {
     private boolean finished=false;
 
     @ManyToOne
-    private User user;
+    private Users users;
 
     private String pictureAddress;
 
@@ -124,12 +124,12 @@ public class Auction {
         return this.endDateTime.format(formatter);
     }
 
-    public User getUser() {
-        return user;
+    public Users getUsers() {
+        return users;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUsers(Users users) {
+        this.users = users;
     }
 
     public String getPictureAddress() {

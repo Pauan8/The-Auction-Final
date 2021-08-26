@@ -12,16 +12,16 @@ public class Bid {
     @ManyToOne
     private Auction auction;
     @ManyToOne
-    private User user;
+    private Users users;
     private int amount;
     private LocalDateTime bidDateTime;
 
     public Bid() {
     }
 
-    public Bid(Auction auction, User user, int amount, LocalDateTime bidDateTime) {
+    public Bid(Auction auction, Users users, int amount, LocalDateTime bidDateTime) {
         this.auction = auction;
-        this.user = user;
+        this.users = users;
         this.amount = amount;
         this.bidDateTime = bidDateTime;
     }
@@ -42,12 +42,12 @@ public class Bid {
         return this.auction;
     }
 
-    public User getUser() {
-        return user;
+    public Users getUser() {
+        return users;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(Users users) {
+        this.users = users;
     }
 
     public int getAmount() {

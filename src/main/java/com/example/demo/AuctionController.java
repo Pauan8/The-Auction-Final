@@ -13,16 +13,12 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 
 @Controller
 public class AuctionController {
 
     @Autowired
-    UserRepository userRepository;
+    UsersRepository usersRepository;
 
     @Autowired
     AuctionRepository auctionRepository;
@@ -40,15 +36,15 @@ public class AuctionController {
 
     @GetMapping("/register")
     public String register(Model model) {
-        User user = new User();
-        model.addAttribute("user", user);
+        Users users = new Users();
+        model.addAttribute("user", users);
         return "register";
     }
 
     @PostMapping("/register")
-    public String postRegister(@ModelAttribute User user, HttpSession session) {
-        userRepository.save(user);
-        session.setAttribute("user", user);
+    public String postRegister(@ModelAttribute Users users, HttpSession session) {
+        usersRepository.save(users);
+        session.setAttribute("user", users);
         return "redirect:/";
     }
 
@@ -96,7 +92,7 @@ public class AuctionController {
 
         UploadObject.upload(fileName, multipartFile);
 
-        auction.setUser((User) session.getAttribute("user"));
+        auction.setUsers((Users) session.getAttribute("user"));
         auctionRepository.save(auction);
         return "redirect:/";
     }
@@ -113,10 +109,10 @@ public class AuctionController {
 
     @PostMapping("/bid")
     public String postBid(@ModelAttribute Bid bid, HttpSession session, Model model) {
-        User user = (User) session.getAttribute("user");
+        Users users = (Users) session.getAttribute("user");
         Auction auction = bid.getAuction();
         if (auctionService.isBidHighEnough(bid, bid.getAuction())) {
-            bid.setUser(user);
+            bid.setUser(users);
             LocalDateTime timeNow = LocalDateTime.now();
             bid.setBidDateTime(timeNow);
             auction.addBid(bid);
@@ -135,13 +131,13 @@ public class AuctionController {
 
     @PostMapping("/login")
     public String loggingIn(@RequestParam String username, @RequestParam String password, HttpSession session) {
-        User user = userRepository.findByUsername(username);
+        Users users = usersRepository.findByUsername(username);
 
-        if (user == null) {
+        if (users == null) {
             return "login";
         }
-        if (user.getPassword().equals(password)) {
-            session.setAttribute("user", user);
+        if (users.getPassword().equals(password)) {
+            session.setAttribute("user", users);
             return "index";
         }
         return "login";

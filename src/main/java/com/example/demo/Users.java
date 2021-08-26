@@ -6,7 +6,7 @@ import java.util.List;
 
 
 @Entity
-public class User {
+public class Users {
 
 
     @Id
@@ -24,7 +24,7 @@ public class User {
 /*    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Bid> bidList;*/
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL)
     private List<Auction> auctionList;
 
     private String address;
@@ -32,10 +32,10 @@ public class User {
     private String city;
     private String rating;
 
-    public User() {
+    public Users() {
     }
 
-    public User(String username, String password, String firstName, String lastName, String email, LocalDate dateOfBirth, String address, String zipCode, String city) {
+    public Users(String username, String password, String firstName, String lastName, String email, LocalDate dateOfBirth, String address, String zipCode, String city) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;

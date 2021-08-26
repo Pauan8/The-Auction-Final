@@ -9,7 +9,7 @@ public class Invoice {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @OneToOne
-    private User user;
+    private Users users;
     @OneToOne
     private Auction auction;
     private int shipping;
