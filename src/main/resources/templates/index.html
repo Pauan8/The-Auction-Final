@@ -55,6 +55,9 @@
     </div>
 
 
+
+
+
     <div class="products">
         <div class="outer">
             <div class="card" th:each="item : ${auctions}">
@@ -65,7 +68,7 @@
                     Subrubrik
                 </h2>
                 <div class="img-container">
-                    <img class="img" th:src="'https://auction-photos-aw.s3.eu-west-2.amazonaws.com/' + ${auction.pictureAddress}" />
+                    <img class="img" th:src="" />
                 </div>
                 <p th:text="${item.description}">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. A beatae illo laudantium modi natus obcaecati praesentium reiciendis sint velit voluptas!
