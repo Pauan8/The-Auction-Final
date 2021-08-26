@@ -1,3 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;1,600&display=swap');
+
+body {
+    background-color: white;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    color: #045762;
+    height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+/* text */
+.heading {
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.subheading {
+    font-weight: 500;
+    font-size: 20px;
+    color: #4E8D7C;
+}
+
+p {
+    position: relative;
+    height: auto;
+}
+
+
+/*input & buttons*/
+
+.input-text:focus {
+    box-shadow: 0px 0px 0px;
+    border-color: #f8c146;
+    outline: 0px
+}
+
+.btn {
+    height: 100%;
+    width: 40px;
+}
+
+.btn-primary {
+    background-color: #F1BBCA;
+    border-color: #F1BBCA;
+    width: auto;
+}
+
+.btn-primary:hover {
+    background-color: #045762;
+}
+
+.btn:hover {
+    color: #fff
+}
+
+.btn-outline-warning {
+    border-color: #F3F2DA;
+    color: #F3F2DA;
+    border-radius: 0 5px 5px 0;
+}
+
+/* index */
+.index-container {
+    display: grid;
+    grid-template-areas:
+    "logo header header"
+    "left search right"
+    "left main right";
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: auto 100px auto;
+}
+
+.logo {
+    grid-area: logo;
+    width: 100%;
+    height: 100%;
+    background-color: #F1BBCA;
+}
+
+.header {
+    grid-area: header;
+    height: 100%;
+    width: 100%;
+    background-color: #4E8D7C;
+}
+
+.products {
+    grid-area: main;
+    background-color: white;
+}
+
+.outer {
+    display: grid;
+    margin-top: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(10, 400px);
+    grid-gap: 20px;
+    margin-left: 20px;
+    justify-content: center;
+    background-color: white;
+}
+
+.card {
+    background-color: #F3F2DA;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    max-height: 500px;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.img-container {
+    max-height: 300px;
+    max-width: 300px;
+    min-height: 100px;
+    min-width: 100px;
+    margin: auto;
+}
+
+.img-container img {
+    position: center;
+    object-fit: cover;
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+}
+
+/* register */
+.container-register {
+    display: grid;
+    height: 100%;
+    grid-template-areas:
+   "side1 middle side2";
+    grid-column-template: 1fr 4fr 1fr;
+    grid-row-template: 100%;
+}
+
+.register-form {
+    grid-area: middle;
+    justify-self: center;
+}
+
+.register-form .form-control {
+    border-radius: 2px;
+    border-color: #4E8D7C;
+}
+
+.register-label {
+    color: #045762;
+}
+
 /*details */
 
 .time i {
@@ -45,3 +201,38 @@
     background: #55ACEE;
     color: white;
 }
+
+/*responsive*/
+
+
+@media screen and (max-width: 1200px) {
+    .outer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .outer {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+}
+
+
+
+
+/*
+
+#F8DC81
+#EFF7E1
+#A2D0C1
+#214151
+
+
+#F3F2DA
+#4E8D7C
+#045762
+#EA97AD gammal rosa
+
+F1BBCA  ny rosa
+*/

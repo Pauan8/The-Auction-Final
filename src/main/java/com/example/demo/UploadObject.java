@@ -22,6 +22,7 @@ public class UploadObject {
 
         Regions clientRegion = Regions.EU_WEST_2;
 
+
         AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
                                                  .withRegion(clientRegion)
                                                  .withCredentials(new EnvironmentVariableCredentialsProvider())
