@@ -20,7 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class AuctionController {
 
     @Autowired
-    UserRepository userRepository;
+    UsersRepository usersRepository;
 
     @Autowired
     AuctionRepository auctionRepository;
@@ -38,8 +38,8 @@ public class AuctionController {
 
     @GetMapping("/register")
     public String register(Model model) {
-        User user = new User();
-        model.addAttribute("user", user);
+        Users users = new Users();
+        model.addAttribute("users", users);
         return "register";
     }
 
@@ -102,7 +102,7 @@ public class AuctionController {
 
         UploadObject.upload(fileName, multipartFile);
 
-        auction.setUser((User) session.getAttribute("user"));
+        auction.setUsers((Users) session.getAttribute("users"));
         auctionRepository.save(auction);
         return "redirect:/";
     }
@@ -119,10 +119,10 @@ public class AuctionController {
 
     @PostMapping("/bid")
     public String postBid(@ModelAttribute Bid bid, HttpSession session, Model model) {
-        User user = (User) session.getAttribute("user");
+        Users users = (Users) session.getAttribute("users");
         Auction auction = bid.getAuction();
         if (auctionService.isBidHighEnough(bid, bid.getAuction())) {
-            bid.setUser(user);
+            bid.setUser(users);
             LocalDateTime timeNow = LocalDateTime.now();
             bid.setBidDateTime(timeNow);
             auction.addBid(bid);
@@ -141,13 +141,13 @@ public class AuctionController {
 
     @PostMapping("/login")
     public String loggingIn(@RequestParam String username, @RequestParam String password, HttpSession session) {
-        User user = userRepository.findByUsername(username);
+        Users users = usersRepository.findByUsername(username);
 
-        if (user == null) {
+        if (users == null) {
             return "login";
         }
-        if (user.getPassword().equals(password)) {
-            session.setAttribute("user", user);
+        if (users.getPassword().equals(password)) {
+            session.setAttribute("users", users);
             return "index";
         }
         return "login";
