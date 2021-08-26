@@ -47,14 +47,14 @@ public class AuctionController {
     public String postRegister(@Valid @ModelAttribute Users users, BindingResult result, HttpSession session) throws Exception{
         try {
             if (result.hasErrors()) {
-                return "redirect:/register";
+                return "register";
             }
             usersRepository.save(users);
             session.setAttribute("users", users);
             return "redirect:/";
         } catch(org.springframework.dao.DataIntegrityViolationException jse){
             System.out.println(jse);
-            return "redirect:/register";
+            return "register";
         }
     }
 

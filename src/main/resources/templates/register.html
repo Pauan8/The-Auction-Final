@@ -27,6 +27,7 @@
                     <label class="register-label" for="password">Lösenord</label>
                     <input type="password" class="form-control" style="width:300px;" id="password"
                            placeholder="Lösenord" name="password" th:errorclass="is-invalid" th:field="*{password}">
+                    <div class="invalid-feedback">Fel längd lösenord</div>
                 </div>
             </div>
             <div class="form-row">

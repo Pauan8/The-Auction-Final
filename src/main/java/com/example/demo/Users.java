@@ -133,11 +133,13 @@ public class Users {
     }
 
     public String getDateOfBirth() {
+        if(dateOfBirth == null) {
+           dateOfBirth = LocalDate.parse("1900-01-01");
+        }
         return dateOfBirth.toString();
     }
 
     public void setDateOfBirth(String dateOfBirth) {
-
         this.dateOfBirth = LocalDate.parse(dateOfBirth);
     }
 
