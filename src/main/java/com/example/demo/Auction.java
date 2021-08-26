@@ -43,6 +43,26 @@ public class Auction {
         this.description = description;
         this.keyWords = keyWords;
     }
+
+    public Auction(String DESCRIPTION,String END_DATE_TIME, boolean FINISHED, String KEY_WORDS,String PICTURE_ADDRESS,int RESERVATION_PRICE,int START_PRICE,
+                   String TITLE,Long INVOICE_ID,Users user){
+
+        this.description = DESCRIPTION;
+        this.endDateTime = LocalDateTime.parse(END_DATE_TIME);
+        this.finished = FINISHED;
+        this.keyWords = KEY_WORDS;
+        this.pictureAddress = PICTURE_ADDRESS;
+        this.reservationPrice = RESERVATION_PRICE;
+        this.startPrice = START_PRICE;
+        this.title = TITLE;
+        this.users = user;
+        this.invoice = null;
+
+
+    }
+
+
+
     public void addBid(Bid bid){
         bidList.add(bid);
     }
