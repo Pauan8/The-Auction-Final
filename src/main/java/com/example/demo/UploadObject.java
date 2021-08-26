@@ -21,13 +21,10 @@ public class UploadObject {
 
         Regions clientRegion = Regions.EU_WEST_2;
 
-        BasicAWSCredentials
-                awsCreds = new BasicAWSCredentials("AKIAWWI4X5RSRXUOEHNG",
-                                                   "sU3SbPmLL/gUdRkofoZCr9AwnR0k8XFuKKAcZTJy");
+
 
         AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
                                                  .withRegion(clientRegion)
-                                                 .withCredentials(new AWSStaticCredentialsProvider(awsCreds))
                                                  .build();
 
 
