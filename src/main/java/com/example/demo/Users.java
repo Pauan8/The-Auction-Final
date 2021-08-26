@@ -131,8 +131,8 @@ public class Users {
         this.email = email;
     }
 
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
+    public String getDateOfBirth() {
+        return dateOfBirth.toString();
     }
 
     public void setDateOfBirth(String dateOfBirth) {

@@ -49,7 +49,7 @@ public class AuctionController {
     public String postRegister(@Valid @ModelAttribute Users users, BindingResult result, HttpSession session) {
 
         if(usersRepository.findByEmail(users.getEmail()) != null){
-            return "register";
+            return "redirect:/register";
         }
 
         if(result.hasErrors()){
