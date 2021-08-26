@@ -65,10 +65,10 @@
                 <h2 class="subheading" th:text="${item.keyWords}">
                     Subrubrik
                 </h2>
-                <a th:href="'/detail/'+ ${item.id}"><div class="img-container">
-                    <img class="img" th:src="@{/auction-photos/} + ${item.pictureAddress}"/>
-                </div></a>
-                <p class="description" th:text="${item.description}">
+                <div class="img-container">
+                    <!--<img class="img" th:src="'https://auction-photos-aw.s3.eu-west-2.amazonaws.com/' + ${auction.pictureAddress}" />-->
+                </div>
+                <p th:text="${item.description}">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. A beatae illo laudantium modi natus obcaecati praesentium reiciendis sint velit voluptas!
                 </p>
                 <p th:text="${item.user.getUsername()}"></p>
