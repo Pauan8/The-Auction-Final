@@ -4,9 +4,11 @@ package com.example.demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.io.IOException;
@@ -44,7 +46,16 @@ public class AuctionController {
     }
 
     @PostMapping("/register")
-    public String postRegister(@ModelAttribute Users users, HttpSession session) {
+    public String postRegister(@Valid @ModelAttribute Users users, BindingResult result, HttpSession session) {
+
+        if(usersRepository.findByEmail(users.getEmail()) != null){
+            return "register";
+        }
+
+        if(result.hasErrors()){
+            return "register";
+        }
+
         usersRepository.save(users);
         session.setAttribute("users", users);
         return "redirect:/";
@@ -132,7 +143,7 @@ public class AuctionController {
     }
 
     @PostMapping("/login")
-    public String loggingIn(@RequestParam @Min(3) @Max(10) String username, @RequestParam @Min(6) @Max(12) String password, HttpSession session) {
+    public String loggingIn(@RequestParam String username, @RequestParam String password, HttpSession session) {
         Users users = usersRepository.findByUsername(username);
 
         if (users == null) {
