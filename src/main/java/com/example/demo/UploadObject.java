@@ -32,6 +32,7 @@ public class UploadObject {
         String bucket = "auction-photos-aw";
         String contentType = "image/*";
         InputStream inputStream = multipartFile.getInputStream();
+        boolean isPublic = true;
 
 
         if (inputStream != null) {

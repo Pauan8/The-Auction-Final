@@ -29,7 +29,6 @@ p {
 
 
 /*input & buttons*/
-
 .input-text:focus {
     box-shadow: 0px 0px 0px;
     border-color: #f8c146;
@@ -65,19 +64,31 @@ p {
 .index-container {
     display: grid;
     grid-template-areas:
-    "logo header header"
-    "left search right"
+    "logo header right1"
     "left main right";
     grid-template-columns: 1fr 4fr 1fr;
-    grid-template-rows: auto 100px auto;
+    grid-template-rows: 200px auto;
 }
 
+.corner {
+    grid-area: right1;
+        height: 100%;
+        width: 100%;
+    background-color: #4E8D7C;
+}
 
 .logo {
     grid-area: logo;
-    width: 100%;
     height: 100%;
+    width: 100%;
+    justify-items: center;
+    align-self: center;
     background-color: #F1BBCA;
+}
+
+.logo img {
+   max-width: 100%;
+   object-fit: cover;
 }
 
 .header {
@@ -129,7 +140,9 @@ p {
     align-items: center;
 }
 
-
+.description {
+    min-height: 200px;
+}
 .search {
     grid-area: search;
     background-color: #EA97AD;
@@ -219,7 +232,6 @@ p {
 
 
 /*details */
-
 .time i {
     color: #cacacaa3
 }
@@ -247,9 +259,8 @@ p {
     overflow-y: auto;
 }
 
+
 /*responsive*/
-
-
 @media screen and (max-width: 1200px) {
     .outer {
         grid-template-columns: repeat(2, 1fr);
@@ -260,6 +271,14 @@ p {
     .outer {
         grid-template-columns: repeat(1, 1fr);
     }
+
+    .index-container {
+        display: grid;
+        grid-template-areas:
+        "logo header right1"
+        "left main right";
+        grid-template-columns: 1fr 4fr 1fr;
+        grid-template-rows: 100px auto;
 
 }
 

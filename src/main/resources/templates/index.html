@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" th:href="@{/stylesheet.css}"/>
 </head>
 <body>
@@ -18,23 +17,24 @@
         <img class="logo" src="../logo2.png" alt="logo">
     </div>
     <div class="header">
-    </div>
-
-    <div class="search">
-        <div class="search-inner">
-            <div class="searchbar">
-                <form class="search-form" method="get" action="/search">
-                <input name="searchText" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-                       placeholder="Search products....">
-                <div class="input-group-append">
-                    <button id="inputGroup-sizing-sm"
-                            class="btn btn-outline-warning btn-sm" type="button">
-                        <i class="fa fa-search"></i></button>
+        <div class="search">
+            <div class="search-inner">
+                <div class="searchbar">
+                    <form class="search-form" method="get" action="/search">
+                        <input name="searchText" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                               placeholder="Search products....">
+                        <div class="input-group-append">
+                            <button id="inputGroup-sizing-sm"
+                                    class="btn btn-outline-warning btn-sm" type="button">
+                                <i class="fa fa-search"></i></button>
+                        </div>
+                    </form>
                 </div>
-                </form>
             </div>
         </div>
     </div>
+
+    <div class="corner"></div>
 
     <div class="left-sidebar">
         <div class="filter">
@@ -65,9 +65,9 @@
                     Subrubrik
                 </h2>
                 <div class="img-container">
-                    <!--<img class="img" th:src="'https://auction-photos-aw.s3.eu-west-2.amazonaws.com/' + ${auction.pictureAddress}" />-->
+                    <img class="img" th:src="'https://auction-photos-aw.s3.eu-west-2.amazonaws.com/' + ${item.pictureAddress}" />
                 </div>
-                <p th:text="${item.description}">
+                <p class="description" th:text="${item.description}">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. A beatae illo laudantium modi natus obcaecati praesentium reiciendis sint velit voluptas!
                 </p>
                 <p th:text="${item.users.getUsername()}"></p>
