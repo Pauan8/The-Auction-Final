@@ -13,7 +13,8 @@ body {
 /* text */
 .heading {
     font-weight: 600;
-    font-size: 24px;
+    font-size: 26px;
+
 }
 
 .subheading {
@@ -72,8 +73,8 @@ p {
 
 .corner {
     grid-area: right1;
-        height: 100%;
-        width: 100%;
+    height: 100%;
+    width: 100%;
     background-color: #4E8D7C;
 }
 
@@ -143,6 +144,7 @@ p {
 .description {
     min-height: 200px;
 }
+
 .search {
     grid-area: search;
     background-color: #EA97AD;

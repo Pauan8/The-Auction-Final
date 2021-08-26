@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -46,19 +44,18 @@ public class AuctionController {
     }
 
     @PostMapping("/register")
-    public String postRegister(@Valid @ModelAttribute Users users, BindingResult result, HttpSession session) {
-
-        if(usersRepository.findByEmail(users.getEmail()) != null){
+    public String postRegister(@Valid @ModelAttribute Users user, BindingResult result, HttpSession session) throws Exception{
+        try {
+            if (result.hasErrors()) {
+                return "redirect:/register";
+            }
+            usersRepository.save(user);
+            session.setAttribute("users", user);
+            return "redirect:/";
+        } catch(org.springframework.dao.DataIntegrityViolationException jse){
+            System.out.println(jse);
             return "redirect:/register";
         }
-
-        if(result.hasErrors()){
-            return "register";
-        }
-
-        usersRepository.save(users);
-        session.setAttribute("users", users);
-        return "redirect:/";
     }
 
 
