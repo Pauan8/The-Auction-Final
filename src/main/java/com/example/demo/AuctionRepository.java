@@ -13,4 +13,6 @@ public interface AuctionRepository extends CrudRepository<Auction,Long> {
     @Query(value = "SELECT * FROM AUCTION WHERE KEY_WORDS LIKE ?1", nativeQuery = true)
     List<Auction> findByPartialKeyword(String keywordPattern);
 
+    List<Auction> findAuctionByKeyWords(String keyWord);
+
 }
