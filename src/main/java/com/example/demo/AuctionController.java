@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -130,7 +132,7 @@ public class AuctionController {
     }
 
     @PostMapping("/login")
-    public String loggingIn(@RequestParam String username, @RequestParam String password, HttpSession session) {
+    public String loggingIn(@RequestParam @Min(3) @Max(10) String username, @RequestParam @Min(6) @Max(12) String password, HttpSession session) {
         Users users = usersRepository.findByUsername(username);
 
         if (users == null) {

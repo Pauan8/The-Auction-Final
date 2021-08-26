@@ -1,4 +1,4 @@
-INSERT INTO USERS (ADDRESS, CITY, DATE_OF_BIRTH, EMAIL, FIRST_NAME, LAST_NAME, PASSWORD,
+/*INSERT INTO USERS (ADDRESS, CITY, DATE_OF_BIRTH, EMAIL, FIRST_NAME, LAST_NAME, PASSWORD,
 RATING, USERNAME, ZIP_CODE)
 VALUES ('Kungsgatan 3', 'Stockholm', '1999-10-10', 'test@test.com', 'Johan', 'Svensson', '123', null, 'Johan',
         '123 12');
@@ -26,3 +26,4 @@ INSERT INTO Auction (DESCRIPTION, END_DATE_TIME, FINISHED, KEY_WORDS, PICTURE_AD
                      TITLE, INVOICE_ID, USERS_ID)
 VALUES ('Lila med ett hål för huvudet', '2021-08-30 10:11:12', 0, ';kläder;', '74827b6a-92b6-4a13-8a62-9491e4db68d1.jpg', 150, 50,
         'Lila tröja', null, 2);
+*/
