@@ -1,13 +1,14 @@
 package com.example.demo;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.List;
 
 
 @Entity
-public class User {
+public class Users {
 
 
     @Id
@@ -15,17 +16,20 @@ public class User {
     private Long id;
 
     private String username;
+    @Size(min=6, max=12)
     private String password;
     private String firstName;
     private String lastName;
+    @Email(regexp = "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])")
     @Column(unique=true)
     private String email;
+
     private LocalDate dateOfBirth;
 
 /*    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Bid> bidList;*/
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL)
     private List<Auction> auctionList;
 
     private String address;
@@ -33,10 +37,18 @@ public class User {
     private String city;
     private String rating;
 
-    public User() {
+    public Users() {
     }
 
-    public User(String username, String password, String firstName, String lastName, String email, LocalDate dateOfBirth, String address, String zipCode, String city) {
+    public Users(String username,
+                 String password,
+                 String firstName,
+                 String lastName,
+                 String email,
+                 LocalDate dateOfBirth,
+                 String address,
+                 String zipCode,
+                 String city) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -46,6 +58,30 @@ public class User {
         this.address = address;
         this.zipCode = zipCode;
         this.city = city;
+    }
+
+    public Users(String ADDRESS,
+                 String CITY,
+                 String DATE_OF_BIRTH,
+                 String EMAIL,
+                 String FIRST_NAME,
+                 String LAST_NAME,
+                 String PASSWORD,
+                 String RATING,
+                 String USERNAME,
+                 String ZIP_CODE) {
+
+        this.address = ADDRESS;
+        this.city = CITY;
+        this.email = EMAIL;
+        this.firstName = FIRST_NAME;
+        this.dateOfBirth = LocalDate.parse(DATE_OF_BIRTH);
+        this.lastName = LAST_NAME;
+        this.password = PASSWORD;
+        this.rating = RATING;
+        this.username = USERNAME;
+        this.zipCode = ZIP_CODE;
+
     }
 
     public Long getId() {
