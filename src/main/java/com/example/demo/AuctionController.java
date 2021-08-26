@@ -47,7 +47,7 @@ public class AuctionController {
     public String postRegister(@Valid @ModelAttribute Users user, BindingResult result, HttpSession session) throws Exception{
         try {
             if (result.hasErrors()) {
-                return "redirect:/register";
+                return "register";
             }
             usersRepository.save(user);
             session.setAttribute("users", user);
@@ -154,24 +154,3 @@ public class AuctionController {
     }
 }
 
-
-  /*  @PostMapping("/users/login-user")
-    @ResponseBody
-    public ApiResponse<?> loginUser(@Valid @RequestBody User user){
-
-        logger.info("Inside Login User");
-        User userEmailExists = userService.findUserByEmail(user.getEmail());
-        User userMobileExists = userService.findUserByMobile((user.getMobile()));
-        String existingPassword =userEmailExists.getPassword();
-        String currentPassword=user.getPassword();
-
-        if (userEmailExists.getEmail().isEmpty()) {
-            return new ApiResponse<>("\"Oops.! User email not found, please register.\"", com.bfarming.response.ResponseStatus.getValidResponseStatus(HttpStatus.OK));
-        }else if(userMobileExists.getMobile().isEmpty()){
-            return new ApiResponse<>("\"Oops.! User mobile not found, please register.\"", com.bfarming.response.ResponseStatus.getValidResponseStatus(HttpStatus.OK));
-        }else if (bcryptGenerator.passwordDecoder(currentPassword,existingPassword)) {
-            return new ApiResponse<>("\"Password Exists, logged-in\"");
-        }else {
-            return new ApiResponse<>("\"Password didn't match, please enter the correct password, logged-in\"");
-        }
-    }*/
