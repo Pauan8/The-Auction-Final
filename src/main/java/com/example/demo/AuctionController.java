@@ -44,13 +44,13 @@ public class AuctionController {
     }
 
     @PostMapping("/register")
-    public String postRegister(@Valid @ModelAttribute User user, BindingResult result, HttpSession session) throws Exception{
+    public String postRegister(@Valid @ModelAttribute Users users, BindingResult result, HttpSession session) throws Exception{
         try {
             if (result.hasErrors()) {
                 return "redirect:/register";
             }
-            userRepository.save(user);
-            session.setAttribute("user", user);
+            usersRepository.save(users);
+            session.setAttribute("users", users);
             return "redirect:/";
         } catch(org.springframework.dao.DataIntegrityViolationException jse){
             System.out.println(jse);
