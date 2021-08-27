@@ -55,6 +55,11 @@ body {
     margin-right:10px;
 }
 
+
+.textBox {
+    border-radius:2px solid black;
+}
+
 /* The switch - the box around the slider */
 .switch {
   position: relative;
