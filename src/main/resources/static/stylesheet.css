@@ -147,6 +147,10 @@ p {
     flex-direction: column;
 }
 
+.categories {
+    margin: 0 20px;
+}
+
 .right-sidebar {
     grid-area: right;
 }

@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/stylesheet.css}"/>
-    <link rel="stylesheet" th:href="@{/safety.css}"/>
+    <link rel="stylesheet" th:href="@{/profilePage.css}"/>
 
 </head>
 <body>
@@ -21,10 +21,7 @@
     <div class="header">
 
     </div>
-    <div>
-<p> TA BORT</p>
-
-    </div>
+    <div class="corner"></div>
 
     <div class="left-sidebar">
         <div class="list-group">
@@ -38,7 +35,7 @@
                     style="margin-top:1px;">Säkerhet
             </button>
             <button id="profilButton" type="submit" class="btn btn-primary"
-                    style="margin-top:1px;">Profil Inställningar
+                    style="margin-top:1px;">Profilinställningar
             </button>
             <button onclick="window.location.href='/upload';" id="NyAnnons" type="submit" class="btn btn-primary"
                     style="margin-top:1px;">Skapa en ny annons
@@ -47,49 +44,31 @@
                     style="margin-top:1px;">Logga Ut
             </button>
 
+            </div>
         </div>
-        </div>
-                <div class="products" id="profilePageInfo">
-                    <div class="container-profile">
-                        <h1 class="safetyText">Utloggning</h1>
-                        <h2 class="profileFormText">Vill du logga ut?</h2>
-
-                        <div class="Logut">
-                            <button id="LogutButtonOnPage" type="submit" class="btn btn-primary"
-                                    style="margin-top:1px;">Logga Ut
-                            </button>
+        <div class="products" id="profilePageInfo">
+            <div class="container-profile">
+                <div class="outer">
+                    <div class="card"  th:each="item : ${auctions}">
+                        <h1 class="heading" th:text="${item.title}">
+                            Rubrik
+                        </h1>
+                        <h2 class="subheading" th:text="${item.keyWords}">
+                            Subrubrik
+                        </h2>
+                        <div class="img-container">
+                            <img class="img" th:src="'https://auction-photos-aw.s3.eu-west-2.amazonaws.com/' + ${item.pictureAddress}" />
                         </div>
+                        <p class="description" th:text="${item.description}">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A beatae illo laudantium modi natus obcaecati praesentium reiciendis sint velit voluptas!
+                        </p>
+                        <p th:text="${item.users.getUsername()}"></p>
+
+                        <a th:href="'/detail/'+ ${item.id}" class="btn btn-primary">Mer information</a>
+
                     </div>
                 </div>
-
-
-
-
-
-
-
-
-                    <div class="outer">
-                        <div class="card"  th:each="item : ${auctions}">
-                            <h1 class="heading" th:text="${item.title}">
-                                Rubrik
-                            </h1>
-                            <h2 class="subheading" th:text="${item.keyWords}">
-                                Subrubrik
-                            </h2>
-                            <div class="img-container">
-                                <img class="img" th:src="'https://auction-photos-aw.s3.eu-west-2.amazonaws.com/' + ${item.pictureAddress}" />
-                            </div>
-                            <p class="description" th:text="${item.description}">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A beatae illo laudantium modi natus obcaecati praesentium reiciendis sint velit voluptas!
-                            </p>
-                            <p th:text="${item.users.getUsername()}"></p>
-
-                            <a th:href="'/detail/'+ ${item.id}" class="btn btn-primary">Mer information</a>
-
-                        </div>
-                    </div>
-
+            </div>
     </div>
     <div class="right-sidebar">
 
