@@ -39,22 +39,37 @@
 
 
     <div class="left-sidebar">
-        <form class="filter" method="get" action="/filter">
-        <h3>Filter</h3>
-        <label for="1">
-            <input name="filter1" type="checkbox" id="1" value=";kläder;" />
-            0-1 år
-        </label>
-        <label for="2">
-            <input name="filter2" type="checkbox" id="2" value="2" />
-            1-6 år
-        </label>
-        <label for="3">
-            <input name="filter3" type="checkbox" id="3" value="3" />
-            6-12 år
-        </label>
-            <button type="submit" class="btn">Filter</button>
-        </form>
+        <div class="filter">
+            <form method="get" action="/filter">
+            <h3>Filter</h3>
+            <label for="1">
+                <input name="filter1" type="checkbox" id="1" value=";kläder;" />
+                0-1 år
+            </label>
+            <label for="2">
+                <input name="filter2" type="checkbox" id="2" value="2" />
+                1-6 år
+            </label>
+            <label for="3">
+                <input name="filter3" type="checkbox" id="3" value="3" />
+                6-12 år
+            </label>
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </form>
+        </div>
+
+        <form method="get" action="/kategori">
+            <h3>Kategorier</h3>
+            <input type="submit" class="btn-primary btn btn-category" name="category" value="Alla"/>
+            <input type="submit" class="btn-primary btn btn-category" name="category" value="Accessoarer"/>
+            <input type="submit" class="btn-primary btn btn-category" name="category" value="Basplagg"/>
+            <input type="submit" class="btn-primary btn btn-category" name="category" value="Bodies"/>
+            <input type="submit" class="btn-primary btn btn-category" name="category" value="Byxor-shorts"/>
+            <input type="submit" class="btn-primary btn btn-category" name="category" value="Regnkläder"/>
+            <input type="submit" class="btn-primary btn btn-category" name="category" value="Tröjor-t-shirts"/>
+            <input type="submit" class="btn-primary btn btn-category" name="category" value="Ytterkläder"/>
+            <input type="submit" class="btn-primary btn btn-category" name="category" value=";kläder;"/>
+    </form>
     </div>
 
 

@@ -61,6 +61,20 @@ public class AuctionController {
         }
     }
 
+    @GetMapping("/kategori")
+    public String category(@RequestParam String category, Model model){
+
+        if(category.equals("Alla")){
+            List<Auction> auctions = auctionRepository.findAll();
+            model.addAttribute("auctions", auctions);
+            return "index";
+        }
+
+        List<Auction> auctions = auctionRepository.findAuctionByKeyWords(category);
+        model.addAttribute("auctions", auctions);
+        return "index";
+    }
+
     @GetMapping("/filter")
     public String search(@RequestParam(required=true,defaultValue= "0") String filter1, @RequestParam(required=true,defaultValue= "0") String filter2, @RequestParam(required=true,defaultValue= "0") String filter3, Model model) {
         List<Auction> auctions = new ArrayList<>();
