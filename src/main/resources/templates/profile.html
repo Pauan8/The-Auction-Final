@@ -6,75 +6,59 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/stylesheet.css}"/>
+    <link rel="stylesheet" th:href="@{/safety.css}"/>
 
 </head>
 <body>
 <div class="index-container">
+    <div class="logo">
+        <img class="logo" src="../logo2.png" alt="logo">
+    </div>
     <div class="header">
-        <h1>LOGO</h1>
+
     </div>
-    <div class="search">
-        <div class="search-inner">
-            <div class="searchbar">
-                <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-                       placeholder="Search products....">
-                <div class="input-group-append">
-                    <button id="inputGroup-sizing-sm"
-                            class="btn btn-outline-warning btn-sm" type="button">
-                        <i class="fa fa-search"></i></button>
-                </div>
-            </div>
-        </div>
+    <div>
+<p> TA BORT</p>
+
     </div>
+
     <div class="left-sidebar">
         <div class="list-group">
-           <!-- <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-                The current link item
-            </a>-->
-            <a href="#" class="list-group-item list-group-item-action">Säkerhet</a>
-            <a href="#" class="list-group-item list-group-item-action">Profilinställningar</a>
-            <a href="#" class="list-group-item list-group-item-action">Mina köp</a>
-            <a href="#" class="list-group-item list-group-item-action">Bevakningar</a>
-            <a href="#" class="list-group-item list-group-item-action">Betalningar</a>
-            <a href="#" class="list-group-item list-group-item-action">Skapa ny annons</a>
-            <a href="#" class="list-group-item list-group-item-action">Aktiva annonser</a>
-            <a href="#" class="list-group-item list-group-item-action">Sålda</a>
-            <a href="#" class="list-group-item list-group-item-action">Lämna omdömen</a>
+
+
+            <button id="safetyButton" type="submit" class="btn btn-primary"
+                    style="margin-top:20px;">Säkerhet
+            </button>
+            <button id="profilButton" type="submit" class="btn btn-primary"
+                    style="margin-top:1px;">Profil Inställningar
+            </button>
 
         </div>
     </div>
 
-
-    <div class="products">
-        <div class="outer">
-            <div>
-
-                </h1>
-                </div>
-            <div class="card" th:each="item : ${auction}">
-                <h1 class="heading" th:text="${item.title}">
-                    Rubrik
-                </h1>
-                <h2 class="subheading" th:field="${item.keyWords}">
-                    Subrubrik
-                </h2>
-                <img class="img" th:src="@{/auction-photos/} + ${item.pictureAddress}" />
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A beatae illo laudantium modi natus obcaecati praesentium reiciendis sint velit voluptas!
-                </p>
-                <p th:field="${item.users.getUsername()}"></p>
-            </div>
-
-        </div>
-        <div class="right-sidebar"></div>
-        <p>Hej hej</p>
+    <div id="säkerhet">
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
+    <div id="profilInställningar">
+
+    </div>
+
+
+</div>
+
+<div class="right-sidebar">
+
+</div>
+</div>
+<script th:src="@{/säkerhet.js}"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 
 
 </body>
