@@ -31,7 +31,7 @@ public class AuctionController {
     @GetMapping("/")
     public String home(HttpSession session, Model model) {
 
-        List<Auction> auctions = (List)auctionRepository.findAll();
+        List<Auction> auctions = auctionRepository.findAllByFinishedFalse();
         model.addAttribute("auctions", auctions);
         return "index";
     }
