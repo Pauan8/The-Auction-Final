@@ -79,17 +79,16 @@ public class AuctionController {
     public String search(@RequestParam(required=true,defaultValue= "0") String filter1, @RequestParam(required=true,defaultValue= "0") String filter2, @RequestParam(required=true,defaultValue= "0") String filter3, Model model) {
         List<Auction> auctions = new ArrayList<>();
 
-        if(filter1 != "0"){
-            auctions = auctionRepository.findAuctionByKeyWords(filter1);
+        if(!filter1.equals("0")){
+            auctions = auctionRepository.findAuctionByAgeSpan(filter1);
         }
-        if(filter2 != "0"){
-            auctions = Stream.concat(auctions.stream(), auctionRepository.findAuctionByKeyWords(filter2).stream()).distinct().collect(Collectors.toList());
+        if(!filter2.equals("0")){
+            auctions = Stream.concat(auctions.stream(), auctionRepository.findAuctionByAgeSpan(filter2).stream()).distinct().collect(Collectors.toList());
         }
-        if(filter3 != "0"){
-            auctions = Stream.concat(auctions.stream(), auctionRepository.findAuctionByKeyWords(filter1).stream()).distinct().collect(Collectors.toList());
+        if(!filter3.equals("0")){
+            auctions = Stream.concat(auctions.stream(), auctionRepository.findAuctionByAgeSpan(filter3).stream()).distinct().collect(Collectors.toList());
         }
         model.addAttribute("auctions", auctions);
-
         return "index";
     }
 
