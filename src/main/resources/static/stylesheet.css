@@ -63,6 +63,10 @@ p {
 
 /* index */
 .index-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     display: grid;
     min-height: 100vh;
     grid-template-areas:
@@ -147,11 +151,14 @@ p {
 }
 
 .search {
-    grid-area: search;
     background-color: #EA97AD;
-    margin-top: 20px;
-    margin-left: 20px;
     border-radius: 5px;
+    position: sticky;
+    margin: 115px auto -115px;
+    margin-left: 18%;
+    margin-right: 16.5%;
+    top: 0;
+    z-index: 1;
 }
 
 .search-inner {
