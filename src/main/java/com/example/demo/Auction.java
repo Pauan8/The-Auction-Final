@@ -58,10 +58,7 @@ public class Auction {
         this.users = user;
         this.invoice = null;
 
-
     }
-
-
 
     public void addBid(Bid bid){
         bidList.add(bid);
