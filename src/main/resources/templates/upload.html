@@ -58,6 +58,16 @@
                 <option th:value="Ytterkläder" th:text="Ytterkläder">Ytterkläder</option>
             </select>
             </div>
+
+            <div class="dropdown-upload">
+            <label for="ageSpan">Åldersspann:</label>
+            <select name="ageSpan" id="ageSpan" th:field="*{ageSpan}">
+                <option th:value="one" >0-1 år</option>
+                <option th:value="six" >1-6 år</option>
+                <option th:value="twelve">6-12 år</option>
+            </select>
+            </div>
+
             <button type="submit" class="btn btn-primary"
                     style="margin-top:20px;">Ladda upp
             </button>

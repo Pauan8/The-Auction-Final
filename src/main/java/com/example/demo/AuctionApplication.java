@@ -28,19 +28,19 @@ public class AuctionApplication implements CommandLineRunner {
         usersRepository.save(user2);
 
         Auction auction = new Auction("Rosa med ett hål för huvudet", "2021-08-30T10:11:12", false, ";kläder;", "74827b6a-92b6-4a13-8a62-9491e4db68d1.jpg", 150, 50,
-                                      "Rosa tröja", null, user);
+                                      "Rosa tröja", null, user, "one");
 
         Auction auction2 = new Auction("Blå med ett hål för huvudet", "2021-08-30T10:11:12", false, ";hemelektronik;kläder;", "74827b6a-92b6-4a13-8a62-9491e4db68d1.jpg", 150, 50, "Blå tröja",
-                                      null, user);
+                                      null, user, "one");
 
         Auction auction3 = new Auction("Röd med ett hål för huvudet", "2021-08-30T10:11:12", false, ";hemelektronik;", "74827b6a-92b6-4a13-8a62-9491e4db68d1.jpg", 150, 50, "Röd tröja",
-                                      null, user);
+                                      null, user, "six");
 
         Auction auction4 = new Auction("Lila med ett hål för huvudet", "2021-08-30T10:11:12", false, ";kläder;", "74827b6a-92b6-4a13-8a62-9491e4db68d1.jpg", 150, 50,
-                                       "Lila tröja", null, user);
+                                       "Lila tröja", null, user, "twelve");
 
         Auction auction5 = new Auction("AVSLUTAD AUKTION", "2021-08-30T10:11:12", true, ";kläder;", "74827b6a-92b6-4a13-8a62-9491e4db68d1.jpg", 150, 50,
-                                       "Lila tröja", null, user2);
+                                       "Lila tröja", null, user2, "six");
 
         auctionRepository.save(auction);
         auctionRepository.save(auction2);

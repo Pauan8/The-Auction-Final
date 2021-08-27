@@ -24,6 +24,7 @@ public class Auction {
     private String title;
     private String description;
     private String keyWords; //TODO List
+    private String ageSpan;
 
     private boolean finished=false;
 
@@ -35,17 +36,18 @@ public class Auction {
     public Auction() {
     }
 
-    public Auction(int startPrice, int reservationPrice, LocalDateTime endDateTime, String title, String description, String keyWords) {
+    public Auction(int startPrice, int reservationPrice, LocalDateTime endDateTime, String title, String description, String keyWords, String ageSpan) {
         this.startPrice = startPrice;
         this.reservationPrice = reservationPrice;
         this.endDateTime = endDateTime;
         this.title = title;
         this.description = description;
         this.keyWords = keyWords;
+        this.ageSpan = ageSpan;
     }
 
     public Auction(String DESCRIPTION,String END_DATE_TIME, boolean FINISHED, String KEY_WORDS,String PICTURE_ADDRESS,int RESERVATION_PRICE,int START_PRICE,
-                   String TITLE,Long INVOICE_ID,Users user){
+                   String TITLE,Long INVOICE_ID,Users user, String ageSpan){
 
         this.description = DESCRIPTION;
         this.endDateTime = LocalDateTime.parse(END_DATE_TIME);
@@ -57,8 +59,7 @@ public class Auction {
         this.title = TITLE;
         this.users = user;
         this.invoice = null;
-
-
+        this.ageSpan = ageSpan;
     }
 
     public boolean isFinished() {
@@ -69,7 +70,13 @@ public class Auction {
         this.finished = finished;
     }
 
+    public String getAgeSpan() {
+        return ageSpan;
+    }
 
+    public void setAgeSpan(String ageSpan) {
+        this.ageSpan = ageSpan;
+    }
 
     public void addBid(Bid bid){
         bidList.add(bid);

@@ -24,8 +24,8 @@ _e('profilButton').onclick = function() {
                                                <div class="outerProfile">
                                                    <div class="container-profile">
                                                        <div class="container-profile">
-                                                           <h1 class="safetyText">Profil Inställningar</h1>
-                                                           <h2 class="profileFormText" style="padding-bottom:30px;">Här kan du ändra dina profil inställningar</h2>
+                                                           <h1 class="safetyText">Profilinställningar</h1>
+                                                           <h2 class="profileFormText" style="padding-bottom:30px;">Här kan du ändra dina profilinställningar</h2>
                                                            <h3 class="profileFormText">Ändra din email</h3>
 
                                                            <div class="changePassword">
