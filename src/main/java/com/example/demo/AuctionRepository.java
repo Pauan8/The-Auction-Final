@@ -20,4 +20,6 @@ public interface AuctionRepository extends CrudRepository<Auction,Long> {
 
     List<Auction> findAllByFinishedFalse();
 
+    List<Auction> findAllByUsersId(Long id);
+
 }

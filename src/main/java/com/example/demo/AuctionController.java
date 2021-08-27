@@ -145,7 +145,7 @@ public class AuctionController {
     @GetMapping("/profile")
     public String profile(HttpSession session, Model model) {
 
-        List<Auction> auctions = (List)auctionRepository.findAll();
+        List<Auction> auctions = auctionRepository.findAllByUsersId(((Users)session.getAttribute("users")).getId());
         model.addAttribute("auctions", auctions);
         return "profile";
     }
