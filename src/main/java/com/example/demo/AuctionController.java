@@ -168,11 +168,11 @@ public class AuctionController {
         Users users = usersRepository.findByUsername(username);
 
         if (users == null) {
-            return "login";
+            return "redirect:/";
         }
         if (users.getPassword().equals(password)) {
             session.setAttribute("users", users);
-            return "index";
+            return "redirect:/";
         }
         return "login";
     }

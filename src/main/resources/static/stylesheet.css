@@ -36,11 +36,6 @@ p {
     outline: 0px
 }
 
-.btn {
-    height: 100%;
-    width: 40px;
-}
-
 .btn-primary {
     background-color: #F1BBCA;
     border-color: #F1BBCA;
@@ -60,6 +55,34 @@ p {
     color: #F3F2DA;
     border-radius: 0 5px 5px 0;
 }
+
+.btn-login {
+  font-size: 0.75rem;
+  letter-spacing: 0.05rem;
+  padding: 0.3rem 1rem;
+}
+
+.form-control {
+    font-size: 0.75rem;
+}
+
+.btn-google {
+  color: white !important;
+  background-color: #ea4335;
+}
+
+/*
+.btn-facebook {
+  color: white !important;
+  background-color: #3b5998;
+}
+*/
+
+.login-box {
+    background-color: #4E8D7C;
+}
+
+
 
 /* index */
 .index-container {
@@ -130,6 +153,11 @@ p {
     justify-content: center;
     background-color: white;
 }
+.left{
+    grid-area: L;
+    width: 100%;
+    height: 100%;
+}
 
 .card {
     background-color: #F3F2DA;
@@ -146,12 +174,15 @@ p {
     min-height: 200px;
 }
 
+.search-outer{
+    grid-template-areas: "L search R";
+    grid-template-columns: 1fr 4fr 1fr;
+}
+
 .search {
-    grid-area: search;
     background-color: #EA97AD;
-    margin-top: 20px;
-    margin-left: 20px;
     border-radius: 5px;
+    grid-area: search;
 }
 
 .search-inner {
