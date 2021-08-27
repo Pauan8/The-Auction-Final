@@ -35,18 +35,15 @@
                     style="margin-top:1px;">Profil
             </button>
             <button id="safetyButton" type="submit" class="btn btn-primary"
-                    style="margin-top:20px;">Säkerhet
+                    style="margin-top:1px;">Säkerhet
             </button>
             <button id="profilButton" type="submit" class="btn btn-primary"
                     style="margin-top:1px;">Profil Inställningar
             </button>
 
         </div>
-    </div>
-
-    <div class="products">
-            <div id="profilePageInfo">  <!--- Start --->
-                <div class="products">
+        </div>
+                <div class="products" id="profilePageInfo">
                     <div class="outer">
                         <div class="card"  th:each="item : ${auctions}">
                             <h1 class="heading" th:text="${item.title}">
@@ -67,10 +64,6 @@
 
                         </div>
                     </div>
-                </div>
-            </div><!--- Stop --->
-
-
 
     </div>
     <div class="right-sidebar">

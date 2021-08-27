@@ -60,8 +60,52 @@ p {
     border-radius: 0 5px 5px 0;
 }
 
+.btn-login {
+  font-size: 0.75rem;
+  letter-spacing: 0.05rem;
+  padding: 0.3rem 1rem;
+}
+
+.form-control {
+    font-size: 0.75rem;
+}
+
+.btn-google {
+  color: white !important;
+  background-color: #ea4335;
+}
+
+/*
+.btn-facebook {
+  color: white !important;
+  background-color: #3b5998;
+}
+*/
+
+.login-outer {
+         display: grid;
+         grid-template-columns: 1fr 4fr 1fr;
+         position: sticky;
+         z-index: 1;
+         margin-top: -100px;
+         top: 0;
+
+
+}
+
+.login-box {
+    background-color: #4E8D7C;
+    grid-column-start: 3;
+}
+
+
+
 /* index */
 .index-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     display: grid;
     min-height: 100vh;
     grid-template-areas:
@@ -145,12 +189,20 @@ p {
     min-height: 200px;
 }
 
+.search-outer {
+     display: grid;
+     grid-template-columns: 1fr 4fr 1fr;
+     position: sticky;
+     z-index: 1;
+     margin: 115px auto -115px;
+     top: 0;
+     }
+
 .search {
-    grid-area: search;
     background-color: #EA97AD;
-    margin-top: 20px;
-    margin-left: 20px;
     border-radius: 5px;
+    margin-left: 20px;
+    grid-column-start: 2;
 }
 
 .search-inner {
