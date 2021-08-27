@@ -58,7 +58,18 @@ public class Auction {
         this.users = user;
         this.invoice = null;
 
+
     }
+
+    public boolean isFinished() {
+        return finished;
+    }
+
+    public void setFinished(boolean finished) {
+        this.finished = finished;
+    }
+
+
 
     public void addBid(Bid bid){
         bidList.add(bid);

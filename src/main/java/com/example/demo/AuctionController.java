@@ -34,7 +34,7 @@ public class AuctionController {
     @GetMapping("/")
     public String home(HttpSession session, Model model) {
 
-        List<Auction> auctions = (List)auctionRepository.findAll();
+        List<Auction> auctions = auctionRepository.findAllByFinishedFalse();
         model.addAttribute("auctions", auctions);
         return "index";
     }
@@ -129,7 +129,10 @@ public class AuctionController {
     }
 
     @GetMapping("/profile")
-    public String profile() {
+    public String profile(HttpSession session, Model model) {
+
+        List<Auction> auctions = (List)auctionRepository.findAll();
+        model.addAttribute("auctions", auctions);
         return "profile";
     }
 
