@@ -23,7 +23,7 @@ public class Auction {
 
     private String title;
     private String description;
-    private String keyWords;
+    private String keyWords; //TODO List
 
     private boolean finished=false;
 

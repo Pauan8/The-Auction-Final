@@ -9,7 +9,7 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" th:href="@{/stylesheet.css}"/>
     <meta charset="UTF-8">
-    <title>RecipeBook</title>
+    <title>Upload</title>
 </head>
 <body>
 <div class="container-register">
@@ -44,6 +44,19 @@
             <div class="form-row col">
                 <label class="register-label" for="endDateTime">Upload picture: </label>
                 <input type="file" name="image" style="width:300px;"  accept="image/png, image/jpeg" >
+            </div>
+
+            <div class="dropdown-upload">
+            <label for="keyWords">Kategori:</label>
+            <select name="keyWords" id="keyWords" th:field="*{keyWords}">
+                <option th:value="Accessoarer" th:text="Accessoarer">Accessoarer</option>
+                <option th:value="Basplagg" th:text="Basplagg">Basplagg</option>
+                <option th:value="Bodies" th:text="Bodies">Bodies</option>
+                <option th:value="Byxor-shorts" th:text="Byxor-shorts">Byxor & shorts</option>
+                <option th:value="Regnkläder" th:text="Regnkläder">Regnkläder</option>
+                <option th:value="Tröjor-tshirts" th:text="Tröjor-tshirts">Tröjor & t-shirts</option>
+                <option th:value="Ytterkläder" th:text="Ytterkläder">Ytterkläder</option>
+            </select>
             </div>
             <button type="submit" class="btn btn-primary"
                     style="margin-top:20px;">Registrera

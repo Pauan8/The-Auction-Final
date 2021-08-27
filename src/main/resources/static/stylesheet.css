@@ -36,6 +36,10 @@ p {
     outline: 0px
 }
 
+.btn {
+    height: 100%;
+}
+
 .btn-primary {
     background-color: #F1BBCA;
     border-color: #F1BBCA;
@@ -302,6 +306,17 @@ p {
 }
 
 
+/*Category*/
+
+.btn-category {
+    margin: 5px 0 5px 0;
+}
+
+.dropdown-upload {
+    padding-top: 10px;
+}
+
+
 /*responsive*/
 @media screen and (max-width: 1200px) {
     .outer {
@@ -322,6 +337,7 @@ p {
         margin: 25px auto -25px;
     }
 
+    }
 }
 
 

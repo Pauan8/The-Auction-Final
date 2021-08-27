@@ -16,15 +16,7 @@
 
 </head>
 <body>
-
-<div class="index-container">
-    <div class="logo">
-        <img class="logo" src="../logo2.png" alt="logo">
-    </div>
-    <div class="header">
-    </div>
-    <div class="corner">
-    </div>
+<div class="search-outer">
     <div class="search">
         <div class="search-inner">
             <div class="searchbar">
@@ -41,7 +33,11 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="login-outer">
     <div th:if="${session.user==null}" class="login-box">
+
         <div class="d-grid mt-2 mx-2">
             <form action="/login" method="POST">
                 <div class="d-grid mb-1">
@@ -75,24 +71,52 @@
         </div>
     </div>
     <div th:if="${session.user!=null}" class="login-box">LOGGED IN</div>
+</div>
+<div class="index-container">
+    <div class="logo">
+        <img class="logo" src="../logo2.png" alt="logo">
+    </div>
+
+
+    <div class="header">
+
+    </div>
+
+    <div class="corner">
+    </div>
 
     <div class="left-sidebar">
-        <form class="filter" method="get" action="/filter">
+        <div class="filter">
+            <form method="get" action="/filter">
             <h3>Filter</h3>
             <label for="1">
-                <input name="filter1" type="checkbox" id="1" value=";kläder;"/>
+                <input name="filter1" type="checkbox" id="1" value=";kläder;" />
                 0-1 år
             </label>
             <label for="2">
-                <input name="filter2" type="checkbox" id="2" value="2"/>
+                <input name="filter2" type="checkbox" id="2" value="2" />
                 1-6 år
             </label>
             <label for="3">
-                <input name="filter3" type="checkbox" id="3" value="3"/>
+                <input name="filter3" type="checkbox" id="3" value="3" />
                 6-12 år
             </label>
-            <button type="submit" class="btn">Filter</button>
-        </form>
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </form>
+        </div>
+
+        <form method="get" action="/kategori">
+            <h3>Kategorier</h3>
+            <input type="submit" class="btn-primary btn btn-category" name="category" value="Alla"/>
+            <input type="submit" class="btn-primary btn btn-category" name="category" value="Accessoarer"/>
+            <input type="submit" class="btn-primary btn btn-category" name="category" value="Basplagg"/>
+            <input type="submit" class="btn-primary btn btn-category" name="category" value="Bodies"/>
+            <input type="submit" class="btn-primary btn btn-category" name="category" value="Byxor-shorts"/>
+            <input type="submit" class="btn-primary btn btn-category" name="category" value="Regnkläder"/>
+            <input type="submit" class="btn-primary btn btn-category" name="category" value="Tröjor-t-shirts"/>
+            <input type="submit" class="btn-primary btn btn-category" name="category" value="Ytterkläder"/>
+            <input type="submit" class="btn-primary btn btn-category" name="category" value=";kläder;"/>
+    </form>
     </div>
 
     <div class="products">
@@ -125,6 +149,7 @@
 
     </div>
 </div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
