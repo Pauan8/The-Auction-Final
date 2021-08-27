@@ -139,14 +139,15 @@ public class AuctionController {
 
         auction.setUsers((Users)session.getAttribute("users"));
         auctionRepository.save(auction);
+
         return "redirect:/";
     }
 
     @GetMapping("/profile")
-    public String profile(HttpSession session, Model model) {
+    public String profile(HttpSession session, Model model,Users user) {
 
-        List<Auction> auctions = (List)auctionRepository.findAll();
-        model.addAttribute("auctions", auctions);
+
+
         return "profile";
     }
 

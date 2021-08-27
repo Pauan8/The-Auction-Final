@@ -40,10 +40,35 @@
             <button id="profilButton" type="submit" class="btn btn-primary"
                     style="margin-top:1px;">Profil Inställningar
             </button>
+            <button onclick="window.location.href='/upload';" id="NyAnnons" type="submit" class="btn btn-primary"
+                    style="margin-top:1px;">Skapa en ny annons
+            </button>
+            <button id="LogutButton" type="submit" class="btn btn-primary"
+                    style="margin-top:1px;">Logga Ut
+            </button>
 
         </div>
         </div>
                 <div class="products" id="profilePageInfo">
+                    <div class="container-profile">
+                        <h1 class="safetyText">Utloggning</h1>
+                        <h2 class="profileFormText">Vill du logga ut?</h2>
+
+                        <div class="Logut">
+                            <button id="LogutButtonOnPage" type="submit" class="btn btn-primary"
+                                    style="margin-top:1px;">Logga Ut
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
                     <div class="outer">
                         <div class="card"  th:each="item : ${auctions}">
                             <h1 class="heading" th:text="${item.title}">
