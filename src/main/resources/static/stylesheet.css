@@ -78,8 +78,20 @@ p {
 }
 */
 
+.login-outer {
+         display: grid;
+         grid-template-columns: 1fr 4fr 1fr;
+         position: sticky;
+         z-index: 1;
+         margin-top: -100px;
+         top: 0;
+
+
+}
+
 .login-box {
     background-color: #4E8D7C;
+    grid-column-start: 3;
 }
 
 

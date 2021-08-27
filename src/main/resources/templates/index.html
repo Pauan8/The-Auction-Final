@@ -17,21 +17,60 @@
 </head>
 <body>
 <div class="search-outer">
-<div class="search">
-    <div class="search-inner">
-        <div class="searchbar">
-            <form class="search-form" method="get" action="/search">
-                <input name="searchText" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-                       placeholder="Search products....">
-                <div class="input-group-append">
-                    <button id="inputGroup-sizing-sm"
-                            class="btn btn-outline-warning btn-sm" type="button">
-                        <i class="fa fa-search"></i></button>
+    <div class="search">
+        <div class="search-inner">
+            <div class="searchbar">
+                <form class="search-form" method="get" action="/search">
+                    <input name="searchText" type="text" class="form-control"
+                           aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                           placeholder="Search products....">
+                    <div class="input-group-append">
+                        <button id="inputGroup-sizing-sm"
+                                class="btn btn-outline-warning btn-sm" type="button">
+                            <i class="fa fa-search"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="login-outer">
+    <div th:if="${session.user==null}" class="login-box">
+
+        <div class="d-grid mt-2 mx-2">
+            <form action="/login" method="POST">
+                <div class="d-grid mb-1">
+                    <input type="text" class="form-control"
+                           placeholder="Username" name="username">
+                </div>
+                <input type="password" class="form-control"
+                       placeholder="Password" name="password">
+                <div class="d-grid my-1">
+                    <button class="btn btn-primary btn-login text-uppercase fw-bold"
+                            type="submit">Sign
+                        in
+                    </button>
+                </div>
+                <div class="d-grid mb-1">
+
+                    <form action="/register">
+                        <button class="btn btn-primary btn-login text-uppercase fw-bold"
+                                type="submit">Register
+                        </button>
+                    </form>
+                </div>
+                <hr class="my-2">
+                <div class="d-grid mb-1">
+                    <button class="btn btn-google btn-login text-uppercase fw-bold"
+                            type="submit">
+                        <i class="fab fa-google me-2"></i> Sign in
+                    </button>
                 </div>
             </form>
         </div>
     </div>
-</div>
+    <div th:if="${session.user!=null}" class="login-box">LOGGED IN</div>
 </div>
 <div class="index-container">
     <div class="logo">
@@ -43,62 +82,25 @@
 
     </div>
 
-    <div class="corner"></div>
-
     <div class="corner">
-        <div th:if="${session.user==null}" class="login-box">
-
-            <div class="d-grid mt-2 mx-2">
-                <form action="/login" method="POST">
-                    <div class="d-grid mb-1">
-                        <input type="text" class="form-control"
-                               placeholder="Username" name="username">
-                    </div>
-                    <input type="password" class="form-control"
-                           placeholder="Password" name="password">
-                    <div class="d-grid my-1">
-                        <button class="btn btn-primary btn-login text-uppercase fw-bold"
-                                type="submit">Sign
-                            in
-                        </button>
-                    </div>
-                    <div class="d-grid mb-1">
-
-                        <form action="/register">
-                            <button class="btn btn-primary btn-login text-uppercase fw-bold"
-                                    type="submit">Register
-                            </button>
-                        </form>
-                    </div>
-                    <hr class="my-2">
-                    <div class="d-grid mb-1">
-                        <button class="btn btn-google btn-login text-uppercase fw-bold"
-                                type="submit">
-                            <i class="fab fa-google me-2"></i> Sign in
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div th:if="${session.user!=null}" class="login-box">LOGGED IN</div>
     </div>
 
 
     <div class="left-sidebar">
         <form class="filter" method="get" action="/filter">
-        <h3>Filter</h3>
-        <label for="1">
-            <input name="filter1" type="checkbox" id="1" value=";kläder;" />
-            0-1 år
-        </label>
-        <label for="2">
-            <input name="filter2" type="checkbox" id="2" value="2" />
-            1-6 år
-        </label>
-        <label for="3">
-            <input name="filter3" type="checkbox" id="3" value="3" />
-            6-12 år
-        </label>
+            <h3>Filter</h3>
+            <label for="1">
+                <input name="filter1" type="checkbox" id="1" value=";kläder;"/>
+                0-1 år
+            </label>
+            <label for="2">
+                <input name="filter2" type="checkbox" id="2" value="2"/>
+                1-6 år
+            </label>
+            <label for="3">
+                <input name="filter3" type="checkbox" id="3" value="3"/>
+                6-12 år
+            </label>
             <button type="submit" class="btn">Filter</button>
         </form>
     </div>
@@ -114,14 +116,18 @@
                     Subrubrik
                 </h2>
                 <div class="img-container">
-                    <img class="img" th:src="'https://auction-photos-aw.s3.eu-west-2.amazonaws.com/' + ${item.pictureAddress}" />
+                    <img class="img"
+                         th:src="'https://auction-photos-aw.s3.eu-west-2.amazonaws.com/' + ${item.pictureAddress}"/>
                 </div>
                 <p class="description" th:text="${item.description}">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A beatae illo laudantium modi natus obcaecati praesentium reiciendis sint velit voluptas!
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A beatae
+                    illo laudantium modi natus obcaecati praesentium reiciendis sint velit
+                    voluptas!
                 </p>
                 <p th:text="${item.users.getUsername()}"></p>
 
-                <a th:href="'/detail/'+ ${item.id}" class="btn btn-primary">Mer information</a>
+                <a th:href="'/detail/'+ ${item.id}" class="btn btn-primary">Mer
+                    information</a>
 
             </div>
         </div>
