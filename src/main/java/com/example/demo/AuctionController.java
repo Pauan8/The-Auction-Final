@@ -11,8 +11,11 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -56,6 +59,24 @@ public class AuctionController {
             System.out.println(jse);
             return "register";
         }
+    }
+
+    @GetMapping("/filter")
+    public String search(@RequestParam(required=true,defaultValue= "0") String filter1, @RequestParam(required=true,defaultValue= "0") String filter2, @RequestParam(required=true,defaultValue= "0") String filter3, Model model) {
+        List<Auction> auctions = new ArrayList<>();
+
+        if(filter1 != "0"){
+            auctions = auctionRepository.findAuctionByKeyWords(filter1);
+        }
+        if(filter2 != "0"){
+            auctions = Stream.concat(auctions.stream(), auctionRepository.findAuctionByKeyWords(filter2).stream()).distinct().collect(Collectors.toList());
+        }
+        if(filter3 != "0"){
+            auctions = Stream.concat(auctions.stream(), auctionRepository.findAuctionByKeyWords(filter1).stream()).distinct().collect(Collectors.toList());
+        }
+        model.addAttribute("auctions", auctions);
+
+        return "index";
     }
 
 
@@ -102,13 +123,16 @@ public class AuctionController {
 
         UploadObject.upload(fileName, multipartFile);
 
-        auction.setUsers((Users) session.getAttribute("users"));
+        auction.setUsers((Users)session.getAttribute("users"));
         auctionRepository.save(auction);
         return "redirect:/";
     }
 
     @GetMapping("/profile")
-    public String profile() {
+    public String profile(HttpSession session, Model model) {
+
+        List<Auction> auctions = (List)auctionRepository.findAll();
+        model.addAttribute("auctions", auctions);
         return "profile";
     }
 

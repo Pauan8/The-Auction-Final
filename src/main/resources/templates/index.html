@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/stylesheet.css}"/>
+
 </head>
 <body>
 <div class="index-container">
@@ -39,19 +40,22 @@
 
     <div class="left-sidebar">
         <div class="filter">
+            <form method="get" action="/filter">
             <h3>Filter</h3>
             <label for="1">
-                <input type="checkbox" id="1" value="1" />
-                Filter 1
+                <input name="filter1" type="checkbox" id="1" value=";kläder;" />
+                0-1 år
             </label>
             <label for="2">
-                <input type="checkbox" id="2" value="1" />
-                Filter 2
+                <input name="filter2" type="checkbox" id="2" value="2" />
+                1-6 år
             </label>
             <label for="3">
-                <input type="checkbox" id="3" value="1" />
-                Filter 3
+                <input name="filter3" type="checkbox" id="3" value="3" />
+                6-12 år
             </label>
+                <button type="submit" class="btn">Filter</button>
+            </form>
         </div>
     </div>
 

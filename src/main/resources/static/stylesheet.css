@@ -221,6 +221,8 @@ p {
 .register-form {
     grid-area: middle;
     justify-self: center;
+    justify-items: center;
+    max-width: 315px;
 }
 
 .register-form .form-control {
