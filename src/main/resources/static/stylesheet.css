@@ -164,7 +164,10 @@ h3 {
     position:sticky;
     top:0;
     overflow-x: auto;
-    margin-top: 20px;
+}
+
+.expand-group {
+    width: 100%;
 }
 
 .expand-button {
@@ -415,6 +418,7 @@ li {
 }
 
 @media screen and (max-width: 768px) {
+
         .index-container {
             min-height: 100vh;
             display: grid;
@@ -480,7 +484,6 @@ li {
         .products {
         margin: 0 20px;
         }
-
 
         .left-sidebar {
             grid-area: main;

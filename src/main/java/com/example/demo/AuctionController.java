@@ -76,43 +76,14 @@ public class AuctionController {
     }
 
     @GetMapping("/filter")
-    public String search(@RequestParam(required = true, defaultValue = "0") String filter1, @RequestParam(required = true, defaultValue = "0") String filter2, @RequestParam(required = true, defaultValue = "0") String filter3, Model model) {
+    public String search(@RequestParam(required = false, defaultValue = "0") String[] age,
+                         @RequestParam(required = false, defaultValue = "0") String[] city,
+                         @RequestParam(required = false, defaultValue = "0") String[] category, Model model) {
         List<Auction> auctions = new ArrayList<>();
 
-        List<String> filters = List.of(filter1, filter2, filter3);
-
-        for(String filter : filters){
-            auctions = Stream.concat(auctions.stream(), auctionRepository.findAuctionByAgeSpan(filter).stream()).distinct().collect(Collectors.toList());
-        }
-
-        model.addAttribute("auctions", auctions);
-        return "index";
-    }
-
-    @GetMapping("/plats")
-    public String search(@RequestParam(required = true, defaultValue = "0") String city1,
-                         @RequestParam(required = true, defaultValue = "0") String city2,
-                         @RequestParam(required = true, defaultValue = "0") String city3,
-                         @RequestParam(required = true, defaultValue = "0") String city4,
-                         @RequestParam(required = true, defaultValue = "0") String city5,
-                         @RequestParam(required = true, defaultValue = "0") String city6,
-                         @RequestParam(required = true, defaultValue = "0") String city7,
-                         @RequestParam(required = true, defaultValue = "0") String city8,
-                         @RequestParam(required = true, defaultValue = "0") String city9,
-                         @RequestParam(required = true, defaultValue = "0") String city10,
-                         @RequestParam(required = true, defaultValue = "0") String city11,
-                         @RequestParam(required = true, defaultValue = "0") String city12,
-                         @RequestParam(required = true, defaultValue = "0") String city13,
-                         Model model) {
-        List<Auction> auctions = new ArrayList<>();
-
-        List<String> cities = List.of(city1,city2,city3,city4,city5,city6,city7,city8,city9,city10,city11,city12,city13);
-
-        for(String city : cities){
-            if(!city.equals("0")){
-                auctions = Stream.concat(auctions.stream(), auctionRepository.findAuctionBySalesArea(city).stream()).distinct().collect(Collectors.toList());
-            }
-        }
+        auctionService.filter(age, auctions);
+        auctionService.filter(city, auctions);
+        auctionService.filter(category, auctions);
 
         model.addAttribute("auctions", auctions);
         return "index";
