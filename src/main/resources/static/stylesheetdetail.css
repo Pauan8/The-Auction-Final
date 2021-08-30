@@ -130,6 +130,16 @@ p {
     margin: auto;
 }
 
+a .fa .fa-twitter {
+    width: 60px;
+
+}
+
+a .fa .fa-facebook {
+    width: 60px;
+
+}
+
 /* register */
 .container-register {
     display: grid;
@@ -177,7 +187,7 @@ p {
 .fa {
     padding: 15px;
     font-size: 20px;
-    width: 40px;
+    width: 60px;
     text-align: center;
     text-decoration: none;
     margin-top: 10px;
