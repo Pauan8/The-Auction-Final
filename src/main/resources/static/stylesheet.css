@@ -72,6 +72,12 @@ h3 {
     background-color: #045762;
 }
 
+.btn-login:hover {
+    background-color: ghostwhite;
+    color: #F1BBCA !important;
+}
+
+
 .btn:hover {
     color: #fff
 }
@@ -526,7 +532,6 @@ li {
         width: 100%;
     }
 
-    }
 
 
 
