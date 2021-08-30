@@ -112,9 +112,7 @@ public class AuctionController {
         for(String stad : citys){
             auctions = Stream.concat(auctions.stream(), auctionRepository.findAuctionBySalesArea(stad).stream()).distinct().collect(Collectors.toList());
         }
-        if (!filter3.equals("0")) {
-            auctions = Stream.concat(auctions.stream(), auctionRepository.findAuctionByAgeSpan(filter3).stream()).distinct().collect(Collectors.toList());
-        }
+
         model.addAttribute("auctions", auctions);
         return "index";
     }
