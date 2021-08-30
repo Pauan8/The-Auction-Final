@@ -14,8 +14,7 @@
     <link rel="stylesheet" th:href="@{/stylesheet.css}"/>
 </head>
 <body>
-<div th:fragment="card-auction-fragment">
-    <div class="outer">
+    <div class="outer" th:fragment="card-auction-fragment">
         <div class="card" th:each="item : ${auctions}">
             <h1 class="heading" th:text="${item.title}">
                 Rubrik
@@ -51,7 +50,6 @@
             </div>
             <hr class="my-2">
         </div>
-    </div>
 </div>
 
 </body>

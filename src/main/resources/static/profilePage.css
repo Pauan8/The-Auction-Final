@@ -1,25 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;1,600&display=swap');
 
-body {
-    background-color: white;
-    font-family: "Poppins", sans-serif;
-    font-weight: 300;
-    color: #045762;
-    height: 100vh;
-    font-family: 'Montserrat', sans-serif;
-}
-
 
 /* text */
 .heading {
     font-weight: 600;
     font-size: 24px;
-}
-
-.subheading {
-    font-weight: 500;
-    font-size: 20px;
-    color: #4E8D7C;
 }
 
 .safetyText {
@@ -108,7 +93,7 @@ body {
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: white;
+  background-color: whitesmoke;
   -webkit-transition: .4s;
   transition: .4s;
 }
