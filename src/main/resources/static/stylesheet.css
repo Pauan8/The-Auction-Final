@@ -191,6 +191,7 @@ h3 {
 
 .filter-outer {
     display: flex;
+    overflow-x: auto;
     background-color: #F3F2DA;
     flex-direction: column;
     height: 100%;
@@ -415,36 +416,107 @@ li {
         display: flex;
     }
 
+    .expand-group {
+        display: flex;
+    }
+
     .filter-outer {
         overflow-y: hidden;
         width: 0%;
         transition: width 0.5s;
-        max-height: 1212px;
         }
 }
 
 @media screen and (max-width: 768px) {
+        .index-container {
+            min-height: 100vh;
+            display: grid;
+            grid-template-areas:
+            "logo header right"
+            "search search search"
+            "main main main";
+            grid-template-columns: 100px 1fr 1fr;
+            grid-template-rows: 100px auto;
+        }
+
+        .login-box {
+            position: relative;
+            }
+
+        .corner {
+            grid-area: right;
+        }
+
+        .login-box {
+            grid-area: right;
+            }
+
+        .search {
+            grid-area: search;
+            margin: 0;
+            border-radius: 0;
+            width: 100%;
+            z-index: 2;
+        }
+
+        .express-login {
+            display:flex;
+            flex-direction: row;
+        }
+
+        .express-login-input,
+        .express-login-submit{
+             flex-direction: column;
+        }
+
+        .login-input {
+            height: 25px;
+            width: 100px;
+            margin: 4px;
+        }
+
+        .btn-login {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 10px;
+            height: 25px;
+            width: 70px;
+            padding:2px;
+            margin: 1px;
+        }
+
         .outer {
             grid-template-columns: repeat(1, 1fr);
         }
 
-        .index-container {
-            grid-template-rows: 100px auto;
-          }
+        .products {
+        margin: 0 20px;
+        }
 
-        .search-outer {
-            margin: 25px auto -25px;
+
+        .left-sidebar {
+            grid-area: main;
+            z-index: 1;
+        }
+
+        .expand-group {
+              z-index: 1;
+              display:flex;
+              height: 100%;
+              position:absolute;
         }
 
         .small {
             display:flex;
+             z-index: 3;
         }
         .large {
             display:none;
         }
 
-        .search {
-            margin: 25px auto -25px;
+        .active {
+           width: calc(100vw - 60px);
         }
 
     }
@@ -452,6 +524,8 @@ li {
     .active {
         overflow-y: auto;
         width: 100%;
+    }
+
     }
 
 
