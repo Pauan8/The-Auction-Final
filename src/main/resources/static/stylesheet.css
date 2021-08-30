@@ -160,6 +160,10 @@ h3 {
     grid-area: left;
     height: 100%;
     display: flex;
+    max-height: calc(100vh);
+    position:sticky;
+    top:0;
+    overflow-x: auto;
 }
 
 .expand-button {
@@ -401,6 +405,8 @@ li {
         overflow-y: hidden;
         width: 0%;
         transition: width 0.5s;
+        max-height: 1212px;
+        }
 }
 
 @media screen and (max-width: 768px) {
@@ -415,7 +421,6 @@ li {
         .search-outer {
             margin: 25px auto -25px;
         }
-
 
         .small {
             display:flex;
