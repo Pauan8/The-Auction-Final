@@ -215,6 +215,12 @@ public class AuctionController {
         return "profile";
     }
 
+    @PostMapping("/profileLogut")
+    public String profileLogut(HttpSession session){
+        session.setAttribute("users",null);
+        return "redirect:/";
+    }
+
     @PostMapping("/bid")
     public String postBid(@ModelAttribute Bid bid, HttpSession session, Model model) {
         Users users = (Users) session.getAttribute("users");
