@@ -14,7 +14,7 @@
     <p th:text="'Utgångspris: '+${auction.startPrice}+' kr'"> </p>
     <p th:text="'Reservationspris: ' + ${auction.reservationPrice+' kr'}"></p>
     <p th:text="'Aktuellt bud: '+${highestBid}+' kr'"></p>
-    <!--"<p th:text="'Antal bud: ' + ${auction.bidList.length}"></p>-->
+    <p th:text="'Antal bud: ' + ${auction.bidList.size}">
     <br>
     <p th:text="'Slutdatum: ' + ${auction.printEndDateTime()}"></p>
     <p hidden id="auctionEndDate" th:text="${auction.endDateTime}" ></p>
