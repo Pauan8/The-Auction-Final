@@ -2,8 +2,10 @@ package com.example.demo;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
 import java.time.format.DateTimeFormatter;
+import java.util.NoSuchElementException;
 
 @Entity
 public class Auction {
@@ -198,5 +200,15 @@ public class Auction {
             return description.substring(0,95)+"...";
         }
          return description;
+    }
+
+    public int getTopBid(){
+
+        if(this.getBidList().size() == 0){
+            return 0;
+        }
+        Bid highestBid = this.getBidList().stream().max(Comparator.comparing(Bid::getAmount)).orElseThrow(
+                NoSuchElementException::new);
+        return highestBid.getAmount();
     }
 }
