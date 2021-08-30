@@ -9,6 +9,18 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+.heading-h3 {
+    margin-left: 0;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.heading-h3-2 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+
 
 /* text */
 .heading {
@@ -59,6 +71,12 @@ h3 {
 .btn-primary:hover {
     background-color: #045762;
 }
+
+.btn-login:hover {
+    background-color: ghostwhite;
+    color: #F1BBCA !important;
+}
+
 
 .btn:hover {
     color: #fff
@@ -418,7 +436,6 @@ li {
 }
 
 @media screen and (max-width: 768px) {
-
         .index-container {
             min-height: 100vh;
             display: grid;
@@ -484,6 +501,7 @@ li {
         .products {
         margin: 0 20px;
         }
+
 
         .left-sidebar {
             grid-area: main;
