@@ -277,6 +277,17 @@ h3 {
     max-height: 100%;
 }
 
+.login-box a:link {color: #F1BBCA;}      /* unvisited link */
+.login-box a:visited {color: #F1BBCA;}   /* visited link */
+.login-box a:hover {color: #F1BBCA;}     /* mouse over link */
+.login-box a:active {color: #F1BBCA;}
+
+
+.profile-name-text {
+    text-color: #FFFFFF;
+    color: #FFFFFF;
+}
+
 /* register */
 .container-register {
    display: grid;
@@ -381,6 +392,7 @@ li {
     .expand-button {
         display: flex;
     }
+
     .filter-outer {
         overflow-y: hidden;
         width: 0%;
@@ -388,42 +400,34 @@ li {
 }
 
 @media screen and (max-width: 768px) {
-    .outer {
-        grid-template-columns: repeat(1, 1fr);
+        .outer {
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+        .index-container {
+            grid-template-rows: 100px auto;
+          }
+
+        .search-outer {
+            margin: 25px auto -25px;
+        }
+
+
+        .small {
+            display:flex;
+        }
+        .large {
+            display:none;
+        }
     }
 
-    .index-container {
-        grid-template-rows: 100px auto;
-      }
-
-    .search-outer {
-        margin: 25px auto -25px;
-    }
-
-
-    .small {
-        display:flex;
-    }
-    .large {
-        display:none;
-    }
-    }
     .active {
         overflow-y: auto;
         width: 100%;
     }
 
 
-.login-box a:link {color: #F1BBCA;}      /* unvisited link */
-.login-box a:visited {color: #F1BBCA;}   /* visited link */
-.login-box a:hover {color: #F1BBCA;}     /* mouse over link */
-.login-box a:active {color: #F1BBCA;}
 
-
-.profile-name-text {
-    text-color: #FFFFFF;
-    color: #FFFFFF;
-}
 
 
 /*
