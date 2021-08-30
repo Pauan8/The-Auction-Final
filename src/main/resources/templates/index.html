@@ -82,7 +82,8 @@
         <li class="nav-item dropdown">
             <div class="dropdown">
                 <button class="btn btn-primary small-profile" type="button"
-                        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                        aria-expanded="false">
                     <i class="fas fa-user-circle fa-2x"></i>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -204,28 +205,7 @@
 
 
     <div class="products">
-        <div class="outer">
-            <div class="card" th:each="item : ${auctions}">
-                <h1 class="heading" th:text="${item.title}">
-                    Rubrik
-                </h1>
-                <h2 class="subheading" th:text="${item.keyWords}">
-                    Subrubrik
-                </h2>
-                <div class="img-container">
-                    <img class="img"
-                         th:src="'https://auction-photos-aw.s3.eu-west-2.amazonaws.com/' + ${item.pictureAddress}"/>
-                </div>
-                <p class="description" th:text="${item.getShortDescription()}">
-                    Ingen beskrivning finns.
-                </p>
-                <p th:text="'Upplagd av: '+ ${item.users.getUsername()}"></p>
-
-                <a th:href="'/detail/'+ ${item.id}" class="btn btn-primary">Mer
-                    information</a>
-
-            </div>
-        </div>
+            <div th:replace="card_fragment::card-auction-fragment"></div>
     </div>
     <div class="right-sidebar">
 
