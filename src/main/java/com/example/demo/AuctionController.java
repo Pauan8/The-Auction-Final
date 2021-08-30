@@ -1,7 +1,6 @@
 package com.example.demo;
 
 
-import com.amazonaws.services.xray.model.Http;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -121,24 +120,23 @@ public class AuctionController {
 
     @GetMapping("/search")
     public String search(@RequestParam String searchText, Model model) {
-        String[] keywordsArray = searchText.split(" ");
-        StringBuilder keyWord = new StringBuilder();
+        String[] searchWordArray = searchText.split(" ");
+        String searchWord= "";
 
-        for (int i = 0; i < keywordsArray.length; i++) {
-            if (keywordsArray.length == 1) {
-                keyWord = new StringBuilder(keywordsArray[i].toLowerCase());
+        for (int i = 0; i < searchWordArray.length; i++) {
+            if (searchWordArray.length == 1) {
+                searchWord = searchWordArray[i];
             } else {
-                if (keywordsArray[i].equals(keywordsArray[keywordsArray.length - 1])) {
-                    keyWord.append(keywordsArray[i].toLowerCase());
+                if (searchWordArray[i].equals(searchWordArray[searchWordArray.length - 1])) {
+                    searchWord += searchWordArray[i];
                 } else {
 
-                    keyWord.append(keywordsArray[i].toLowerCase()).append("|");
+                    searchWord += searchWordArray[i]+ "|";
                 }
             }
         }
-        System.out.println(keyWord);
-        List<Auction> auctions = auctionRepository.findByPartialKeyword(
-                keyWord.toString());
+        System.out.println(searchWord);
+        List<Auction> auctions = auctionRepository.findByPartialKeywordIgnoreCase(searchWord);
         model.addAttribute("auctions", auctions);
         return "index";
     }
