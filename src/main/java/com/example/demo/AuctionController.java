@@ -121,24 +121,23 @@ public class AuctionController {
 
     @GetMapping("/search")
     public String search(@RequestParam String searchText, Model model) {
-        String[] keywordsArray = searchText.split(" ");
-        StringBuilder keyWord = new StringBuilder();
+        String[] searchWordArray = searchText.split(" ");
+        String searchWord= "";
 
-        for (int i = 0; i < keywordsArray.length; i++) {
-            if (keywordsArray.length == 1) {
-                keyWord = new StringBuilder(keywordsArray[i].toLowerCase());
+        for (int i = 0; i < searchWordArray.length; i++) {
+            if (searchWordArray.length == 1) {
+                searchWord = searchWordArray[i];
             } else {
-                if (keywordsArray[i].equals(keywordsArray[keywordsArray.length - 1])) {
-                    keyWord.append(keywordsArray[i].toLowerCase());
+                if (searchWordArray[i].equals(searchWordArray[searchWordArray.length - 1])) {
+                    searchWord += searchWordArray[i];
                 } else {
 
-                    keyWord.append(keywordsArray[i].toLowerCase()).append("|");
+                    searchWord += searchWordArray[i]+ "|";
                 }
             }
         }
-        System.out.println(keyWord);
-        List<Auction> auctions = auctionRepository.findByPartialKeyword(
-                keyWord.toString());
+        System.out.println(searchWord);
+        List<Auction> auctions = auctionRepository.findByPartialKeywordIgnoreCase(searchWord);
         model.addAttribute("auctions", auctions);
         return "index";
     }
@@ -185,8 +184,35 @@ public class AuctionController {
         return "profile";
     }
 
-    @PostMapping("/profile")
-    public String profilePost() {
+    @PostMapping("/passwordChange")
+    public String profilePost(HttpSession session,
+                              @RequestParam(required = false) String password,
+                              @RequestParam(required = false) String password2,
+                              @RequestParam(required = false) String email,
+                              @RequestParam(required = false) String email2) {
+
+        Users user = (Users) session.getAttribute("users");
+       if (password.equals(password2)){
+            user.setPassword(password);
+            usersRepository.save(user);
+            return "redirect:/profile";
+
+       }
+        return "profile";
+    }
+    @PostMapping("/email")
+    public String changeEmail(HttpSession session,
+                              @RequestParam(required = false) String email,
+                              @RequestParam(required = false) String email2) {
+
+        Users user = (Users) session.getAttribute("users");
+
+        if (email.equals(email2)) {
+            user.setEmail(email);
+            usersRepository.save(user);
+            return "redirect:/profile";
+
+        }
         return "profile";
     }
 

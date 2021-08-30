@@ -26,7 +26,7 @@ const countDown = () => {
         // If the count down is finished, write some text
         if (distance < 0) {
             clearInterval(x);
-            document.getElementById("timeRemain").innerHTML = "Utgått!";
+            document.getElementById("timeRemain").innerHTML = "Auktion är avslutad";
         }
     }, 1000);
 }

@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css"
+          rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap"
+          rel="stylesheet">
     <link rel="stylesheet" th:href="@{/stylesheet.css}"/>
     <link rel="stylesheet" th:href="@{/profilePage.css}"/>
 
@@ -25,55 +29,40 @@
 
     <div class="left-sidebar">
         <div class="list-group">
-            <button onclick="window.location.href='/';" id="homePage" type="submit" class="btn btn-primary"
+            <button onclick="window.location.href='/';" id="homePage" type="submit"
+                    class="btn btn-primary"
                     style="margin-top:10px;">Start
             </button>
-            <button onclick="window.location.href='/profile';" id="profilStart" type="submit" class="btn btn-primary"
+            <button onclick="window.location.href='/profile';" id="profilStart"
+                    type="submit" class="btn btn-primary"
                     style="margin-top:1px;">Profil
             </button>
             <button id="safetyButton" type="submit" class="btn btn-primary"
                     style="margin-top:1px;">Säkerhet
             </button>
-            <button id="profilButton"  type="submit" class="btn btn-primary"
-                    style="margin-top:1px;">Profil Inställningar
+            <button id="profilButton" type="submit" class="btn btn-primary"
+                    style="margin-top:1px;">ProfilInställningar
             </button>
-            <button onclick="window.location.href='/upload';" id="NyAnnons" type="submit" class="btn btn-primary"
+            <button onclick="window.location.href='/upload';" id="NyAnnons" type="submit"
+                    class="btn btn-primary"
                     style="margin-top:1px;">Skapa en ny annons
             </button>
             <button id="LogutButton" type="submit" class="btn btn-primary"
-                    style="margin-top:1px;">Logga Ut
+                    style="margin-top:1px;" >Logga Ut
             </button>
 
         </div>
-        </div>
-    <div class="products"  id="profilePageInfo">
-            <div class="outer">
-                <div class="card"  th:each="item : ${auctions}">
-                    <h1 class="heading" th:text="${item.title}">
-                        Rubrik
-                    </h1>
-                    <h2 class="subheading" th:text="${item.keyWords}">
-                        Subrubrik
-                    </h2>
-                    <div class="img-container">
-                        <img class="img" th:src="'https://auction-photos-aw.s3.eu-west-2.amazonaws.com/' + ${item.pictureAddress}" />
-                    </div>
-                    <p class="description" th:text="${item.description}">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A beatae illo laudantium modi natus obcaecati praesentium reiciendis sint velit voluptas!
-                    </p>
-                    <p th:text="${item.users.getUsername()}"></p>
-
-                    <a th:href="'/detail/'+ ${item.id}" class="btn btn-primary">Mer information</a>
-
-                </div>
-            </div>
-        </div>
     </div>
-    <div class="right-sidebar">
-
+    <div class="products" id="profilePageInfo">
+        <h1 class="MinaAnnonser">Mina Annonser</h1>
+        <div th:replace="card_fragment::card-auction-fragment"></div>
     </div>
 </div>
+</div>
+<div class="right-sidebar">
 
+</div>
+</div>
 
 
 <script th:src="@{/profilePage.js}"></script>

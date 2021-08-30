@@ -4,10 +4,10 @@ _e('safetyButton').onclick = function() {
                                     <h2 class="profileFormText">Här kan du skapa ett nytt lösenord</h2>
 
                                     <div class="changePassword">
-                                        <form class="formProfile" action="/profile" method="POST">
-                                            <label class="labelProfile" for="password">Nytt Lösenord: <input id="password" type="text" name="password" /></label>
-                                            <label class="labelProfile" for="password2">Lösenord igen: <input id="password2" type="password" name="password"/></label>
-                                            <input  type="submit" value="Login">
+                                        <form class="formProfile" action="/passwordChange" method="POST">
+                                            <label class="labelProfile" for="password">Nytt Lösenord: <input id="password" type="password" name="password" /></label>
+                                            <label class="labelProfile" for="password2">Lösenord igen: <input id="password2" type="password" name="password2"/></label>
+                                            <input  type="submit" value="Ändra">
                                         </form>
                                     </div>
                                 </div>
@@ -29,12 +29,12 @@ _e('profilButton').onclick = function() {
                                                            <h3 class="profileFormText">Ändra din email</h3>
 
                                                            <div class="changePassword">
-                                                               <form class="formProfile" action="/profile" method="POST">
+                                                               <form class="formProfile" action="/email" method="POST">
                                                                    <label class="labelProfile" for="email">Ny email: <input id="email" type="text"
                                                                                                                             name="email"/></label>
                                                                    <label class="labelProfile" for="email2">Ny email igen: <input id="email2" type="text"
-                                                                                                                                  name="email"/></label>
-                                                                   <input type="submit" value="Login">
+                                                                                                                                  name="email2"/></label>
+                                                                   <input type="submit" value="Ändra">
                                                                </form>
                                                            </div>
 

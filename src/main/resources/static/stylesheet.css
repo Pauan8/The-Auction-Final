@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;1,600;0,500;&display=swap');
 
 body {
     background-color: white;
     font-family: "Poppins", sans-serif;
-    font-weight: 400;
+    font-weight: 500;
     color: #045762;
     height: 100vh;
     font-family: 'Montserrat', sans-serif;
@@ -30,6 +30,10 @@ body {
 p {
     position: relative;
     height: auto;
+}
+
+h3 {
+    margin-left: 20px;
 }
 
 
@@ -90,12 +94,17 @@ p {
 */
 
 
+
 .login-box {
   grid-area: right1;
       background-color: #4E8D7C;
       position: sticky;
-      top: 0;
+      /* grid-column-start: 3; */
+      top:0;
+      margin-top: 20px;
+      margin-left: 20px;
       left: 0;
+      align-self: start;
       z-index: 1;
       display: flex;
       flex-direction: column;
@@ -149,8 +158,29 @@ p {
 
 .left-sidebar {
     grid-area: left;
-    background-color: #F3F2DA;
     height: 100%;
+    display: flex;
+    max-height: calc(100vh);
+    position:sticky;
+    top:0;
+    overflow-x: auto;
+}
+
+.expand-button {
+    display: none;
+    background-color: #F3F2DA;
+    border: none;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.filter-outer {
+    display: flex;
+    background-color: #F3F2DA;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
 }
 
 .filter {
@@ -161,6 +191,8 @@ p {
 
 .categories {
     margin: 0 20px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .right-sidebar {
@@ -205,7 +237,7 @@ p {
     top: 0;
     left: 0;
     margin-left: 20px;
-    width: 97.5%;
+    width: calc(100% - 20px);
     align-self: start;
     z-index: 1;
     position: sticky;
@@ -226,6 +258,7 @@ p {
 .searchbar .form-control {
     border: 1px solid #F1BBCA;
     border-radius: 5px 0 0 5px;
+    width: 100%;
 }
 
 .searchbar {
@@ -250,6 +283,17 @@ p {
     position: absolute;
     max-width: 100%;
     max-height: 100%;
+}
+
+.login-box a:link {color: #F1BBCA;}      /* unvisited link */
+.login-box a:visited {color: #F1BBCA;}   /* visited link */
+.login-box a:hover {color: #F1BBCA;}     /* mouse over link */
+.login-box a:active {color: #F1BBCA;}
+
+
+.profile-name-text {
+    text-color: #FFFFFF;
+    color: #FFFFFF;
 }
 
 /* register */
@@ -325,7 +369,10 @@ p {
 /*Category*/
 
 .btn-category {
-    margin: 5px 0 5px 0;
+    margin: 5px;
+    height: 40px;
+    flex: 1 1 auto;
+
 }
 
 .dropdown-upload {
@@ -349,41 +396,52 @@ li {
     .outer {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .expand-button {
+        display: flex;
+    }
+
+    .filter-outer {
+        overflow-y: hidden;
+        width: 0%;
+        transition: width 0.5s;
+        max-height: 1212px;
+        }
 }
 
 @media screen and (max-width: 768px) {
-    .outer {
-        grid-template-columns: repeat(1, 1fr);
+        .outer {
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+        .index-container {
+            grid-template-rows: 100px auto;
+          }
+
+        .search-outer {
+            margin: 25px auto -25px;
+        }
+
+        .small {
+            display:flex;
+        }
+        .large {
+            display:none;
+        }
+
+        .search {
+            margin: 25px auto -25px;
+        }
+
     }
 
-    .index-container {
-        grid-template-rows: 100px auto;
-      }
-
-    .search-outer {
-        margin: 25px auto -25px;
+    .active {
+        overflow-y: auto;
+        width: 100%;
     }
 
-    .small {
-        display:flex;
-    }
-    .large {
-        display:none;
-    }
-
-   }
 
 
-.login-box a:link {color: #F1BBCA;}      /* unvisited link */
-.login-box a:visited {color: #F1BBCA;}   /* visited link */
-.login-box a:hover {color: #F1BBCA;}     /* mouse over link */
-.login-box a:active {color: #F1BBCA;}
-
-
-.profile-name-text {
-    text-color: #FFFFFF;
-    color: #FFFFFF;
-}
 
 
 /*
