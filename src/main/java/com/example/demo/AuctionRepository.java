@@ -24,4 +24,5 @@ public interface AuctionRepository extends CrudRepository<Auction,Long> {
 
     List<Auction> findAuctionByAgeSpan(String ageSpan);
 
+    List<Auction> findAuctionBySalesArea(String salesArea);
 }
