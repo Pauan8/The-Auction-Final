@@ -160,14 +160,10 @@
                     <img class="img"
                          th:src="'https://auction-photos-aw.s3.eu-west-2.amazonaws.com/' + ${item.pictureAddress}"/>
                 </div>
-                <p class="description" th:text="${item.description}">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
-                    beatae
-                    illo laudantium modi natus obcaecati praesentium reiciendis
-                    sint velit
-                    voluptas!
+                <p class="description" th:text="${item.getShortDescription()}">
+                    Ingen beskrivning finns.
                 </p>
-                <p th:text="${item.users.getUsername()}"></p>
+                <p th:text="'Upplagd av: '+ ${item.users.getUsername()}"></p>
 
                 <a th:href="'/detail/'+ ${item.id}" class="btn btn-primary">Mer
                     information</a>

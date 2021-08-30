@@ -158,6 +158,12 @@ public class Auction {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         return this.endDateTime.format(formatter);
     }
+    /*
+    public int getNumberOfBids(){
+
+        return bidList.
+    }
+     */
 
     public Users getUsers() {
         return users;
@@ -173,5 +179,12 @@ public class Auction {
 
     public void setPictureAddress(String pictureAddress) {
         this.pictureAddress = pictureAddress;
+    }
+
+    public String getShortDescription(){
+        if(description.length() > 100){
+            return description.substring(0,95)+"...";
+        }
+         return description;
     }
 }
