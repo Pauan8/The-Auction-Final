@@ -181,8 +181,10 @@ h3 {
     position:sticky;
     top:0;
     overflow-x: auto;
-    margin-top: 20px;
-    font-size: 0.8rem;
+}
+
+.expand-group {
+    width: 100%;
 }
 
 .expand-button {
@@ -533,6 +535,7 @@ li {
         width: 100%;
     }
 
+    }
 
 
 
