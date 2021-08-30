@@ -17,6 +17,10 @@ body {
 
 }
 
+.heading:first-letter {
+    text-transform: uppercase;
+}
+
 .subheading {
     font-weight: 500;
     font-size: 20px;
