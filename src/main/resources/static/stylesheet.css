@@ -17,6 +17,10 @@ body {
 
 }
 
+.heading:first-letter {
+    text-transform: uppercase;
+}
+
 .subheading {
     font-weight: 500;
     font-size: 20px;
@@ -121,7 +125,7 @@ p {
     width: 100%;
     justify-items: center;
     align-self: center;
-    background-color: #F1BBCA;
+    background-color: #4E8D7C;
 }
 
 .logo img {
@@ -146,6 +150,10 @@ p {
     margin: 40px 20px;
     display: flex;
     flex-direction: column;
+}
+
+.categories {
+    margin: 0 20px;
 }
 
 .right-sidebar {
@@ -183,7 +191,7 @@ p {
 }
 
 .search {
-    background-color: #EA97AD;
+    background-color: #F1BBCA;
     border-radius: 5px;
     grid-area:  header;
     margin: 115px auto -115px;
@@ -209,7 +217,7 @@ p {
 }
 
 .searchbar .form-control {
-    border: 1px solid #F3F2DA;
+    border: 1px solid #F1BBCA;
     border-radius: 5px 0 0 5px;
 }
 

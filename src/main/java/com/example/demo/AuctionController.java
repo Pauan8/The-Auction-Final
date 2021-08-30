@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -47,7 +48,7 @@ public class AuctionController {
     }
 
     @PostMapping("/register")
-    public String postRegister(@Valid @ModelAttribute Users users, BindingResult result, HttpSession session) throws Exception{
+    public String postRegister(@Valid @ModelAttribute Users users, BindingResult result, HttpSession session) throws Exception {
         try {
             if (result.hasErrors()) {
                 return "register";
@@ -55,16 +56,16 @@ public class AuctionController {
             usersRepository.save(users);
             session.setAttribute("users", users);
             return "redirect:/";
-        } catch(org.springframework.dao.DataIntegrityViolationException jse){
+        } catch (org.springframework.dao.DataIntegrityViolationException jse) {
             System.out.println(jse);
             return "register";
         }
     }
 
     @GetMapping("/kategori")
-    public String category(@RequestParam String category, Model model){
+    public String category(@RequestParam String category, Model model) {
 
-        if(category.equals("Alla")){
+        if (category.equals("Alla")) {
             List<Auction> auctions = auctionRepository.findAll();
             model.addAttribute("auctions", auctions);
             return "index";
@@ -76,20 +77,19 @@ public class AuctionController {
     }
 
     @GetMapping("/filter")
-    public String search(@RequestParam(required=true,defaultValue= "0") String filter1, @RequestParam(required=true,defaultValue= "0") String filter2, @RequestParam(required=true,defaultValue= "0") String filter3, Model model) {
+    public String search(@RequestParam(required = true, defaultValue = "0") String filter1, @RequestParam(required = true, defaultValue = "0") String filter2, @RequestParam(required = true, defaultValue = "0") String filter3, Model model) {
         List<Auction> auctions = new ArrayList<>();
 
-        if(filter1 != "0"){
-            auctions = auctionRepository.findAuctionByKeyWords(filter1);
+        if (!filter1.equals("0")) {
+            auctions = auctionRepository.findAuctionByAgeSpan(filter1);
         }
-        if(filter2 != "0"){
-            auctions = Stream.concat(auctions.stream(), auctionRepository.findAuctionByKeyWords(filter2).stream()).distinct().collect(Collectors.toList());
+        if (!filter2.equals("0")) {
+            auctions = Stream.concat(auctions.stream(), auctionRepository.findAuctionByAgeSpan(filter2).stream()).distinct().collect(Collectors.toList());
         }
-        if(filter3 != "0"){
-            auctions = Stream.concat(auctions.stream(), auctionRepository.findAuctionByKeyWords(filter1).stream()).distinct().collect(Collectors.toList());
+        if (!filter3.equals("0")) {
+            auctions = Stream.concat(auctions.stream(), auctionRepository.findAuctionByAgeSpan(filter3).stream()).distinct().collect(Collectors.toList());
         }
         model.addAttribute("auctions", auctions);
-
         return "index";
     }
 
@@ -97,13 +97,22 @@ public class AuctionController {
     @GetMapping("/search")
     public String search(@RequestParam String searchText, Model model) {
         String[] keywordsArray = searchText.split(" ");
-        String keyWord = "%;";
-        for (String k : keywordsArray) {
-            keyWord = keyWord + k + ";%";
+        String keyWord = "";
+
+        for (int i = 0; i < keywordsArray.length; i++) {
+            if (keywordsArray.length == 1) {
+                keyWord = keywordsArray[i].toLowerCase();
+            } else {
+                if (keywordsArray[i].equals(keywordsArray[keywordsArray.length - 1])) {
+                    keyWord += keywordsArray[i].toLowerCase();
+                } else {
+
+                    keyWord += keywordsArray[i].toLowerCase()+ "|";
+                }
+            }
         }
-        // %;hemelektronik;%;kläder;%
-        // ;hemelektronik;möbler;kläder;
-        List <Auction> auctions = auctionRepository.findByPartialKeyword(keyWord);
+        System.out.println(keyWord);
+        List<Auction> auctions = auctionRepository.findByPartialKeyword(keyWord);
         model.addAttribute("auctions", auctions);
         return "index";
     }
@@ -136,8 +145,8 @@ public class AuctionController {
         auction.setPictureAddress(fileName);
 
         UploadObject.upload(fileName, multipartFile);
-
-        auction.setUsers((Users)session.getAttribute("users"));
+        auction.setTitle(auction.getTitle().toLowerCase());
+        auction.setUsers((Users) session.getAttribute("users"));
         auctionRepository.save(auction);
         return "redirect:/";
     }
@@ -145,7 +154,7 @@ public class AuctionController {
     @GetMapping("/profile")
     public String profile(HttpSession session, Model model) {
 
-        List<Auction> auctions = auctionRepository.findAllByUsersId(((Users)session.getAttribute("users")).getId());
+        List<Auction> auctions = auctionRepository.findAllByUsersId(((Users) session.getAttribute("users")).getId());
         model.addAttribute("auctions", auctions);
         return "profile";
     }
