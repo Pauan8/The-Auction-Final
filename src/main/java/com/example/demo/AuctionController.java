@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -91,26 +90,28 @@ public class AuctionController {
     }
 
     @GetMapping("/plats")
-    public String search(@RequestParam(required = true, defaultValue = "0") String stad1,
-                         @RequestParam(required = true, defaultValue = "0") String stad2,
-                         @RequestParam(required = true, defaultValue = "0") String stad3,
-                         @RequestParam(required = true, defaultValue = "0") String stad4,
-                         @RequestParam(required = true, defaultValue = "0") String stad5,
-                         @RequestParam(required = true, defaultValue = "0") String stad6,
-                         @RequestParam(required = true, defaultValue = "0") String stad7,
-                         @RequestParam(required = true, defaultValue = "0") String stad8,
-                         @RequestParam(required = true, defaultValue = "0") String stad9,
-                         @RequestParam(required = true, defaultValue = "0") String stad10,
-                         @RequestParam(required = true, defaultValue = "0") String stad11,
-                         @RequestParam(required = true, defaultValue = "0") String stad12,
-                         @RequestParam(required = true, defaultValue = "0") String stad13,
+    public String search(@RequestParam(required = true, defaultValue = "0") String city1,
+                         @RequestParam(required = true, defaultValue = "0") String city2,
+                         @RequestParam(required = true, defaultValue = "0") String city3,
+                         @RequestParam(required = true, defaultValue = "0") String city4,
+                         @RequestParam(required = true, defaultValue = "0") String city5,
+                         @RequestParam(required = true, defaultValue = "0") String city6,
+                         @RequestParam(required = true, defaultValue = "0") String city7,
+                         @RequestParam(required = true, defaultValue = "0") String city8,
+                         @RequestParam(required = true, defaultValue = "0") String city9,
+                         @RequestParam(required = true, defaultValue = "0") String city10,
+                         @RequestParam(required = true, defaultValue = "0") String city11,
+                         @RequestParam(required = true, defaultValue = "0") String city12,
+                         @RequestParam(required = true, defaultValue = "0") String city13,
                          Model model) {
         List<Auction> auctions = new ArrayList<>();
 
-        List<String> citys = List.of(stad1,stad2,stad3,stad4,stad5,stad6,stad7,stad8,stad9,stad10,stad11,stad12,stad13);
+        List<String> cities = List.of(city1,city2,city3,city4,city5,city6,city7,city8,city9,city10,city11,city12,city13);
 
-        for(String stad : citys){
-            auctions = Stream.concat(auctions.stream(), auctionRepository.findAuctionBySalesArea(stad).stream()).distinct().collect(Collectors.toList());
+        for(String city : cities){
+            if(!city.equals("0")){
+                auctions = Stream.concat(auctions.stream(), auctionRepository.findAuctionBySalesArea(city).stream()).distinct().collect(Collectors.toList());
+            }
         }
 
         model.addAttribute("auctions", auctions);
