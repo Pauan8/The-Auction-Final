@@ -68,6 +68,25 @@
             </select>
             </div>
 
+            <div class="dropdown-upload">
+                <label for="salesArea">Plats</label>
+                <select name="salesArea" id="salesArea" th:field="*{salesArea}">
+                    <option th:value="post" th:text="'Postas till hela Sverige'">Accessoarer</option>
+                    <option th:value="stockholm" th:text="Stockholm"></option>
+                    <option th:value="göteborg" th:text="Göteborg"></option>
+                    <option th:value="malmö" th:text="Malmö"></option>
+                    <option th:value="uppsala" th:text="Uppsala"></option>
+                    <option th:value="linköping" th:text="Linköping"></option>
+                    <option th:value="örebro" th:text="Örebro"></option>
+                    <option th:value="västerås" th:text="Västerås"></option>
+                    <option th:value="helsingborg" th:text="Helsingborg"></option>
+                    <option th:value="norrköping" th:text="Norrköping"></option>
+                    <option th:value="jönköping" th:text="Jönköping"></option>
+                    <option th:value="umeå" th:text="Umeå"></option>
+                    <option th:value="lund" th:text="Lund"></option>
+                </select>
+            </div>
+
             <button type="submit" class="btn btn-primary"
                     style="margin-top:20px;">Ladda upp
             </button>
