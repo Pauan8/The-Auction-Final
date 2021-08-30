@@ -9,6 +9,18 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+.heading-h3 {
+    margin-left: 0;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.heading-h3-2 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+
 
 /* text */
 .heading {
@@ -165,6 +177,7 @@ h3 {
     top:0;
     overflow-x: auto;
     margin-top: 20px;
+    font-size: 0.8rem;
 }
 
 .expand-button {
