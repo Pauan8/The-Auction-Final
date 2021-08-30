@@ -41,7 +41,7 @@
             </div>
         </div>
     </div>
-    <div th:if="${session.user==null}" class="login-box">
+    <div th:if="${session.users==null}" class="login-box">
         <div class="d-grid mt-2 mx-2">
             <form action="/login" method="POST">
                 <div class="d-grid mb-1">
@@ -74,7 +74,20 @@
             </form>
         </div>
     </div>
-    <div th:if="${session.user!=null}" class="login-box">LOGGED IN</div>
+    <div th:if="${session.users!=null}" class="login-box">
+        <div class="d-grid mt-2 mx-2">
+            <i class="fas fa-user-circle fa-5x"></i>
+            <p th:text="'Inlogged as:' + ${session.users.username}">
+        </div>
+
+        <div class="d-grid my-2 mx-2">
+            <form action="/profile" method="get">
+                <button class="btn btn-login text-uppercase fw-bold"
+                        type="submit">Gå till profil</button>
+            </form>
+        </div>
+
+    </div>
 
     <div class="left-sidebar">
         <form class="filter" method="get" action="/filter">
