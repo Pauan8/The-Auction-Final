@@ -28,19 +28,19 @@ public class AuctionApplication implements CommandLineRunner {
         usersRepository.save(user2);
 
         Auction auction = new Auction("Rosa med ett hål för huvudet", "2021-08-30T10:11:12", false, "Bodies", "74827b6a-92b6-4a13-8a62-9491e4db68d1.jpg", 150, 50,
-                                      "rosa tröja", null, user, "one");
+                                      "rosa tröja", null, user, "one", "lund");
 
         Auction auction2 = new Auction("Blå med ett hål för huvudet", "2021-08-30T10:11:12", false, "Byxor-shorts", "74827b6a-92b6-4a13-8a62-9491e4db68d1.jpg", 150, 50, "blå tröja",
-                                      null, user, "one");
+                                      null, user, "one", "malmö");
 
         Auction auction3 = new Auction("Röd med ett hål för huvudet", "2021-08-30T10:11:12", false, "Bodies", "74827b6a-92b6-4a13-8a62-9491e4db68d1.jpg", 150, 50, "röd tröja",
-                                      null, user, "six");
+                                      null, user, "six", "göteborg");
 
         Auction auction4 = new Auction("Lila med ett hål för huvudet", "2021-08-30T10:11:12", false, "Tröjor-t-shirts", "74827b6a-92b6-4a13-8a62-9491e4db68d1.jpg", 150, 50,
-                                       "lila tröja", null, user, "twelve");
+                                       "lila tröja", null, user, "twelve", "post");
 
         Auction auction5 = new Auction("AVSLUTAD AUKTION", "2021-08-30T10:11:12", true, "Ytterkläder", "74827b6a-92b6-4a13-8a62-9491e4db68d1.jpg", 150, 50,
-                                       "lila tröja", null, user2, "six");
+                                       "lila tröja", null, user2, "six", "stockholm");
 
         auctionRepository.save(auction);
         auctionRepository.save(auction2);

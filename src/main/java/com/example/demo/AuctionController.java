@@ -81,15 +81,39 @@ public class AuctionController {
     public String search(@RequestParam(required = true, defaultValue = "0") String filter1, @RequestParam(required = true, defaultValue = "0") String filter2, @RequestParam(required = true, defaultValue = "0") String filter3, Model model) {
         List<Auction> auctions = new ArrayList<>();
 
-        if (!filter1.equals("0")) {
-            auctions = auctionRepository.findAuctionByAgeSpan(filter1);
+        List<String> filters = List.of(filter1, filter2, filter3);
+
+        for(String filter : filters){
+            auctions = Stream.concat(auctions.stream(), auctionRepository.findAuctionByAgeSpan(filter).stream()).distinct().collect(Collectors.toList());
         }
-        if (!filter2.equals("0")) {
-            auctions = Stream.concat(auctions.stream(), auctionRepository.findAuctionByAgeSpan(filter2).stream()).distinct().collect(Collectors.toList());
+
+        model.addAttribute("auctions", auctions);
+        return "index";
+    }
+
+    @GetMapping("/plats")
+    public String search(@RequestParam(required = true, defaultValue = "0") String stad1,
+                         @RequestParam(required = true, defaultValue = "0") String stad2,
+                         @RequestParam(required = true, defaultValue = "0") String stad3,
+                         @RequestParam(required = true, defaultValue = "0") String stad4,
+                         @RequestParam(required = true, defaultValue = "0") String stad5,
+                         @RequestParam(required = true, defaultValue = "0") String stad6,
+                         @RequestParam(required = true, defaultValue = "0") String stad7,
+                         @RequestParam(required = true, defaultValue = "0") String stad8,
+                         @RequestParam(required = true, defaultValue = "0") String stad9,
+                         @RequestParam(required = true, defaultValue = "0") String stad10,
+                         @RequestParam(required = true, defaultValue = "0") String stad11,
+                         @RequestParam(required = true, defaultValue = "0") String stad12,
+                         @RequestParam(required = true, defaultValue = "0") String stad13,
+                         Model model) {
+        List<Auction> auctions = new ArrayList<>();
+
+        List<String> citys = List.of(stad1,stad2,stad3,stad4,stad5,stad6,stad7,stad8,stad9,stad10,stad11,stad12,stad13);
+
+        for(String stad : citys){
+            auctions = Stream.concat(auctions.stream(), auctionRepository.findAuctionBySalesArea(stad).stream()).distinct().collect(Collectors.toList());
         }
-        if (!filter3.equals("0")) {
-            auctions = Stream.concat(auctions.stream(), auctionRepository.findAuctionByAgeSpan(filter3).stream()).distinct().collect(Collectors.toList());
-        }
+
         model.addAttribute("auctions", auctions);
         return "index";
     }
@@ -98,22 +122,23 @@ public class AuctionController {
     @GetMapping("/search")
     public String search(@RequestParam String searchText, Model model) {
         String[] keywordsArray = searchText.split(" ");
-        String keyWord = "";
+        StringBuilder keyWord = new StringBuilder();
 
         for (int i = 0; i < keywordsArray.length; i++) {
             if (keywordsArray.length == 1) {
-                keyWord = keywordsArray[i].toLowerCase();
+                keyWord = new StringBuilder(keywordsArray[i].toLowerCase());
             } else {
                 if (keywordsArray[i].equals(keywordsArray[keywordsArray.length - 1])) {
-                    keyWord += keywordsArray[i].toLowerCase();
+                    keyWord.append(keywordsArray[i].toLowerCase());
                 } else {
 
-                    keyWord += keywordsArray[i].toLowerCase()+ "|";
+                    keyWord.append(keywordsArray[i].toLowerCase()).append("|");
                 }
             }
         }
         System.out.println(keyWord);
-        List<Auction> auctions = auctionRepository.findByPartialKeyword(keyWord);
+        List<Auction> auctions = auctionRepository.findByPartialKeyword(
+                keyWord.toString());
         model.addAttribute("auctions", auctions);
         return "index";
     }
@@ -216,7 +241,7 @@ public class AuctionController {
 
     @PostMapping("/login")
     public String loggingIn(@RequestParam String username, @RequestParam String password, HttpSession session) {
-        Users users = usersRepository.findByUsername(username);
+        Users users = usersRepository.findByUsernameIgnoreCase(username);
 
         if (users == null) {
             return "redirect:/";
@@ -226,6 +251,17 @@ public class AuctionController {
             return "redirect:/";
         }
         return "login";
+    }
+
+
+    @GetMapping("/logout")
+    public String logOut(HttpSession session) {
+        if(session.getAttribute("users") == null) {
+            return "redirect:/";
+        }
+        session.setAttribute("users",null);
+
+        return "redirect:/";
     }
 }
 

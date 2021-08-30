@@ -25,6 +25,7 @@ public class Auction {
     private String description;
     private String keyWords; //TODO List
     private String ageSpan;
+    private String salesArea;
 
     private boolean finished=false;
 
@@ -36,7 +37,7 @@ public class Auction {
     public Auction() {
     }
 
-    public Auction(int startPrice, int reservationPrice, LocalDateTime endDateTime, String title, String description, String keyWords, String ageSpan) {
+    public Auction(int startPrice, int reservationPrice, LocalDateTime endDateTime, String title, String description, String keyWords, String ageSpan, String salesArea) {
         this.startPrice = startPrice;
         this.reservationPrice = reservationPrice;
         this.endDateTime = endDateTime;
@@ -44,10 +45,11 @@ public class Auction {
         this.description = description;
         this.keyWords = keyWords;
         this.ageSpan = ageSpan;
+        this.salesArea = salesArea;
     }
 
     public Auction(String DESCRIPTION,String END_DATE_TIME, boolean FINISHED, String KEY_WORDS,String PICTURE_ADDRESS,int RESERVATION_PRICE,int START_PRICE,
-                   String TITLE,Long INVOICE_ID,Users user, String ageSpan){
+                   String TITLE,Long INVOICE_ID,Users user, String AGE_SPAN, String SALES_AREA){
 
         this.description = DESCRIPTION;
         this.endDateTime = LocalDateTime.parse(END_DATE_TIME);
@@ -59,7 +61,16 @@ public class Auction {
         this.title = TITLE;
         this.users = user;
         this.invoice = null;
-        this.ageSpan = ageSpan;
+        this.ageSpan = AGE_SPAN;
+        this.salesArea = SALES_AREA;
+    }
+
+    public String getSalesArea() {
+        return salesArea;
+    }
+
+    public void setSalesArea(String salesArea) {
+        this.salesArea = salesArea;
     }
 
     public boolean isFinished() {
