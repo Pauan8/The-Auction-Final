@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;1,600&display=swap');
 
 body {
-    background-color: white;
+    background-color: whitesmoke;
     font-family: "Poppins", sans-serif;
     font-weight: 300;
     color: #045762;
@@ -88,7 +88,7 @@ p {
 
 .products {
     grid-area: main;
-    background-color: white;
+    background-color: whitesmoke;
 }
 
 .outer {
@@ -99,7 +99,7 @@ p {
     grid-gap: 20px;
     margin-left: 20px;
     justify-content: center;
-    background-color: white;
+    background-color: whitesmoke;
 }
 
 .card {
