@@ -94,6 +94,7 @@ h3 {
 */
 
 
+
 .login-box {
   grid-area: right1;
       background-color: #4E8D7C;
@@ -231,7 +232,8 @@ h3 {
     top: 0;
     left: 0;
     margin-left: 20px;
-    width: calc(100% - 20px);
+    margin-right: 20px;
+    width: calc(100% - 40px);
     align-self: start;
     z-index: 1;
     position: sticky;
@@ -421,6 +423,11 @@ li {
         .large {
             display:none;
         }
+
+        .search {
+            margin: 25px auto -25px;
+        }
+
     }
 
     .active {
