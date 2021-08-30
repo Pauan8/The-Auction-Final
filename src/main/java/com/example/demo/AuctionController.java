@@ -1,6 +1,7 @@
 package com.example.demo;
 
 
+import com.amazonaws.services.xray.model.Http;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -159,8 +160,35 @@ public class AuctionController {
         return "profile";
     }
 
-    @PostMapping("/profile")
-    public String profilePost() {
+    @PostMapping("/passwordChange")
+    public String profilePost(HttpSession session,
+                              @RequestParam(required = false) String password,
+                              @RequestParam(required = false) String password2,
+                              @RequestParam(required = false) String email,
+                              @RequestParam(required = false) String email2) {
+
+        Users user = (Users) session.getAttribute("users");
+       if (password.equals(password2)){
+            user.setPassword(password);
+            usersRepository.save(user);
+            return "redirect:/profile";
+
+       }
+        return "profile";
+    }
+    @PostMapping("/email")
+    public String changeEmail(HttpSession session,
+                              @RequestParam(required = false) String email,
+                              @RequestParam(required = false) String email2) {
+
+        Users user = (Users) session.getAttribute("users");
+
+        if (email.equals(email2)) {
+            user.setEmail(email);
+            usersRepository.save(user);
+            return "redirect:/profile";
+
+        }
         return "profile";
     }
 

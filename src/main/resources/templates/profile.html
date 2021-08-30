@@ -35,7 +35,7 @@
                     style="margin-top:1px;">Säkerhet
             </button>
             <button id="profilButton"  type="submit" class="btn btn-primary"
-                    style="margin-top:1px;">Profil Inställningar
+                    style="margin-top:1px;">ProfilInställningar
             </button>
             <button onclick="window.location.href='/upload';" id="NyAnnons" type="submit" class="btn btn-primary"
                     style="margin-top:1px;">Skapa en ny annons
@@ -47,7 +47,9 @@
         </div>
         </div>
     <div class="products"  id="profilePageInfo">
+        <h1 class="MinaAnnonser">Mina Annonser</h1>
             <div class="outer">
+
                 <div class="card"  th:each="item : ${auctions}">
                     <h1 class="heading" th:text="${item.title}">
                         Rubrik
