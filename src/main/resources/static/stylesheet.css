@@ -99,7 +99,8 @@ h3 {
       background-color: #4E8D7C;
       position: sticky;
       /* grid-column-start: 3; */
-      top: 0;
+      top:0;
+      margin-top: 20px;
       left: 0;
       align-self: start;
       z-index: 1;
@@ -230,7 +231,7 @@ h3 {
     top: 0;
     left: 0;
     margin-left: 20px;
-    width: 97.5%;
+    width: calc(100% - 20px);
     align-self: start;
     z-index: 1;
     position: sticky;
@@ -251,6 +252,7 @@ h3 {
 .searchbar .form-control {
     border: 1px solid #F1BBCA;
     border-radius: 5px 0 0 5px;
+    width: 100%;
 }
 
 .searchbar {
