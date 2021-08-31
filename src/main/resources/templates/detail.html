@@ -47,7 +47,7 @@
     <p hidden id="auctionEndDate" th:text="${auction.endDateTime}"></p>
     <span id="timeRemain"></span>
     <form class="detail-form" method="post" action="/bid" th:object="${bid}">
-        <input type="text" name="bid" th:field="*{amount}">
+        <input type="text" class="form-control mb-1 login-input" name="bid" th:field="*{amount}">
         <input type="hidden" name="auction" th:field="*{auction}">
         <button type="submit" class="btn btn-primary"
                 style="margin-top:5px;">Lägg bud
