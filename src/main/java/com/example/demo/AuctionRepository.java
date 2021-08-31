@@ -11,7 +11,7 @@ import java.util.List;
 public interface AuctionRepository extends CrudRepository<Auction,Long> {
     List<Auction> findAll();
 
-    @Query(value = "SELECT * FROM AUCTION WHERE TITLE REGEXP ?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM AUCTION WHERE TITLE LIKE ?1", nativeQuery = true)
     List<Auction> findByPartialKeywordIgnoreCase(String searchWordPattern);
 
     List<Auction> findAuctionByKeyWords(String keyWord);
