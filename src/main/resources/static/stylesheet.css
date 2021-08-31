@@ -58,6 +58,7 @@ h3 {
 
 .btn {
     height: 100%;
+    font-size: 0.8rem;
 }
 
 
@@ -387,6 +388,12 @@ h3 {
     height: 100px;
     min-height: 100px;
     overflow-y: auto;
+    font-style: italic;
+    margin: 0;
+}
+
+td {
+    padding: 0px 10px 0px 0px;
 }
 
 
@@ -527,12 +534,14 @@ li {
         .active {
            width: calc(100vw - 60px);
         }
+
     }
 
     .active {
         overflow-y: auto;
         width: 100%;
     }
+
 
 
 

@@ -29,10 +29,26 @@
             <p class="description" th:text="${item.getShortDescription()}">
                 Ingen beskrivning finns.
             </p>
-            <p th:text="'Upplagd av: '+ ${item.users.getUsername()}"></p>
-
             <a th:href="'/detail/'+ ${item.id}" class="btn btn-primary">Mer
                 information</a>
+            <hr class="my-2">
+            <table>
+                <tbody>
+                <tr>
+                    <td>Utgångspris:</td>
+                    <td th:text="${item.startPrice}+' kr'"></td>
+                </tr>
+                <tr>
+                    <td>Aktuellt bud:</td>
+                    <td th:text="${item.getTopBid()}+' kr'">&nbsp;</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="auctionDiv">
+                <p hidden id="auctionEndDate" th:text="${item.endDateTime}"></p>
+                <span id="timeRemain"></span>
+            </div>
+            <hr class="my-2">
         </div>
 </div>
 

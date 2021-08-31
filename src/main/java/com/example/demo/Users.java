@@ -14,7 +14,7 @@ public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Size(min=3, max=12)
     private String username;
     @Size(min=6, max=12)
     private String password;
