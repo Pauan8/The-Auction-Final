@@ -359,6 +359,18 @@ h3 {
     color: #045762;
 }
 
+.upload-form {
+    grid-area: main;
+}
+
+.login-side1 {
+    grid-area: left;
+}
+
+.login-side2 {
+    grid-area: right;
+}
+
 
 /*details */
 .time i {
@@ -444,7 +456,7 @@ li {
             "search search search"
             "main main main";
             grid-template-columns: 100px 1fr 1fr;
-            grid-template-rows: 100px auto;
+            grid-template-rows: 100px 52px auto;
         }
 
         .login-box {
@@ -506,6 +518,7 @@ li {
         .left-sidebar {
             grid-area: main;
             z-index: 1;
+            width: 40px;
         }
 
         .expand-group {

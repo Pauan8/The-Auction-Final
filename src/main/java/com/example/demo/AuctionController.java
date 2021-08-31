@@ -11,9 +11,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -80,10 +78,41 @@ public class AuctionController {
                          @RequestParam(required = false, defaultValue = "0") String[] city,
                          @RequestParam(required = false, defaultValue = "0") String[] category, Model model) {
         List<Auction> auctions = new ArrayList<>();
+        List<Auction> ages = new ArrayList<>();
+        List<Auction> cities = new ArrayList<>();
+        List<Auction> categories = new ArrayList<>();
 
-        auctionService.filter(age, auctions);
-        auctionService.filter(city, auctions);
-        auctionService.filter(category, auctions);
+        if(!age[0].equals("0")) {
+            for (String selection : age) {
+                for (Auction auc : auctionRepository.findAuctionByAgeSpan(selection)) {
+                    ages.add(auc);
+                }
+            }
+        } else {
+            ages = auctionRepository.findAll();
+        }
+
+        if(!city[0].equals("0")) {
+            for (String selection : city) {
+                for( Auction auc : auctionRepository.findAuctionBySalesArea(selection)){
+                    cities.add(auc);
+                }
+            }
+        } else {
+            cities = auctionRepository.findAll();
+        }
+
+        if(!category[0].equals("0")) {
+            for (String selection : category) {
+                for (Auction auc : auctionRepository.findAuctionByKeyWords(selection)) {
+                    categories.add(auc);
+                }
+            }
+        } else {
+            categories = auctionRepository.findAll();
+        }
+
+        auctions = auctionService.filter(ages, cities, categories);
 
         model.addAttribute("auctions", auctions);
         return "index";
