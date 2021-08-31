@@ -324,6 +324,7 @@ h3 {
    "side1 middle side2";
    grid-column-template: 1fr 4fr 1fr;
    grid-row-template: 100%;
+   grid-area: main;
 }
 
 .side1 {
@@ -338,6 +339,21 @@ h3 {
     background-color: #F3F2DA;
     with: 100%;
     height: 100%;
+}
+
+.loginSide1 {
+    grid-area: left;
+    background-color: #F3F2DA;
+}
+
+.loginSide2 {
+    grid-area: right;
+    background-color: #F3F2DA;
+}
+
+.upload-form {
+    display: flex;
+    grid-area: main;
 }
 
 .register-form {
@@ -357,6 +373,15 @@ h3 {
     color: #045762;
 }
 
+.row2 {
+    flex-shrink: 0;
+    width: fit-content;
+    max-width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-top: var(--bs-gutter-y);
+}
+
 
 /*details */
 .time i {
@@ -374,6 +399,7 @@ h3 {
     background-color: #F3F2DA;
     text-align: center;
     padding: 10px;
+    grid-area: main;
 }
 
 .card .btn {

@@ -12,9 +12,16 @@
     <title>The auction - bäst på barnkläder!</title>
 </head>
 <body>
-<div class="container-register">
-    <div class="side1"> </div>
-    <div class="register-form row justify-content-md-center align-items-center">
+<div class="index-container">
+    <div class="logo">
+        <img src="../logo6.png" alt="logo">
+    </div>
+    <div class="header">
+    </div>
+    <div class="corner">
+    </div>
+    <div class="loginSide1"> </div>
+    <div class="upload-form justify-content-md-center align-items-center">
         <form th:object="${auction}" action="/upload" method="POST" enctype="multipart/form-data">
             <div class="form-row col">
                 <label class="register-label" for="title">Title:</label>
@@ -98,8 +105,7 @@
 
 
     </div>
-    <div class="side2"> </div>
+    <div class="loginSide2"> </div>
 </div>
-
 </body>
 </html>
