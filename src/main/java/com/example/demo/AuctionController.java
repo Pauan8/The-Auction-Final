@@ -12,8 +12,6 @@ import javax.validation.Valid;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -59,19 +57,6 @@ public class AuctionController {
         }
     }
 
-    @GetMapping("/kategori")
-    public String category(@RequestParam String category, Model model) {
-
-        if (category.equals("Alla")) {
-            List<Auction> auctions = auctionRepository.findAll();
-            model.addAttribute("auctions", auctions);
-            return "index";
-        }
-
-        List<Auction> auctions = auctionRepository.findAuctionByKeyWordsIgnoreCase(category);
-        model.addAttribute("auctions", auctions);
-        return "index";
-    }
 
     @GetMapping("/filter")
     public String search(@RequestParam(required = false, defaultValue = "0") String[] age,
