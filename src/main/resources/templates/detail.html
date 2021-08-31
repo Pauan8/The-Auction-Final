@@ -11,6 +11,10 @@
           crossorigin="anonymous">
     <link rel="stylesheet" th:href="@{/stylesheetdetail.css}"/>
     <link rel="stylesheet" th:href="@{/stylesheet.css}"/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
     <title>The auction - bäst på barnkläder!</title>
 </head>
 <body>
@@ -56,7 +60,7 @@
     <p hidden id="auctionEndDate" th:text="${auction.endDateTime}"></p>
     <span id="timeRemain"></span>
     <form class="detail-form" method="post" action="/bid" th:object="${bid}">
-        <input type="text" name="bid" th:field="*{amount}">
+        <input type="text" class="form-control mb-1 login-input" name="bid" th:field="*{amount}">
         <input type="hidden" name="auction" th:field="*{auction}">
         <button type="submit" class="btn btn-primary"
                 style="margin-top:5px;">Lägg bud
