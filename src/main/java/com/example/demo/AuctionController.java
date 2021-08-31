@@ -68,7 +68,7 @@ public class AuctionController {
             return "index";
         }
 
-        List<Auction> auctions = auctionRepository.findAuctionByKeyWords(category);
+        List<Auction> auctions = auctionRepository.findAuctionByKeyWordsIgnoreCase(category);
         model.addAttribute("auctions", auctions);
         return "index";
     }
@@ -84,7 +84,7 @@ public class AuctionController {
 
         if(!age[0].equals("0")) {
             for (String selection : age) {
-                for (Auction auc : auctionRepository.findAuctionByAgeSpan(selection)) {
+                for (Auction auc : auctionRepository.findAuctionByAgeSpanIgnoreCase(selection)) {
                     ages.add(auc);
                 }
             }
@@ -94,7 +94,7 @@ public class AuctionController {
 
         if(!city[0].equals("0")) {
             for (String selection : city) {
-                for( Auction auc : auctionRepository.findAuctionBySalesArea(selection)){
+                for( Auction auc : auctionRepository.findAuctionBySalesAreaIgnoreCase(selection)){
                     cities.add(auc);
                 }
             }
@@ -104,7 +104,7 @@ public class AuctionController {
 
         if(!category[0].equals("0")) {
             for (String selection : category) {
-                for (Auction auc : auctionRepository.findAuctionByKeyWords(selection)) {
+                for (Auction auc : auctionRepository.findAuctionByKeyWordsIgnoreCase(selection)) {
                     categories.add(auc);
                 }
             }
@@ -112,7 +112,7 @@ public class AuctionController {
             categories = auctionRepository.findAll();
         }
 
-        auctions = auctionService.filter(ages, cities, categories);
+        auctions = auctionService.filter(ages, cities, categories, auctions);
 
         model.addAttribute("auctions", auctions);
         return "index";
