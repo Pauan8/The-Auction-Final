@@ -14,7 +14,7 @@ public interface AuctionRepository extends CrudRepository<Auction,Long> {
     @Query(value = "SELECT * FROM AUCTION WHERE TITLE LIKE ?1", nativeQuery = true)
     List<Auction> findByPartialKeywordIgnoreCase(String searchWordPattern);
 
-    List<Auction> findAuctionByKeyWords(String keyWord);
+    List<Auction> findAuctionByKeyWordsIgnoreCase(String keyWord);
 
     List<Auction> findAllByEndDateTimeLessThan(LocalDateTime datetime);
 
@@ -22,7 +22,7 @@ public interface AuctionRepository extends CrudRepository<Auction,Long> {
 
     List<Auction> findAllByUsersId(Long id);
 
-    List<Auction> findAuctionByAgeSpan(String ageSpan);
+    List<Auction> findAuctionByAgeSpanIgnoreCase(String ageSpan);
 
-    List<Auction> findAuctionBySalesArea(String salesArea);
+    List<Auction> findAuctionBySalesAreaIgnoreCase(String salesArea);
 }

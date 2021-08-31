@@ -29,28 +29,28 @@
     </div>
     <div class="corner">
     </div>
-    <div class="detail-div">
-        <img class="detailImage"
-             th:src="'https://auction-photos-aw.s3.eu-west-2.amazonaws.com/' + ${auction.pictureAddress}">
-        <hr class="my-2">
-        <p class="description" th:text="${auction.description}">
-            Ingen beskrivning finns.
-        </p>
-        <hr class="my-1">
-        <table>
-            <tbody>
-            <tr>
-                <td>Utgångspris:</td>
-                <td th:text="${auction.startPrice}+' kr'"></td>
-            </tr>
-            <tr>
-                <td>Reservationspris:</td>
-                <td th:text="${auction.reservationPrice+' kr'}">&nbsp;</td>
-            </tr>
-            <tr>
-                <td>Aktuellt bud:</td>
-                <td th:text="${auction.getTopBid()}+' kr'">&nbsp;</td>
-            </tr>
+<div class="detail-div">
+    <img class="detailImage"
+         th:src="'https://auction-photos-aw.s3.eu-west-2.amazonaws.com/' + ${auction.pictureAddress}">
+    <hr class="my-2">
+    <p class="description" th:text="${auction.description}">
+        Ingen beskrivning finns.
+    </p>
+    <hr class="my-1">
+    <table>
+        <tbody>
+        <tr>
+            <td>Utgångspris:</td>
+            <td th:text="${auction.startPrice}+' kr'"></td>
+        </tr>
+        <tr>
+            <td>Reservationspris:</td>
+            <td th:text="${auction.reservationPrice+' kr'}">&nbsp;</td>
+        </tr>
+        <tr>
+            <td>Aktuellt bud:</td>
+            <td th:text="${auction.getTopBid()}+' kr'">&nbsp;</td>
+        </tr>
 
             <tr>
                 <td>Antal bud:</td>

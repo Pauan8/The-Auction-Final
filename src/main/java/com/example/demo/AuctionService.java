@@ -31,8 +31,7 @@ public class AuctionService {
         return highestBid.getAmount();
     }
 
-    public List<Auction> filter(List<Auction> arr, List<Auction> arr2, List<Auction> arr3){
-        List<Auction> auctions = new ArrayList<>();
+    public List<Auction> filter(List<Auction> arr, List<Auction> arr2, List<Auction> arr3, List<Auction> auctions){
         List<Auction> newarr = new ArrayList<>();
 
         for(Auction auc : arr) {
