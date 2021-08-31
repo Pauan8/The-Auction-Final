@@ -527,14 +527,11 @@ li {
         .active {
            width: calc(100vw - 60px);
         }
-
     }
 
     .active {
         overflow-y: auto;
         width: 100%;
-    }
-
     }
 
 
