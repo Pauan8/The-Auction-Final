@@ -178,7 +178,6 @@ h3 {
     grid-area: logo;
     display:flex;
     height: 100%;
-    width: 100%;
     justify-content: center;
     align-self: center;
     background-color: #045762;
