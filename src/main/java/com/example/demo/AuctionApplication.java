@@ -27,20 +27,20 @@ public class AuctionApplication implements CommandLineRunner {
         usersRepository.save(user);
         usersRepository.save(user2);
 
-        Auction auction = new Auction("Rosa med ett hål för huvudet Rosa med ett hål för huvudet Rosa med ett hål för huvudet Rosa med ett hål för huvudet Rosa med ett hål för huvudet Rosa med ett hål för huvudet Rosa med ett hål för huvudet Rosa med ett hål för huvudet", "2021-08-30T10:11:12", false, "Bodies", "74827b6a-92b6-4a13-8a62-9491e4db68d1.jpg", 150, 50,
-                                      "rosa tröja", null, user, "one", "lund");
+        Auction auction = new Auction("Randig mössa i mjuk ekologisk bomull. Mössan har vår klassiska rand och är fodrad med mjuk och värmande fleece i återvunnen polyester.", "2021-08-31T15:11:12", false, "accessoarer", "7325856151854.jpg", 75, 50,
+                                      "Randig mössa med fleecefoder vinröd", null, user, "one", "lund");
 
-        Auction auction2 = new Auction("Blå med ett hål för huvudet", "2021-08-30T19:11:12", false, "Byxor-shorts", "74827b6a-92b6-4a13-8a62-9491e4db68d1.jpg", 150, 50, "blå tröja",
+        Auction auction2 = new Auction("Svep in den lilla, med vår mjuka babyfilt i mjuk ekologisk bomull. Ena sidan har ett tryck med lekande djur, och den andra är randig. Mått: 84 x 84 cm", "2021-08-30T19:11:12", false, "accessoarer", "7325856168135_1.jpg", 150, 50, "Filt med lekande djur baby grön",
                                       null, user, "one", "stockholm");
 
-        Auction auction3 = new Auction("Röd med ett hål för huvudet", "2021-09-02T10:11:12", false, "Bodies", "74827b6a-92b6-4a13-8a62-9491e4db68d1.jpg", 150, 50, "röd tröja",
+        Auction auction3 = new Auction("Enfärgade byxor i 100% ekologisk bomull. Byxorna har mjuk mudd i midjan och vid benslut som kan vikas ned när barnet växer.", "2021-09-02T10:11:12", false, "byxor-shorts", "7325856240473_1.jpg", 150, 50, "Enfärgade byxor baby gråmelange",
                                       null, user, "six", "göteborg");
 
-        Auction auction4 = new Auction("Lila med ett hål för huvudet", "2021-08-30T16:11:12", false, "Tröjor-t-shirts", "74827b6a-92b6-4a13-8a62-9491e4db68d1.jpg", 150, 50,
-                                       "lila tröja", null, user, "twelve", "post");
+        Auction auction4 = new Auction("Gör ditt barn redo för regninga dagar i den här vind- och vattentät regnjacka! Jackan har en avtagbar huva som fästs med tryckknappar och insidan av kragan har ett mjukt fleecefoder. Jackan har reflexer fram- och bak, och stängs med tryckknappar. Storlek 74/80 har ingen huva.", "2021-08-30T16:11:12", false, "regnkläder", "7325856097541.jpg", 150, 50,
+                                       "Regnjacka galon gammelrosa", null, user, "six", "post");
 
-        Auction auction5 = new Auction("AVSLUTAD AUKTION", "2021-08-30T10:11:12", true, "Ytterkläder", "74827b6a-92b6-4a13-8a62-9491e4db68d1.jpg", 150, 50,
-                                       "lila tröja", null, user2, "six","malmö");
+        Auction auction5 = new Auction("Enfärgad t-shirt i 100% ekologisk bomull. Perfekt att ha vid alla tillfällen! Plagget tillverkas i fyra olika färger, och varje färg har sitt unika tryck och matchar snyggt med hela kollektionen.", "2021-08-30T10:11:12", true, "tröjor-t-shirts", "7325856186511.jpg", 150, 50,
+                                       "T-shirt med tryck beige", null, user2, "twelve","malmö");
 
         auctionRepository.save(auction);
         auctionRepository.save(auction2);

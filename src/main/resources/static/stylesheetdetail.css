@@ -44,6 +44,7 @@ p {
 .btn {
     height: 100%;
     width: 40px;
+    color: #383838;
 }
 
 .btn-primary {

@@ -24,6 +24,8 @@ public class Auction {
     private LocalDateTime endDateTime;
 
     private String title;
+
+    @Column(length = 2000)
     private String description;
     private String keyWords; //TODO List
     private String ageSpan;
