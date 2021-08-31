@@ -3,6 +3,7 @@
       xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
+    <title>The auction - bäst på barnkläder!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -14,6 +15,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap"
           rel="stylesheet">
     <link rel="stylesheet" th:href="@{/stylesheet.css}"/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
 
 </head>
 <body>
@@ -93,7 +98,7 @@
         <div class="expand-group">
             <div class="filter-outer">
         <form class="filter" method="get" action="/filter">
-            <h3>Filter</h3>
+            <h3 class="heading-h3-2">Filter</h3>
             <label for="1">
                 <input name="age" type="checkbox" id="1" value="one"/>
                 0-1 år
@@ -107,7 +112,7 @@
                 6-12 år
             </label>
             <br>
-            <h3>Kategorier</h3>
+            <h3 class="heading-h3-2">Kategorier</h3>
                 <label>
                     <input name="category" type="checkbox" value="Alla"/>
                     Alla
@@ -141,7 +146,7 @@
                     Ytterkläder
                 </label>
             <br>
-            <h3>Plats</h3>
+            <h3 class="heading-h3-2">Plats</h3>
             <label>
                 <input name="city" type="checkbox" value="post"/>
                 Frakt hela Sverige
@@ -204,7 +209,7 @@
 
 
     <div class="products">
-            <div th:replace="card_fragment::card-auction-fragment"></div>
+        <div th:replace="card_fragment::card-auction-fragment"></div>
     </div>
     <div class="right-sidebar">
 
@@ -220,5 +225,6 @@
 <script src="https://kit.fontawesome.com/7f24e97d67.js"
         crossorigin="anonymous"></script>
 
+<script th:src="@{/CountdownShort.js}"></script>
 </body>
 </html>

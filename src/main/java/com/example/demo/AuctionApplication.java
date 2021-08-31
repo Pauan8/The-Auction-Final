@@ -30,13 +30,13 @@ public class AuctionApplication implements CommandLineRunner {
         Auction auction = new Auction("Rosa med ett hål för huvudet Rosa med ett hål för huvudet Rosa med ett hål för huvudet Rosa med ett hål för huvudet Rosa med ett hål för huvudet Rosa med ett hål för huvudet Rosa med ett hål för huvudet Rosa med ett hål för huvudet", "2021-08-30T10:11:12", false, "Bodies", "74827b6a-92b6-4a13-8a62-9491e4db68d1.jpg", 150, 50,
                                       "rosa tröja", null, user, "one", "lund");
 
-        Auction auction2 = new Auction("Blå med ett hål för huvudet", "2021-08-30T10:11:12", false, "Byxor-shorts", "74827b6a-92b6-4a13-8a62-9491e4db68d1.jpg", 150, 50, "blå tröja",
+        Auction auction2 = new Auction("Blå med ett hål för huvudet", "2021-08-30T19:11:12", false, "Byxor-shorts", "74827b6a-92b6-4a13-8a62-9491e4db68d1.jpg", 150, 50, "blå tröja",
                                       null, user, "one", "stockholm");
 
-        Auction auction3 = new Auction("Röd med ett hål för huvudet", "2021-08-30T10:11:12", false, "Bodies", "74827b6a-92b6-4a13-8a62-9491e4db68d1.jpg", 150, 50, "röd tröja",
+        Auction auction3 = new Auction("Röd med ett hål för huvudet", "2021-09-02T10:11:12", false, "Bodies", "74827b6a-92b6-4a13-8a62-9491e4db68d1.jpg", 150, 50, "röd tröja",
                                       null, user, "six", "göteborg");
 
-        Auction auction4 = new Auction("Lila med ett hål för huvudet", "2021-08-30T10:11:12", false, "Tröjor-t-shirts", "74827b6a-92b6-4a13-8a62-9491e4db68d1.jpg", 150, 50,
+        Auction auction4 = new Auction("Lila med ett hål för huvudet", "2021-08-30T16:11:12", false, "Tröjor-t-shirts", "74827b6a-92b6-4a13-8a62-9491e4db68d1.jpg", 150, 50,
                                        "lila tröja", null, user, "twelve", "post");
 
         Auction auction5 = new Auction("AVSLUTAD AUKTION", "2021-08-30T10:11:12", true, "Ytterkläder", "74827b6a-92b6-4a13-8a62-9491e4db68d1.jpg", 150, 50,

@@ -2,39 +2,80 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-   <!-- <link href="../static/stylesheet.css" th:href="stylesheet.css" rel="stylesheet">-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link href="../static/stylesheet.css" th:href="stylesheet.css" rel="stylesheet">-->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
           rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
           crossorigin="anonymous">
     <link rel="stylesheet" th:href="@{/stylesheetdetail.css}"/>
-    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/stylesheet.css}"/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <title>The auction - bäst på barnkläder!</title>
 </head>
 <body>
+<div class="index-container">
+    <div class="logo">
+        <img src="../logo6.png" alt="logo">
+    </div>
+    <div class="header">
+    </div>
+    <div class="corner">
+    </div>
 <div class="detail-div">
-    <img class="detailImage" th:src="'https://auction-photos-aw.s3.eu-west-2.amazonaws.com/' + ${auction.pictureAddress}">
-    <p th:text="'Utgångspris: '+${auction.startPrice}+' kr'"> </p>
-    <p th:text="'Reservationspris: ' + ${auction.reservationPrice+' kr'}"></p>
-    <p th:text="'Aktuellt bud: '+${highestBid}+' kr'"></p>
-    <p th:text="'Antal bud: ' + ${auction.bidList.size}">
-    <br>
-    <p th:text="'Slutdatum: ' + ${auction.printEndDateTime()}"></p>
-    <p hidden id="auctionEndDate" th:text="${auction.endDateTime}" ></p>
+    <img class="detailImage"
+         th:src="'https://auction-photos-aw.s3.eu-west-2.amazonaws.com/' + ${auction.pictureAddress}">
+    <hr class="my-2">
+    <p class="description" th:text="${auction.description}">
+        Ingen beskrivning finns.
+    </p>
+    <hr class="my-1">
+    <table>
+        <tbody>
+        <tr>
+            <td>Utgångspris:</td>
+            <td th:text="${auction.startPrice}+' kr'"></td>
+        </tr>
+        <tr>
+            <td>Reservationspris:</td>
+            <td th:text="${auction.reservationPrice+' kr'}">&nbsp;</td>
+        </tr>
+        <tr>
+            <td>Aktuellt bud:</td>
+            <td th:text="${auction.getTopBid()}+' kr'">&nbsp;</td>
+        </tr>
+
+        <tr>
+            <td>Antal bud:</td>
+            <td th:text="${auction.bidList.size}+' st'">&nbsp;</td>
+        </tr>
+        </tbody>
+    </table>
+    <hr class="my-2">
+    <p th:text="'Slutdatum: '+ ${auction.printEndDateTime()}"></p>
+    <p hidden id="auctionEndDate" th:text="${auction.endDateTime}"></p>
     <span id="timeRemain"></span>
-    <form method="post" action="/bid" th:object="${bid}">
-        <input type="text" name="bid" th:field="*{amount}" >
+    <form class="detail-form" method="post" action="/bid" th:object="${bid}">
+        <input type="text" class="form-control mb-1 login-input" name="bid" th:field="*{amount}">
         <input type="hidden" name="auction" th:field="*{auction}">
         <button type="submit" class="btn btn-primary"
-                style="margin-left:10px;">Lägg bud
+                style="margin-top:5px;">Lägg bud
         </button>
     </form>
-
-    <a href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=http://www.example.com&p[images][0]=&p[title]=Title%20Goes%20Here&p[summary]=Description%20goes%20here!" target="_blank" onclick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false" class="fa fa-facebook"></a>
-    <a href="https://twitter.com/" class="fa fa-twitter"></a>
+    <hr class="my-2">
+    <div>
+        <a href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=http://www.example.com&p[images][0]=&p[title]=Title%20Goes%20Here&p[summary]=Description%20goes%20here!"
+           target="_blank"
+           onclick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false"
+           class="fa fa-facebook"></a>
+        <a href="https://twitter.com/" class="fa fa-twitter"></a>
+    </div>
 </div>
-
-
+</div>
 
 <script th:src="@{/Countdown.js}"></script>
 </body>

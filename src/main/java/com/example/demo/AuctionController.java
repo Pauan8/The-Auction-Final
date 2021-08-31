@@ -238,7 +238,6 @@ public class AuctionController {
         return "redirect:/detail/" + auction.getId();
     }
 
-
     @GetMapping("/login")
     public String login() {
         return "login";
