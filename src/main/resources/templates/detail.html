@@ -10,6 +10,7 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
           crossorigin="anonymous">
     <link rel="stylesheet" th:href="@{/stylesheetdetail.css}"/>
+    <link rel="stylesheet" th:href="@{/stylesheet.css}"/>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,6 +18,14 @@
     <title>The auction - bäst på barnkläder!</title>
 </head>
 <body>
+<div class="index-container">
+    <div class="logo">
+        <img src="../logo6.png" alt="logo">
+    </div>
+    <div class="header">
+    </div>
+    <div class="corner">
+    </div>
 <div class="detail-div">
     <img class="detailImage"
          th:src="'https://auction-photos-aw.s3.eu-west-2.amazonaws.com/' + ${auction.pictureAddress}">
@@ -66,7 +75,7 @@
         <a href="https://twitter.com/" class="fa fa-twitter"></a>
     </div>
 </div>
-
+</div>
 
 <script th:src="@{/Countdown.js}"></script>
 </body>
