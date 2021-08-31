@@ -122,9 +122,11 @@ input:checked + .slider:before {
 }
 
 .MinaAnnonser {
-    padding-bottom:150px;
+    padding-bottom: 20px;
     text-align: center;
     margin-top:5px;
+}
 
-
+.btn-primary {
+    margin-left: 5%;
 }
