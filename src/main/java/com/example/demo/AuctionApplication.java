@@ -7,12 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 
-import javax.mail.MessagingException;
-import java.io.IOException;
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 @SpringBootApplication
 public class AuctionApplication {
 
