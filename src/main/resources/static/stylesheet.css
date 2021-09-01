@@ -508,6 +508,19 @@ li {
     height: 35px;
 }
 
+.modal-body {
+    padding: 0rem;
+    background-color: ghostwhite;
+    height: 100vh;
+
+}
+
+.modal-footer {
+    padding: 0.5rem;
+    background-color: ghostwhite;
+
+}
+
 @media screen and (max-width: 768px) {
         .index-container {
             min-height: 100vh;
