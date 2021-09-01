@@ -32,6 +32,9 @@ public class AuctionController {
     @Autowired
     AuctionService auctionService;
 
+    @Autowired
+    BidRepository bidRepository;
+
     @GetMapping("/")
     public String home(HttpSession session, Model model) {
 
@@ -188,6 +191,22 @@ public class AuctionController {
         List<Auction> auctions = auctionRepository.findAllByUsersId(
                 ((Users) session.getAttribute("users")).getId());
         model.addAttribute("auctions", auctions);
+
+        /*List<Auction> tempBiddingAuctions = auctionRepository.findAll();
+        List<Auction> biddingAuctions = new ArrayList<>();
+
+        for(Auction a : tempBiddingAuctions){
+            for(Bid b : a.getBidList()){
+                if(b.getUser().getId().equals(((Users) session.getAttribute("users")).getId())){
+                    biddingAuctions.add(a);
+                }
+            }
+        }*/
+
+        List<Auction> biddingAuctions = auctionRepository.findAuctionByBidder(((Users) session.getAttribute("users")).getId());
+
+        model.addAttribute("bidding", biddingAuctions);
+
         return "profile";
     }
 
