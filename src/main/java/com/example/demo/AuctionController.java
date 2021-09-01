@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.IOException;
@@ -230,7 +231,7 @@ public class AuctionController {
     }
 
     @PostMapping("/bid")
-    public String postBid(@ModelAttribute Bid bid, HttpSession session, Model model) {
+    public String postBid(@ModelAttribute Bid bid, HttpSession session, Model model,  HttpServletRequest request) {
         Users users = (Users) session.getAttribute("users");
 
         if (users == null) {
@@ -238,6 +239,17 @@ public class AuctionController {
         }
 
         Auction auction = bid.getAuction();
+
+        System.out.println(auction.getUsers());
+        System.out.println(bid.getUser());
+        System.out.println(bid);
+        System.out.println(users.getFirstName());
+
+        if(auction.getUsers().getUsername().equals(users.getUsername())){
+            String referer = request.getHeader("Referer");
+            return "redirect:"+ referer;
+        }
+
         if (auctionService.isBidHighEnough(bid, bid.getAuction())) {
             bid.setUser(users);
             LocalDateTime timeNow = LocalDateTime.now();
