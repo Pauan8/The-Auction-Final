@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.IOException;
@@ -249,39 +250,25 @@ public class AuctionController {
 
         return "redirect:/detail/" + auction.getId();
     }
-    /*
-    @GetMapping("/check")
-    public String check() throws MessagingException, IOException, InterruptedException {
-        Email email = new Email();
-        while (true) {
-            List<Auction> auctionList = auctionRepository.findAllByEndDateTimeLessThan(
-                    LocalDateTime.now());
-
-            for (Auction a : auctionList) {
-                a.setFinished(true);
-                email.sendEmailAuctionEnd(a);
-                auctionRepository.save(a);
-
-            }
-            System.out.println("Checked all auctions and set if they are finished");
-            TimeUnit.MINUTES.sleep(1);
-        }
-
-
-
-
-}
-     */
 
     @GetMapping("/login")
-    public String login() {
+    public String login(HttpServletRequest request, Model model) {
+
+        String referer = request.getHeader("Referer");
+        System.out.println(referer);
+        if (referer == null) {
+            model.addAttribute("referer", "none");
+        } else {
+            model.addAttribute("referer", referer);
+        }
         return "login";
     }
 
     @PostMapping("/login")
     public String loggingIn(@RequestParam String username,
                             @RequestParam String password,
-                            HttpSession session) {
+                            HttpSession session,
+                            @RequestParam(required = false) String referer) {
         Users users = usersRepository.findByUsernameIgnoreCase(username);
 
         if (users == null) {
@@ -289,8 +276,14 @@ public class AuctionController {
         }
         if (users.getPassword().equals(password)) {
             session.setAttribute("users", users);
-            return "redirect:/";
+            if (referer == null || referer.equals("none")) {
+                return "redirect:/";
+            } else {
+                return "redirect:" + referer;
+            }
+
         }
+
         return "login";
     }
 

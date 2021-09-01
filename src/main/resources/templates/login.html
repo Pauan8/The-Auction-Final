@@ -23,6 +23,7 @@
 <div class="index-container">
     <div class="upload-form justify-content-md-center align-items-center">
         <form action="/login" method="POST">
+            <input type="hidden" th:value="${referer}" name="referer">
             <div class="form-row col">
                 <label class="register-label" for="username">Användarnamn</label>
                 <input type="text" class="form-control" style="width:300px;" id="username"
