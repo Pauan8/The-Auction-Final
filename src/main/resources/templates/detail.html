@@ -9,8 +9,9 @@
           rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
           crossorigin="anonymous">
-    <link rel="stylesheet" th:href="@{/stylesheetdetail.css}"/>
     <link rel="stylesheet" th:href="@{/stylesheet.css}"/>
+    <link rel="stylesheet" th:href="@{/stylesheetdetail.css}"/>
+
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,37 +21,28 @@
 </head>
 <body>
 <div class="index-container">
-    <div class="logo">
-        <a href="/">
-            <img src="../logo6.png" alt="logo">
-        </a>
-    </div>
-    <div class="header">
-    </div>
-    <div class="corner">
-    </div>
-<div class="detail-div">
-    <img class="detailImage"
-         th:src="'https://auction-photos-aw.s3.eu-west-2.amazonaws.com/' + ${auction.pictureAddress}">
-    <hr class="my-2">
-    <p class="description" th:text="${auction.description}">
-        Ingen beskrivning finns.
-    </p>
-    <hr class="my-1">
-    <table>
-        <tbody>
-        <tr>
-            <td>Utgångspris:</td>
-            <td th:text="${auction.startPrice}+' kr'"></td>
-        </tr>
-        <tr>
-            <td>Reservationspris:</td>
-            <td th:text="${auction.reservationPrice+' kr'}">&nbsp;</td>
-        </tr>
-        <tr>
-            <td>Aktuellt bud:</td>
-            <td th:text="${auction.getTopBid()}+' kr'">&nbsp;</td>
-        </tr>
+    <div class="detail-div">
+        <img class="detailImage"
+             th:src="'https://auction-photos-aw.s3.eu-west-2.amazonaws.com/' + ${auction.pictureAddress}">
+        <hr class="my-2">
+        <p class="description" th:text="${auction.description}">
+            Ingen beskrivning finns.
+        </p>
+        <hr class="my-1">
+        <table>
+            <tbody>
+            <tr>
+                <td>Utgångspris:</td>
+                <td th:text="${auction.startPrice}+' kr'"></td>
+            </tr>
+            <tr>
+                <td>Reservationspris:</td>
+                <td th:text="${auction.reservationPrice+' kr'}">&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Aktuellt bud:</td>
+                <td th:text="${auction.getTopBid()}+' kr'">&nbsp;</td>
+            </tr>
 
             <tr>
                 <td>Antal bud:</td>
@@ -79,9 +71,8 @@
             <a href="https://twitter.com/" class="fa fa-twitter"></a>
         </div>
     </div>
+    <script th:src="@{/Countdown.js}"></script>
 </div>
-
-<script th:src="@{/Countdown.js}"></script>
 </body>
 </html>
 

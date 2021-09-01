@@ -213,4 +213,13 @@ public class Auction {
                 NoSuchElementException::new);
         return highestBid.getAmount();
     }
+
+    public Bid getTopBidObject() {
+        if(this.getBidList().size() == 0){
+            return null;
+        }
+        Bid highestBid = this.getBidList().stream().max(Comparator.comparing(Bid::getAmount)).orElseThrow(
+                NoSuchElementException::new);
+        return highestBid;
+    }
 }

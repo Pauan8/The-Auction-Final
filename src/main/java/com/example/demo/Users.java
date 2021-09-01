@@ -193,4 +193,23 @@ public class Users {
     public void setRating(String rating) {
         this.rating = rating;
     }
+
+
+    @Override
+    public String toString() {
+        return "Users{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", auctionList=" + auctionList +
+                ", address='" + address + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                ", city='" + city + '\'' +
+                ", rating='" + rating + '\'' +
+                '}';
+    }
 }
