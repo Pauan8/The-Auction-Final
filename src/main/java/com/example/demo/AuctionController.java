@@ -7,11 +7,13 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -45,7 +47,9 @@ public class AuctionController {
     }
 
     @PostMapping("/register")
-    public String postRegister(@Valid @ModelAttribute Users users, BindingResult result, HttpSession session) throws Exception {
+    public String postRegister(@Valid @ModelAttribute Users users,
+                               BindingResult result,
+                               HttpSession session) throws Exception {
         try {
             if (result.hasErrors()) {
                 return "register";
@@ -68,7 +72,8 @@ public class AuctionController {
             return "index";
         }
 
-        List<Auction> auctions = auctionRepository.findAuctionByKeyWordsIgnoreCase(category);
+        List<Auction> auctions =
+                auctionRepository.findAuctionByKeyWordsIgnoreCase(category);
         model.addAttribute("auctions", auctions);
         return "index";
     }
@@ -76,15 +81,17 @@ public class AuctionController {
     @GetMapping("/filter")
     public String search(@RequestParam(required = false, defaultValue = "0") String[] age,
                          @RequestParam(required = false, defaultValue = "0") String[] city,
-                         @RequestParam(required = false, defaultValue = "0") String[] category, Model model) {
+                         @RequestParam(required = false, defaultValue = "0") String[] category,
+                         Model model) {
         List<Auction> auctions = new ArrayList<>();
         List<Auction> ages = new ArrayList<>();
         List<Auction> cities = new ArrayList<>();
         List<Auction> categories = new ArrayList<>();
 
-        if(!age[0].equals("0")) {
+        if (!age[0].equals("0")) {
             for (String selection : age) {
-                for (Auction auc : auctionRepository.findAuctionByAgeSpanIgnoreCase(selection)) {
+                for (Auction auc : auctionRepository.findAuctionByAgeSpanIgnoreCase(
+                        selection)) {
                     ages.add(auc);
                 }
             }
@@ -92,9 +99,10 @@ public class AuctionController {
             ages = auctionRepository.findAll();
         }
 
-        if(!city[0].equals("0")) {
+        if (!city[0].equals("0")) {
             for (String selection : city) {
-                for( Auction auc : auctionRepository.findAuctionBySalesAreaIgnoreCase(selection)){
+                for (Auction auc : auctionRepository.findAuctionBySalesAreaIgnoreCase(
+                        selection)) {
                     cities.add(auc);
                 }
             }
@@ -102,9 +110,10 @@ public class AuctionController {
             cities = auctionRepository.findAll();
         }
 
-        if(!category[0].equals("0")) {
+        if (!category[0].equals("0")) {
             for (String selection : category) {
-                for (Auction auc : auctionRepository.findAuctionByKeyWordsIgnoreCase(selection)) {
+                for (Auction auc : auctionRepository.findAuctionByKeyWordsIgnoreCase(
+                        selection)) {
                     categories.add(auc);
                 }
             }
@@ -122,13 +131,14 @@ public class AuctionController {
     @GetMapping("/search")
     public String search(@RequestParam String searchText, Model model) {
         String[] searchWordArray = searchText.split(" ");
-        String searchWord= "%";
+        String searchWord = "%";
 
         for (int i = 0; i < searchWordArray.length; i++) {
-            searchWord += searchWordArray[i]+ "%";
+            searchWord += searchWordArray[i] + "%";
         }
         System.out.println(searchWord);
-        List<Auction> auctions = auctionRepository.findByPartialKeywordIgnoreCase(searchWord);
+        List<Auction> auctions =
+                auctionRepository.findByPartialKeywordIgnoreCase(searchWord);
         model.addAttribute("auctions", auctions);
         return "index";
     }
@@ -155,9 +165,13 @@ public class AuctionController {
     }
 
     @PostMapping("/upload")
-    public String postUpload(@ModelAttribute Auction auction, @RequestParam("image") MultipartFile multipartFile, HttpSession session) throws IOException {
+    public String postUpload(@ModelAttribute Auction auction,
+                             @RequestParam("image") MultipartFile multipartFile,
+                             HttpSession session) throws IOException {
 
-        String fileName = UUID.randomUUID().toString() + "." + multipartFile.getOriginalFilename().split("\\.")[1];
+        String fileName =
+                UUID.randomUUID().toString() + "." + multipartFile.getOriginalFilename()
+                                                                  .split("\\.")[1];
         auction.setPictureAddress(fileName);
 
         UploadObject.upload(fileName, multipartFile);
@@ -170,7 +184,8 @@ public class AuctionController {
     @GetMapping("/profile")
     public String profile(HttpSession session, Model model) {
 
-        List<Auction> auctions = auctionRepository.findAllByUsersId(((Users) session.getAttribute("users")).getId());
+        List<Auction> auctions = auctionRepository.findAllByUsersId(
+                ((Users) session.getAttribute("users")).getId());
         model.addAttribute("auctions", auctions);
         return "profile";
     }
@@ -183,14 +198,15 @@ public class AuctionController {
                               @RequestParam(required = false) String email2) {
 
         Users user = (Users) session.getAttribute("users");
-       if (password.equals(password2)){
+        if (password.equals(password2)) {
             user.setPassword(password);
             usersRepository.save(user);
             return "redirect:/profile";
 
-       }
+        }
         return "profile";
     }
+
     @PostMapping("/email")
     public String changeEmail(HttpSession session,
                               @RequestParam(required = false) String email,
@@ -208,8 +224,8 @@ public class AuctionController {
     }
 
     @PostMapping("/profileLogut")
-    public String profileLogut(HttpSession session){
-        session.setAttribute("users",null);
+    public String profileLogut(HttpSession session) {
+        session.setAttribute("users", null);
         return "redirect:/";
     }
 
@@ -217,7 +233,7 @@ public class AuctionController {
     public String postBid(@ModelAttribute Bid bid, HttpSession session, Model model) {
         Users users = (Users) session.getAttribute("users");
 
-        if(users == null) {
+        if (users == null) {
             return "redirect:/login";
         }
 
@@ -233,6 +249,29 @@ public class AuctionController {
 
         return "redirect:/detail/" + auction.getId();
     }
+    /*
+    @GetMapping("/check")
+    public String check() throws MessagingException, IOException, InterruptedException {
+        Email email = new Email();
+        while (true) {
+            List<Auction> auctionList = auctionRepository.findAllByEndDateTimeLessThan(
+                    LocalDateTime.now());
+
+            for (Auction a : auctionList) {
+                a.setFinished(true);
+                email.sendEmailAuctionEnd(a);
+                auctionRepository.save(a);
+
+            }
+            System.out.println("Checked all auctions and set if they are finished");
+            TimeUnit.MINUTES.sleep(1);
+        }
+
+
+
+
+}
+     */
 
     @GetMapping("/login")
     public String login() {
@@ -240,7 +279,9 @@ public class AuctionController {
     }
 
     @PostMapping("/login")
-    public String loggingIn(@RequestParam String username, @RequestParam String password, HttpSession session) {
+    public String loggingIn(@RequestParam String username,
+                            @RequestParam String password,
+                            HttpSession session) {
         Users users = usersRepository.findByUsernameIgnoreCase(username);
 
         if (users == null) {
@@ -256,10 +297,10 @@ public class AuctionController {
 
     @GetMapping("/logout")
     public String logOut(HttpSession session) {
-        if(session.getAttribute("users") == null) {
+        if (session.getAttribute("users") == null) {
             return "redirect:/";
         }
-        session.setAttribute("users",null);
+        session.setAttribute("users", null);
 
         return "redirect:/";
     }
