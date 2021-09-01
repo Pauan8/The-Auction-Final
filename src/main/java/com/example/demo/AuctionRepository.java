@@ -12,7 +12,7 @@ public interface AuctionRepository extends CrudRepository<Auction,Long> {
     List<Auction> findAll();
 
     @Query(value = "SELECT * FROM AUCTION WHERE TITLE LIKE ?1", nativeQuery = true)
-    List<Auction> findByPartialKeywordIgnoreCase(String searchWordPattern);
+    List<Auction> findByPartialKeyword(String searchWordPattern);
 
     List<Auction> findAuctionByKeyWordsIgnoreCase(String keyWord);
 
