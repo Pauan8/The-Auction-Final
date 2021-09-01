@@ -259,11 +259,6 @@ public class AuctionController {
 
         Auction auction = bid.getAuction();
 
-        System.out.println(auction.getUsers());
-        System.out.println(bid.getUser());
-        System.out.println(bid);
-        System.out.println(users.getFirstName());
-
         if(auction.getUsers().getUsername().equals(users.getUsername())){
             String referer = request.getHeader("Referer");
             return "redirect:"+ referer;
