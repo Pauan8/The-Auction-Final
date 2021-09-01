@@ -216,6 +216,11 @@ public class AuctionController {
     @PostMapping("/bid")
     public String postBid(@ModelAttribute Bid bid, HttpSession session, Model model) {
         Users users = (Users) session.getAttribute("users");
+
+        if(users == null) {
+            return "redirect:/login";
+        }
+
         Auction auction = bid.getAuction();
         if (auctionService.isBidHighEnough(bid, bid.getAuction())) {
             bid.setUser(users);
