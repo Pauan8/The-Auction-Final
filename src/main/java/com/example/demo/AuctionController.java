@@ -122,19 +122,10 @@ public class AuctionController {
     @GetMapping("/search")
     public String search(@RequestParam String searchText, Model model) {
         String[] searchWordArray = searchText.split(" ");
-        String searchWord= "";
+        String searchWord= "%";
 
         for (int i = 0; i < searchWordArray.length; i++) {
-            if (searchWordArray.length == 1) {
-                searchWord = searchWordArray[i];
-            } else {
-                if (searchWordArray[i].equals(searchWordArray[searchWordArray.length - 1])) {
-                    searchWord += searchWordArray[i];
-                } else {
-
-                    searchWord += searchWordArray[i]+ "|";
-                }
-            }
+            searchWord += searchWordArray[i]+ "%";
         }
         System.out.println(searchWord);
         List<Auction> auctions = auctionRepository.findByPartialKeywordIgnoreCase(searchWord);
