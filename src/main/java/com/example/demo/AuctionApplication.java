@@ -67,7 +67,7 @@ public class AuctionApplication {
 
             Auction auction5 = new Auction(
                     "Enfärgad t-shirt i 100% ekologisk bomull. Perfekt att ha vid alla tillfällen! Plagget tillverkas i fyra olika färger, och varje färg har sitt unika tryck och matchar snyggt med hela kollektionen.",
-                    "2021-09-03T13:44:12", true, "tröjor-t-shirts", "7325856186511.jpg",
+                    "2021-09-03T13:44:12", false, "tröjor-t-shirts", "7325856186511.jpg",
                     150,
                     50,
                     "T-shirt med tryck beige", null, user2, "twelve", "malmö");
