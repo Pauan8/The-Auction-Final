@@ -16,6 +16,9 @@ import java.util.concurrent.TimeUnit;
 @SpringBootApplication
 public class AuctionApplication {
 
+    @Autowired
+    OurService ourService;
+
     public static void main(String[] args) {
         SpringApplication.run(AuctionApplication.class, args);
     }
@@ -64,7 +67,7 @@ public class AuctionApplication {
 
             Auction auction5 = new Auction(
                     "Enfärgad t-shirt i 100% ekologisk bomull. Perfekt att ha vid alla tillfällen! Plagget tillverkas i fyra olika färger, och varje färg har sitt unika tryck och matchar snyggt med hela kollektionen.",
-                    "2021-09-01T13:14:12", true, "tröjor-t-shirts", "7325856186511.jpg",
+                    "2021-09-03T13:44:12", true, "tröjor-t-shirts", "7325856186511.jpg",
                     150,
                     50,
                     "T-shirt med tryck beige", null, user2, "twelve", "malmö");
@@ -76,21 +79,8 @@ public class AuctionApplication {
             auctionRepository.save(auction4);
             auctionRepository.save(auction5);
 
-            Email email = new Email();
-            while (true) {
-                List<Auction> auctionList =
-                        auctionRepository.findAllByEndDateTimeLessThan(
-                                LocalDateTime.now());
+            ourService.checkEnd();
 
-                for (Auction a : auctionList) {
-                    a.setFinished(true);
-                    email.sendEmailAuctionEnd(a);
-                    auctionRepository.save(a);
-
-                }
-                System.out.println("Checked all auctions and set if they are finished");
-                TimeUnit.MINUTES.sleep(1);
-            }
 
         };
     }
