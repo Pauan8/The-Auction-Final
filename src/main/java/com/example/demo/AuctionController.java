@@ -78,22 +78,25 @@ public class AuctionController {
         String s;
         String[] searchWordArray;
 
+        if(isRedirected != true){
+            if(Arrays.asList(category).contains("Alla")){
+                String[] temp = {"Alla", "Accessoarer", "Basplagg", "Bodies", "Byxor-shorts", "Regnkläder", "Tröjor-t-shirts", "Ytterkläder"};
+                session.setAttribute("category", temp);
+            } else {
+                session.setAttribute("category", category);
+            }
+            session.setAttribute("age", age);
+            session.setAttribute("city", city);
+        }
+
         if (searchText.equals("0")) {
             s = (String) session.getAttribute("searchText");
 
         } else {
             s = session.getAttribute("searchText") + " " + searchText;
         }
+
         session.setAttribute("searchText", s );
-
-        if(isRedirected != true){
-            session.setAttribute("category", category);
-            session.setAttribute("age", age);
-            session.setAttribute("city", city);
-            System.out.println("göt detta");
-
-        }
-
 
         if (session.getAttribute("searchText") != null) {
             searchWordArray = ((String) session.getAttribute("searchText")).split(" ");
@@ -101,23 +104,16 @@ public class AuctionController {
             searchWordArray = null;
         }
 
-        String[] searchWords;
-        if(searchWordArray != null){
-            searchWords = Arrays.stream(searchWordArray).distinct().toArray(String[]::new);
-        } else {
-            searchWords = null;
-        }
-
-        List<Auction> search = auctionService.searchFilter(searchWords);
+        List<Auction> search = auctionService.searchFilter(searchWordArray);
         List<Auction> ages = auctionService.filterByType("age", (String[])session.getAttribute("age"));
         List<Auction> cities = auctionService.filterByType("city", (String[])session.getAttribute("city"));
         List<Auction> categories = auctionService.filterByType("category", (String[])session.getAttribute("category"));
 
         auctions = auctionService.filter(search, ages, cities, categories, auctions);
 
-        System.out.println("cities " + cities.size() + " categories: " + categories.size() + " ages: " + ages.size());
+        System.out.println( "cities " + cities.size() + " categories: " + categories.size() + " ages: " + ages.size());
         model.addAttribute("auctions", auctions);
-        session.setAttribute("searchWords", searchWords);
+        session.setAttribute("searchWords", searchWordArray);
         return "index";
     }
 
@@ -135,7 +131,7 @@ public class AuctionController {
             newSearchWords = null;
         }
 
-        session.setAttribute("searchText", newSearchWords.trim());
+        session.setAttribute("searchText", newSearchWords!= null?newSearchWords.trim():newSearchWords);
         redirectAttributes.addAttribute("isRedirected", true);
         return "redirect:/filter";
     }

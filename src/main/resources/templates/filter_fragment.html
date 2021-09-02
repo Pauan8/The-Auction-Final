@@ -29,7 +29,7 @@
             <br>
             <h3 class="heading-h3-2">Kategorier</h3>
             <label>
-                <input name="category" type="checkbox" value="Alla"/>
+                <input name="category" type="checkbox" value="Alla" th:checked="${session.category!=null?#lists.contains(session.category,'Alla'):false}"/>
                 Alla
             </label>
             <label>
