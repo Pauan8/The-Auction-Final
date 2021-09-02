@@ -6,7 +6,6 @@
 </head>
 <body>
 
-
 <div class="expand-group" th:fragment="filter-fragment">
     <div class="filter-outer">
         <form class="filter" method="get" action="/filter">
@@ -29,7 +28,8 @@
             <br>
             <h3 class="heading-h3-2">Kategorier</h3>
             <label>
-                <input name="category" type="checkbox" value="Alla"/>
+                <input name="category" type="checkbox" onclick="selectAllCheckboxes(this)" value="Alla"
+                       th:checked="${session.category!=null?#lists.contains(session.category,'Accessoarer'):false}"/>
                 Alla
             </label>
             <label>
@@ -134,11 +134,12 @@
                 Lund
             </label>
             <br>
+            <a type="submit" class="clear-filter mb-3" onclick="clearCheckboxes(this);">Rensa filter</a>
             <button type="submit" class="btn btn-primary">Använd</button>
         </form>
     </div>
     <button class="expand-button"><i class="fas fa-chevron-right" id="expand"></i></button>
-</div>
+    <script th:src="@{/Checkboxes.js}"></script>
 </div>
 
 
