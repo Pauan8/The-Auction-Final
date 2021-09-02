@@ -1,6 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;1,600&display=swap');
 
 
+.left-sidebar {
+    grid-area: left;
+    height: 100%;
+    display: flex;
+    max-height: calc(100vh);
+    position:sticky;
+    top:0;
+    overflow-x: auto;
+    font-size: 0.8rem;
+}
+
 /* text */
 .heading {
     font-weight: 600;
@@ -130,3 +141,12 @@ input:checked + .slider:before {
 .btn-primary {
     margin-left: 5%;
 }
+
+
+ @media screen and (max-width: 768px){
+          .left-sidebar {
+                    grid-area: main;
+                    z-index: 1;
+                    width: 40px;
+                }
+           }

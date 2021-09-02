@@ -5,8 +5,8 @@
     <title>Title</title>
 </head>
 <body>
-
-<div class="expand-group" th:fragment="filter-fragment">
+<div class="left-sidebar" th:fragment="filter-fragment">
+<div class="expand-group" >
     <div class="filter-outer">
         <form class="filter" method="get" action="/filter">
             <h3 class="heading-h3-2">Filter</h3>
@@ -139,7 +139,10 @@
         </form>
     </div>
     <button class="expand-button"><i class="fas fa-chevron-right" id="expand"></i></button>
+
+</div>
     <script th:src="@{/javascript/Checkboxes.js}"></script>
+    <script th:src="@{/javascript/CountdownShort.js}"></script>
 </div>
 
 

@@ -12,6 +12,7 @@
           crossorigin="anonymous">
     <link rel="stylesheet" th:href="@{/css/stylesheet.css}"/>
     <link rel="stylesheet" th:href="@{/css/search.css}"/>
+    <link rel="stylesheet" th:href="@{/css/filter.css}"/>
 
 </head>
 <body>
@@ -35,10 +36,10 @@
     <div th:replace="login_fragment::login-fragment">
     </div>
 
-    <div class="left-sidebar">
+
         <div th:replace="filter_fragment::filter-fragment">
         </div>
-    </div>
+
 
     <div class="products">
         <div th:replace="card_fragment::card-auction-fragment"></div>
@@ -57,6 +58,6 @@
         crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/7f24e97d67.js"
         crossorigin="anonymous"></script>
-<script th:src="@{/javascript/CountdownShort.js}"></script>
+
 </body>
 </html>
