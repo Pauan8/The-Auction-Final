@@ -79,12 +79,7 @@ public class AuctionController {
         String[] searchWordArray;
 
         if(isRedirected != true){
-            if(Arrays.asList(category).contains("Alla")){
-                String[] temp = {"Alla", "Accessoarer", "Basplagg", "Bodies", "Byxor-shorts", "Regnkläder", "Tröjor-t-shirts", "Ytterkläder"};
-                session.setAttribute("category", temp);
-            } else {
-                session.setAttribute("category", category);
-            }
+            session.setAttribute("category", category);
             session.setAttribute("age", age);
             session.setAttribute("city", city);
         }

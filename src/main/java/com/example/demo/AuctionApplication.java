@@ -48,7 +48,7 @@ public class AuctionApplication {
 
             Auction auction3 = new Auction(
                     "Enfärgade byxor i 100% ekologisk bomull. Byxorna har mjuk mudd i midjan och vid benslut som kan vikas ned när barnet växer.",
-                    "2021-09-02T10:11:12", false, "byxor-shorts", "7325856240473_1.jpg",
+                    "2021-09-05T10:11:12", false, "byxor-shorts", "7325856240473_1.jpg",
                     150,
                     50, "Enfärgade byxor baby gråmelange",
                     null, user, "six", "göteborg");

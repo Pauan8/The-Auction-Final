@@ -107,7 +107,8 @@
     </div>
 
     <div class="left-sidebar">
-        <div th:replace="filter_fragment::filter-fragment"></div>
+        <div th:replace="filter_fragment::filter-fragment">
+        </div>
     </div>
 
     <div class="products">
@@ -118,7 +119,8 @@
     </div>
 </div>
 
-<div th:replace="modal_fragment::modal-fragment"></div>
+<div th:replace="modal_fragment::modal-fragment">
+</div>
 
 <script th:src="@{/sidebarFilter.js}"></script>
 
@@ -128,7 +130,6 @@
 
 <script src="https://kit.fontawesome.com/7f24e97d67.js"
         crossorigin="anonymous"></script>
-
 <script th:src="@{/CountdownShort.js}"></script>
 </body>
 </html>
