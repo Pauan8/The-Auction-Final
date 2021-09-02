@@ -201,12 +201,21 @@ public class AuctionController {
                 ((Users) session.getAttribute("users")).getId());
         model.addAttribute("auctions", auctions);
 
+
+        return "profile";
+    }
+
+    @GetMapping("/profileBid")
+    public String profileBid(HttpSession session, Model model) {
+
         List<Auction> biddingAuctions = auctionRepository.findAuctionByBidder(((Users) session.getAttribute("users")).getId());
 
         model.addAttribute("bidding", biddingAuctions);
 
-        return "profile";
+        return "profileBid";
     }
+
+
 
     @PostMapping("/passwordChange")
     public String profilePost(HttpSession session,

@@ -18,54 +18,6 @@ function _e(id) {
    return document.getElementById(id);
 }
 
-_e('Bud').onclick = function() {
-    _e('profilePageInfo').innerHTML = `<h1 class="MinaAnnonser">Mina Budgivningar</h1>
-
-                                               <div class="outer">
-                                                   <div class="card" th:each="item : ${bidding}">
-                                                       <h1 class="heading" th:text="${item.title}">
-                                                           Rubrik
-                                                       </h1>
-                                                       <span class="badge rounded-pill bg-color" th:text="${item.keyWords}"></span>
-                                                       <hr class="my-2">
-                                                       <div class="img-container">
-                                                           <img class="img"
-                                                                th:src="'https://auction-photos-aw.s3.eu-west-2.amazonaws.com/' + ${item.pictureAddress}"/>
-                                                       </div>
-                                                       <hr class="my-2">
-                                                       <p class="description" th:text="${item.getShortDescription()}">
-                                                           Ingen beskrivning finns.
-                                                       </p>
-                                                       <button class="btn btn-primary btn-card detail" data-bs-toggle="modal"
-                                                               data-bs-target="#myModal" th:id="${item.id}">Mer
-                                                           information
-                                                       </button>
-                                                       <hr class="my-2">
-                                                       <table>
-                                                           <tbody>
-                                                           <tr>
-                                                               <td>Utgångspris:</td>
-                                                               <td th:text="${item.startPrice}+' kr'"></td>
-                                                           </tr>
-                                                           <tr>
-                                                               <td>Aktuellt bud:</td>
-                                                               <td th:text="${item.getTopBid()}+' kr'">&nbsp;</td>
-                                                           </tr>
-                                                           </tbody>
-                                                       </table>
-                                                       <div class="auctionDiv">
-                                                           <p hidden id="auctionEndDate" th:text="${item.endDateTime}"></p>
-                                                           <span id="timeRemain"></span>
-                                                       </div>
-                                                       <hr class="my-2">
-                                                   </div>`;
-}
-
-function _e(id) {
-   return document.getElementById(id);
-}
-
-
 _e('profilButton').onclick = function() {
     _e('profilePageInfo').innerHTML = `<div id="profilInställningar">
                                                <div class="outerProfile">
@@ -84,15 +36,11 @@ _e('profilButton').onclick = function() {
                                                                    <input type="submit" value="Ändra">
                                                                </form>
                                                            </div>
-
-
-
                                                        </div>
                                                    </div>
                                                </div>
                                            </div>`;
 }
-
 function _e(id) {
    return document.getElementById(id);
 }
