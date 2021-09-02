@@ -19,7 +19,27 @@ body {
     font-weight: 600;
 }
 
+/* custom scroll */
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: ghostwhite #F1BBCA;
+}
 
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #F1BBCA;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: ghostwhite;
+  border-radius: 20px;
+  border: 3px solid #F1BBCA;
+}
 
 /* text */
 .heading {
@@ -100,6 +120,7 @@ h3 {
     border-color: #F3F2DA;
     color: #F3F2DA;
     border-radius: 0 5px 5px 0;
+    height: 100%;
 }
 
 .btn-login {
@@ -240,7 +261,11 @@ h3 {
     flex-wrap: wrap;
 }
 
-
+.clear-filter {
+    text-decoration: none;
+    text-align: center;
+    color: #045762;
+}
 .right-sidebar {
     grid-area: right;
 }
@@ -283,6 +308,15 @@ h3 {
     font-size: 15px;
 }
 
+.description::-webkit-scrollbar-track {
+              background: #F3F2DA;
+            }
+.description::-webkit-scrollbar-thumb {
+              background-color: ghostwhite;
+              border-radius: 20px;
+              border: 3px solid #F3F2DA;
+            }
+
 .search {
     background-color: #F1BBCA;
     border-radius: 5px;
@@ -310,7 +344,7 @@ h3 {
 }
 
 .searchbar .form-control {
-    border: 1px solid #F1BBCA;
+    border: 1px solid #F3F2DA;
     border-radius: 5px 0 0 5px;
     width: 100%;
 }
@@ -332,8 +366,10 @@ h3 {
 .badge-search-container-outer{
     margin: 0 10px;
     overflow-x: auto;
-    max-height: 30px;
+    max-height: 22px;
+
 }
+
 
 .badge-search-container {
     position: relative;

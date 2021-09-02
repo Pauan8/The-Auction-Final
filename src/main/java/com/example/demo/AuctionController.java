@@ -99,7 +99,7 @@ public class AuctionController {
             s = session.getAttribute("searchText") + " " + searchText;
         }
 
-        session.setAttribute("searchText", s );
+        session.setAttribute("searchText", s!=null?s.toLowerCase():null);
 
         if (session.getAttribute("searchText") != null) {
             searchWordArray = ((String) session.getAttribute("searchText")).split(" ");
