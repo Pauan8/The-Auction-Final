@@ -13,6 +13,7 @@ import javax.validation.Valid;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 import org.springframework.web.multipart.MultipartFile;
@@ -115,7 +116,7 @@ public class AuctionController {
 
         System.out.println( "cities " + cities.size() + " categories: " + categories.size() + " ages: " + ages.size());
         model.addAttribute("auctions", auctions);
-        session.setAttribute("searchWords", searchWordArray);
+        session.setAttribute("searchWords", searchWordArray!=null?Arrays.stream(searchWordArray).distinct().collect(Collectors.toList()):null);
         return "index";
     }
 
@@ -133,7 +134,7 @@ public class AuctionController {
             newSearchWords = null;
         }
 
-        session.setAttribute("searchText", newSearchWords!= null?newSearchWords.trim():newSearchWords);
+        session.setAttribute("searchText", newSearchWords!= null?newSearchWords.trim():null);
         redirectAttributes.addAttribute("isRedirected", true);
         return "redirect:/filter";
     }

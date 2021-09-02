@@ -37,7 +37,6 @@ public class AuctionService {
     public List<Auction> searchFilter(String[] searchArray) {
         List<Auction> auctions = new ArrayList<>();
 
-
         if (searchArray != null) {
             if (searchArray.length == 1 && searchArray[0].equals("null")){
                 System.out.println("den är null");
@@ -105,6 +104,6 @@ public class AuctionService {
             }
         }
 
-        return auctions;
+        return auctions.stream().distinct().collect(Collectors.toList());
     }
 }
