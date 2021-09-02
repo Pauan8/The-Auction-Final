@@ -7,12 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 
-import javax.mail.MessagingException;
-import java.io.IOException;
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 @SpringBootApplication
 public class AuctionApplication {
 
@@ -60,7 +54,7 @@ public class AuctionApplication {
                     null, user, "six", "göteborg");
 
             Auction auction4 = new Auction(
-                    "Gör ditt barn redo för regninga dagar i den här vind- och vattentät regnjacka! Jackan har en avtagbar huva som fästs med tryckknappar och insidan av kragan har ett mjukt fleecefoder. Jackan har reflexer fram- och bak, och stängs med tryckknappar. Storlek 74/80 har ingen huva.",
+                    "Gör ditt barn redo för regniga dagar i den här vind- och vattentät regnjacka! Jackan har en avtagbar huva som fästs med tryckknappar och insidan av kragan har ett mjukt fleecefoder. Jackan har reflexer fram- och bak, och stängs med tryckknappar. Storlek 74/80 har ingen huva.",
                     "2021-09-30T16:11:12", false, "regnkläder", "7325856097541.jpg", 150,
                     50,
                     "Regnjacka galon gammelrosa", null, user, "six", "post");
