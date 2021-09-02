@@ -127,14 +127,15 @@ public class AuctionController {
         for(String word : ((String)session.getAttribute("searchText")).split(" ")){
             if(!word.equals(searchText)){
                 if(!word.equals("null")) {
-                    newSearchWords += word;
+                    newSearchWords += word + " ";
                 }
             }
         }
         if(newSearchWords.length() == 0){
             newSearchWords = null;
         }
-        session.setAttribute("searchText", newSearchWords);
+
+        session.setAttribute("searchText", newSearchWords.trim());
         redirectAttributes.addAttribute("isRedirected", true);
         return "redirect:/filter";
     }
