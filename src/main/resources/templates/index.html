@@ -13,7 +13,8 @@
     <link rel="stylesheet" th:href="@{/css/stylesheet.css}"/>
     <link rel="stylesheet" th:href="@{/css/search.css}"/>
     <link rel="stylesheet" th:href="@{/css/filter.css}"/>
-
+    <link rel="stylesheet" th:href="@{/css/profileMenuAndLogin.css}"/>
+    <link rel="stylesheet" th:href="@{/css/card.css}"/>
 </head>
 <body>
 
@@ -36,10 +37,8 @@
     <div th:replace="login_fragment::login-fragment">
     </div>
 
-
-        <div th:replace="filter_fragment::filter-fragment">
-        </div>
-
+    <div th:replace="filter_fragment::filter-fragment">
+    </div>
 
     <div class="products">
         <div th:replace="card_fragment::card-auction-fragment"></div>

@@ -1,0 +1,74 @@
+.card {
+    background-color: #F3F2DA;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.description {
+    min-height: 200px;
+    font-size: 15px;
+    overflow-y: auto;
+    font-style: italic;
+    margin: 10px 40px;
+    max-width: 800px;
+
+}
+
+.description::-webkit-scrollbar-track {
+              background: #F3F2DA;
+            }
+.description::-webkit-scrollbar-thumb {
+              background-color: ghostwhite;
+              border-radius: 20px;
+              border: 3px solid #F3F2DA;
+            }
+
+.img-container {
+    position: relative;
+    max-height: 300px;
+    max-width: 300px;
+    min-height: 200px;
+    min-width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-container img {
+    object-fit: cover;
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.badge {
+    color: ghostwhite;
+    font-size: 1.0em;
+    font-weight: 500;
+    background-color: #045762;
+}
+
+.card .btn {
+    width: auto;
+}
+
+@media screen and (max-width: 1200px){
+    .btn-card {
+        height: 35px;
+    }
+}
+
+@media screen and (max-width: 768px){
+        .small {
+            display:flex;
+             z-index: 3;
+        }
+        .large {
+            display:none;
+        }
+}

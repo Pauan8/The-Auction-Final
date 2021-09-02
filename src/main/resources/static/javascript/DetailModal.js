@@ -1,4 +1,3 @@
-
 let iframeElement = document.getElementById("myIframe")
 const myButtons = document.getElementsByClassName("detail")
 
