@@ -62,7 +62,7 @@
     </div>
     <div th:if="${session.users==null}" class="login-box">
         <div class="d-grid mt-2 mx-2">
-            <form class="express-login" action="/login" method="POST">
+            <form class="express-login" th:action="@{/login}" method="POST">
                 <div class="d-grid mb-1 express-login-input">
                     <input type="text" class="form-control mb-1 login-input"
                            placeholder="Användarnamn" name="username">
@@ -73,11 +73,15 @@
                     <button class="mb-1 btn btn-primary btn-login text-uppercase fw-bold btn-login"
                             type="submit">Logga in
                     </button>
-                        <button formaction="/register" class="btn btn-primary btn-login text-uppercase fw-bold mt-1 btn-login"
-                                type="submit">Registrera
-                        </button>
                 </div>
             </form>
+            <form method="get" action="/register">
+            <button
+                    class="btn btn-primary btn-login text-uppercase fw-bold mt-1 btn-login"
+                    type="submit">Registrera
+            </button>
+            </form>
+
         </div>
     </div>
 

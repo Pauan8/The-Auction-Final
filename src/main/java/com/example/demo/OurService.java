@@ -16,6 +16,9 @@ public class OurService {
     @Autowired
     AuctionRepository auctionRepository;
 
+    @Autowired
+    UsersRepository usersRepository;
+
     public void checkEnd() throws MessagingException, IOException, InterruptedException {
 
         Email email = new Email();
@@ -27,10 +30,15 @@ public class OurService {
             for (Auction a : auctionList) {
                 a.setFinished(true);
                 auctionRepository.save(a);
-                email.sendEmailAuctionEnd(a);
-
+                if (a.getTopBidObject() != null) {
+                    email.sendEmailAuctionEnd(a);
+                }
             }
             System.out.println("Checked all auctions and set if they are finished");
+            for (Users u: usersRepository.findAll()
+                 ) {
+                System.out.println(u.toString());
+            }
             TimeUnit.MINUTES.sleep(1);
         }
     }

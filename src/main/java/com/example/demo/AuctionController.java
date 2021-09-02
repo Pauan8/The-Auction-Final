@@ -33,6 +33,9 @@ public class AuctionController {
     @Autowired
     BidRepository bidRepository;
 
+    @Autowired
+    UserService userService;
+
     @GetMapping("/")
     public String home(HttpSession session, Model model) {
 
@@ -43,20 +46,24 @@ public class AuctionController {
 
     @GetMapping("/register")
     public String register(Model model) {
-        Users users = new Users();
-        model.addAttribute("users", users);
+        UserDto userDto = new UserDto();
+        model.addAttribute("userDto", userDto);
         return "register";
     }
 
     @PostMapping("/register")
-    public String postRegister(@Valid @ModelAttribute Users users,
+    public String postRegister(@Valid @ModelAttribute UserDto userDto,
                                BindingResult result,
                                HttpSession session) throws Exception {
         try {
             if (result.hasErrors()) {
+                System.out.println("something went wrong");
+                return "register";
+            } else if (!userDto.getPassword().equals(userDto.getMatchingPassword())){
+                System.out.println("passwords didnt match");
                 return "register";
             }
-            usersRepository.save(users);
+            Users users = userService.registerNewUserAccount(userDto);
             session.setAttribute("users", users);
             return "redirect:/";
         } catch (org.springframework.dao.DataIntegrityViolationException jse) {
@@ -192,12 +199,21 @@ public class AuctionController {
                 ((Users) session.getAttribute("users")).getId());
         model.addAttribute("auctions", auctions);
 
+
+        return "profile";
+    }
+
+    @GetMapping("/profileBid")
+    public String profileBid(HttpSession session, Model model) {
+
         List<Auction> biddingAuctions = auctionRepository.findAuctionByBidder(((Users) session.getAttribute("users")).getId());
 
         model.addAttribute("bidding", biddingAuctions);
 
-        return "profile";
+        return "profileBid";
     }
+
+
 
     @PostMapping("/passwordChange")
     public String profilePost(HttpSession session,

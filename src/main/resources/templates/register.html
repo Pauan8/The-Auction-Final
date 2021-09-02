@@ -21,7 +21,8 @@
 <div class="container-register">
     <div class="side1"></div>
     <div class="register-form row justify-content-md-center align-items-center">
-        <form method="POST" th:object="${users}">
+        <form th:action="@{/register}" method="POST" th:object="${userDto}"
+              enctype="utf8">
             <div class="form-row col">
                 <label class="register-label" for="inputEmail4">Email</label>
                 <input type="email" class="form-control" style="width:300px;"
@@ -42,8 +43,18 @@
                 <label class="register-label" for="password">Lösenord</label>
                 <input type="password" class="form-control" style="width:300px;"
                        id="password"
-                       placeholder="Lösenord" name="password" th:errorclass="is-invalid"
+                       placeholder="Ange lösenord" name="password"
+                       th:errorclass="is-invalid"
                        th:field="*{password}">
+                <div class="invalid-feedback">Felaktig längd på lösenord</div>
+            </div>
+            <div class="form-row col">
+                <label class="register-label" for="password2">Lösenord</label>
+                <input type="password" class="form-control" style="width:300px;"
+                       id="password2"
+                       placeholder="Ange lösenord igen" name="password"
+                       th:errorclass="is-invalid"
+                       th:field="*{matchingPassword}">
                 <div class="invalid-feedback">Felaktig längd på lösenord</div>
             </div>
             <div class="form-row col">
