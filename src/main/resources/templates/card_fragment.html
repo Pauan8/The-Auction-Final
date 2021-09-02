@@ -30,6 +30,24 @@
                 data-bs-target="#myModal" th:id="${item.id}">Mer
             information
         </button>
+
+        <div class="modal fade" id="myModal" tabindex="-1"
+             aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <iframe height="100%" width="100%"
+                                id="myIframe"></iframe>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="close-modal" onclick="closeModal();">
+                            Stäng
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
         <hr class="my-2">
         <table>
             <tbody>
@@ -50,6 +68,7 @@
         <hr class="my-2">
     </div>
     <script th:src="@{/javascript/DetailModal.js}"></script>
+    <script th:src="@{/javascript/close.js}"></script>
 </div>
 
 </body>

@@ -194,6 +194,7 @@ h3 {
     background-color: inherit;
 }
 
+
 /* register */
 .container-register {
    background-color: inherit;
@@ -241,6 +242,24 @@ h3 {
     color: #045762;
 }
 
+/*login*/
+.login-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginSide1 {
+    grid-area: left;
+    background-color: #F3F2DA;
+}
+
+.loginSide2 {
+    grid-area: right;
+    background-color: #F3F2DA;
+}
 
 /*details */
 .time i {
@@ -285,25 +304,28 @@ td {
     with: 100%;
     height: 100%;
 }
+
+
+
+.modal-body {
+     height: 850px;
+     padding: 0rem;
+     background-color: ghostwhite;
+ }
+
+ .modal-footer {
+     padding: 0.5rem;
+     background-color: ghostwhite;
+
+     }
+
+
+
 /*responsive*/
 @media screen and (max-width: 1200px) {
     .outer {
         grid-template-columns: repeat(2, 1fr);
     }
-
-}
-
-.modal-body {
-    padding: 0rem;
-    background-color: ghostwhite;
-    height: 100vh;
-
-}
-
-.modal-footer {
-    padding: 0.5rem;
-    background-color: ghostwhite;
-
 }
 
 @media screen and (max-width: 768px) {
@@ -318,6 +340,7 @@ td {
             grid-template-rows: 100px 52px auto;
         }
 
+
         .corner {
             grid-area: right;
         }
@@ -327,8 +350,12 @@ td {
         }
 
         .products {
-        margin: 0 20px;
+            margin: 0 20px;
         }
+
+       .modal-body {
+            max-height: calc(100vh - 80px);
+       }
 
 }
 

@@ -1,4 +1,4 @@
-const btn = document.getElementById('close-modal');
+const closeBtn = document.getElementById('close-modal');
 const myModal = document.getElementById('myModal');
 
 const closeModal = () => {

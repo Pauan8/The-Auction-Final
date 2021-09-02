@@ -10,12 +10,11 @@
           crossorigin="anonymous">
     <script src="js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" th:href="@{/css/stylesheet.css}"/>
-    <link rel="stylesheet" th:href="@{/css/stylesheetdetail.css}"/>
     <meta charset="UTF-8">
     <title>The auction - bäst på barnkläder!</title>
 </head>
 <body>
-<div class="index-container">
+<div class="login-container">
     <div class="upload-form justify-content-md-center align-items-center">
         <form th:action="@{/login}" method="POST">
             <input type="hidden" th:value="${referer}" name="referer">

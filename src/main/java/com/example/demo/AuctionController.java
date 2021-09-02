@@ -39,7 +39,10 @@ public class AuctionController {
 
     @GetMapping("/")
     public String home(HttpSession session, Model model) {
-
+        session.setAttribute("city", new String[]{"0"});
+        session.setAttribute("category", new String[]{"0"});
+        session.setAttribute("age", new String[]{"0"});
+        session.setAttribute("searchWords", null);
         List<Auction> auctions = auctionRepository.findAllByFinishedFalse();
         model.addAttribute("auctions", auctions);
         return "index";
@@ -83,7 +86,7 @@ public class AuctionController {
                          Model model, HttpSession session) {
 
         List<Auction> auctions = new ArrayList<>();
-        String s;
+        String searchWords;
         String[] searchWordArray;
 
         if(isRedirected != true){
@@ -92,20 +95,15 @@ public class AuctionController {
             session.setAttribute("city", city);
         }
 
-        if (searchText.equals("0")) {
-            s = (String) session.getAttribute("searchText");
+        searchWords = searchText.equals("0")
+                ? (String)session.getAttribute("searchText")
+                : session.getAttribute("searchText") + " " + searchText;
 
-        } else {
-            s = session.getAttribute("searchText") + " " + searchText;
-        }
+        session.setAttribute("searchText", searchWords!=null ? searchWords.toLowerCase() : null);
 
-        session.setAttribute("searchText", s!=null?s.toLowerCase():null);
-
-        if (session.getAttribute("searchText") != null) {
-            searchWordArray = ((String) session.getAttribute("searchText")).split(" ");
-        } else {
-            searchWordArray = null;
-        }
+        searchWordArray = session.getAttribute("searchText") != null
+                ? ((String) session.getAttribute("searchText")).split(" ")
+                : null;
 
         List<Auction> search = auctionService.searchFilter(searchWordArray);
         List<Auction> ages = auctionService.filterByType("age", (String[])session.getAttribute("age"));
@@ -116,7 +114,9 @@ public class AuctionController {
 
         System.out.println( "cities " + cities.size() + " categories: " + categories.size() + " ages: " + ages.size());
         model.addAttribute("auctions", auctions);
-        session.setAttribute("searchWords", searchWordArray!=null?Arrays.stream(searchWordArray).distinct().collect(Collectors.toList()):null);
+        session.setAttribute("searchWords", searchWordArray !=null
+                ? Arrays.stream(searchWordArray).distinct().collect(Collectors.toList())
+                : null);
         return "index";
     }
 
@@ -125,7 +125,7 @@ public class AuctionController {
         String newSearchWords= "";
         for(String word : ((String)session.getAttribute("searchText")).split(" ")){
             if(!word.equals(searchText)){
-                if(!word.equals("null")) {
+                if (!word.equals("null")) {
                     newSearchWords += word + " ";
                 }
             }
@@ -137,20 +137,6 @@ public class AuctionController {
         session.setAttribute("searchText", newSearchWords!= null?newSearchWords.trim():null);
         redirectAttributes.addAttribute("isRedirected", true);
         return "redirect:/filter";
-    }
-
-    @GetMapping("/search")
-    public String search(@RequestParam String searchText, Model model) {
-        String[] searchWordArray = searchText.split(" ");
-        String searchWord = "%";
-
-        for (String word : searchWordArray) {
-            searchWord += word + "%";
-        }
-        System.out.println(searchWord);
-        List<Auction> auctions = auctionRepository.findByPartialKeyword(searchWord);
-        model.addAttribute("auctions", auctions);
-        return "index";
     }
 
     @GetMapping("/detail/{id}")
@@ -296,16 +282,19 @@ public class AuctionController {
     public String loggingIn(@RequestParam String username,
                             @RequestParam String password,
                             HttpSession session,
-                            @RequestParam(required = false) String referer) {
+                            @RequestParam(required = false) String referer,
+                            RedirectAttributes redirectAttributes) {
         Users users = usersRepository.findByUsernameIgnoreCase(username);
 
         if (users == null) {
-            return "redirect:/";
+            redirectAttributes.addAttribute("isRedirected", true);
+            return "redirect:/filter";
         }
         if (users.getPassword().equals(password)) {
             session.setAttribute("users", users);
             if (referer == null || referer.equals("none")) {
-                return "redirect:/";
+                redirectAttributes.addAttribute("isRedirected", true);
+                return "redirect:/filter";
             } else {
                 return "redirect:" + referer;
             }
@@ -316,13 +305,14 @@ public class AuctionController {
 
 
     @GetMapping("/logout")
-    public String logOut(HttpSession session) {
+    public String logOut(HttpSession session, RedirectAttributes redirectAttributes) {
+        redirectAttributes.addAttribute("isRedirected", true);
         if(session.getAttribute("users") == null) {
-            return "redirect:/";
+            return "redirect:/filter";
         }
         session.setAttribute("users",null);
 
-        return "redirect:/";
+        return "redirect:/filter";
     }
 }
 

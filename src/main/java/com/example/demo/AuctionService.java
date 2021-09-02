@@ -39,12 +39,10 @@ public class AuctionService {
 
         if (searchArray != null) {
             if (searchArray.length == 1 && searchArray[0].equals("null")){
-                System.out.println("den är null");
                 auctions = auctionRepository.findAll();
             } else {
                 for (String selection : searchArray) {
                         String wordTemp = "%" + selection + "%";
-                        System.out.println(wordTemp);
                         for (Auction searchAuction : auctionRepository.findByPartialKeyword(wordTemp)) {
                             auctions.add(searchAuction);
                         }
