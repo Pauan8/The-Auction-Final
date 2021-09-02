@@ -139,8 +139,6 @@ public class AuctionController {
         return "redirect:/filter";
     }
 
-
-
     @GetMapping("/search")
     public String search(@RequestParam String searchText, Model model) {
         String[] searchWordArray = searchText.split(" ");
@@ -213,8 +211,6 @@ public class AuctionController {
 
         return "profileBid";
     }
-
-
 
     @PostMapping("/passwordChange")
     public String profilePost(HttpSession session,

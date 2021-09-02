@@ -9,16 +9,10 @@
           crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css"
           rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap"
-          rel="stylesheet">
-    <link rel="stylesheet" th:href="@{/stylesheet.css}"/>
-    <link rel="stylesheet" th:href="@{/profilePage.css}"/>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/stylesheet.css}"/>
+    <link rel="stylesheet" th:href="@{/css/profilePage.css}"/>
+
     <title>The auction - bäst på barnkläder!</title>
 </head>
 <body>
@@ -33,43 +27,11 @@
     </div>
     <div class="corner"></div>
 
-    <div class="left-sidebar">
-        <div class="list-group">
-            <button onclick="window.location.href='/';" id="homePage" type="submit"
-                    class="btn btn-primary"
-                    style="margin-top:10px;">Start
-            </button>
-            <button onclick="window.location.href='/profile';" id="profilStart"
-                    type="submit" class="btn btn-primary"
-                    style="margin-top:1px;">Mina auktioner
-            </button>
-            <button onclick="window.location.href='/profileBid' " id="minaBud" type="submit" class="btn btn-primary"
-                    style="margin-top:1px;">Mina bud
-            </button>
-            <button id="safetyButton" type="submit" class="btn btn-primary"
-                    style="margin-top:1px;">Säkerhet
-            </button>
-            <button id="profilButton" type="submit" class="btn btn-primary"
-                    style="margin-top:1px;">ProfilInställningar
-            </button>
-            <button onclick="window.location.href='/upload';" id="NyAnnons" type="submit"
-                    class="btn btn-primary"
-                    style="margin-top:1px;">Skapa en ny annons
-            </button>
-            <form action="/profileLogut" method="POST">
-            <button id="LogutButton" type="submit" class="btn btn-primary"
-                    style="margin-top:1px; width:95%" >Logga Ut
-            </button>
-            </form>
-        </div>
-    </div>
+ <div th:replace="profile-sidebar_fragment::profile-sidebar"></div>
     <div class="products" id="profilePageInfo">
         <h1 class="MinaAnnonser">Mina Annonser</h1>
         <div th:replace="card_fragment::card-auction-fragment"></div>
-
-
-
-        </div>
+    </div>
 </div>
 
 <div class="right-sidebar">

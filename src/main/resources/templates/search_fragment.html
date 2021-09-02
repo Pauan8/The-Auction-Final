@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="search" th:fragment="search-fragment">
+  <div class="search-inner">
+    <div class="searchbar">
+      <form class="search-form" method="get"  action="/filter">
+        <input type="hidden" name="isRedirected" th:value="${true}" />
+        <input name="searchText" type="text" class="form-control"
+               aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+               placeholder="Sök produkter....">
+        <div class="input-group-append">
+          <button id="inputGroup-sizing-sm"
+                  class="btn btn-outline-warning btn-sm"
+                  type="submit">
+            <i class="fa fa-search"></i></button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="d-flex row justify-center badge-search-container-outer">
+    <form th:each="word : ${session.searchWords}" th:unless="${word.equals('null')}" method="get" action="/filter/remove" class="badge-search-container">
+      <button th:name="searchText" th:value="${word}" class="btn-exit">
+        <i class="fas fa-times fa-xs"></i>
+      </button>
+      <span class="badge badge-search rounded-pill bg-color"  th:text="${word}"></span>
+    </form>
+  </div>
+</div>
+</body>
+</html>
