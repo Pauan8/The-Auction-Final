@@ -8,20 +8,21 @@
 
 <div class="modal fade" id="myModal" tabindex="-1"
      aria-labelledby="exampleModalLabel" aria-hidden="true" th:fragment="modal-fragment">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-body">
-        <iframe height="100%" width="100%" src="detail/1"
-                id="myIframe"></iframe>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary"
-                data-bs-dismiss="modal" onclick="location.href = '/'">
-          Stäng
-        </button>
-      </div>
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-body">
+                <iframe height="100%" width="100%" src="detail/1"
+                        id="myIframe"></iframe>
+            </div>
+            <div class="modal-footer">
+                    <button type="button" class="btn btn-primary"
+                            data-bs-dismiss="modal" onclick="window.location.reload()">
+                        Stäng
+                    </button>
+
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 </body>
