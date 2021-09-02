@@ -196,6 +196,11 @@ public class AuctionController {
         List<Auction> auctions = auctionRepository.findAllByUsersId(
                 ((Users) session.getAttribute("users")).getId());
         model.addAttribute("auctions", auctions);
+
+        List<Auction> biddingAuctions = auctionRepository.findAuctionByBidder(((Users) session.getAttribute("users")).getId());
+
+        model.addAttribute("bidding", biddingAuctions);
+
         return "profile";
     }
 
@@ -213,6 +218,8 @@ public class AuctionController {
             return "redirect:/profile";
 
        }
+
+
         return "profile";
     }
     @PostMapping("/email")
