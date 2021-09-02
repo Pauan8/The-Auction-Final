@@ -15,14 +15,13 @@
                         id="myIframe"></iframe>
             </div>
             <div class="modal-footer">
-                    <button type="button" class="btn btn-primary"
-                            data-bs-dismiss="modal" onclick="window.location.reload()">
+                    <button type="button" class="btn btn-primary" id="close-modal" onclick="closeModal();">
                         Stäng
                     </button>
-
             </div>
         </div>
     </div>
+    <script th:src="@{/close.js}"></script>
 </div>
 
 </body>
