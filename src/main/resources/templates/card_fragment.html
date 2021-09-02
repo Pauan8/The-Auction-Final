@@ -15,6 +15,23 @@
 </head>
 <body>
 <div class="outer" th:fragment="card-auction-fragment">
+    <div class="modal fade" id="myModal" tabindex="-1"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <iframe height="100%" width="100%" src="detail/1"
+                            id="myIframe"></iframe>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                        Stäng
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="card" th:each="item : ${auctions}">
         <h1 class="heading" th:text="${item.title}">
             Rubrik

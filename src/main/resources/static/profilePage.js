@@ -18,7 +18,6 @@ function _e(id) {
    return document.getElementById(id);
 }
 
-
 _e('profilButton').onclick = function() {
     _e('profilePageInfo').innerHTML = `<div id="profilInställningar">
                                                <div class="outerProfile">
@@ -37,27 +36,13 @@ _e('profilButton').onclick = function() {
                                                                    <input type="submit" value="Ändra">
                                                                </form>
                                                            </div>
-
-                                                           <div class="switch-Containers">
-                                                               <p>Nyhetsbrev</p>
-                                                               <label class="switch">
-                                                                   <input type="checkbox">
-                                                                   <span class="slider round"></span>
-                                                               </label>
-                                                               <p>Superkrafter</p>
-                                                               <label class="switch">
-                                                                   <input type="checkbox">
-                                                                   <span class="slider round"></span>
-                                                               </label>
-
-                                                           </div>
-
                                                        </div>
                                                    </div>
                                                </div>
                                            </div>`;
 }
-
 function _e(id) {
    return document.getElementById(id);
 }
+
+

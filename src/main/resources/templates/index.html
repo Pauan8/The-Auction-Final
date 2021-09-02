@@ -37,7 +37,8 @@
     <div class="search">
         <div class="search-inner">
             <div class="searchbar">
-                <form class="search-form" method="get" action="/search">
+                <form class="search-form" method="get"  action="/filter">
+                    <input type="hidden" name="isRedirected" th:value="${true}" />
                     <input name="searchText" type="text" class="form-control"
                            aria-label="Small" aria-describedby="inputGroup-sizing-sm"
                            placeholder="Sök produkter....">
@@ -49,6 +50,14 @@
                     </div>
                 </form>
             </div>
+        </div>
+        <div class="d-flex row justify-center badge-search-container-outer">
+            <form th:each="word : ${session.searchWords}" th:unless="${word.equals('null')}" method="get" action="/filter/remove" class="badge-search-container">
+                <button th:name="searchText" th:value="${word}" class="btn-exit">
+                    <i class="fas fa-times fa-xs"></i>
+                </button>
+                <span class="badge badge-search rounded-pill bg-color"  th:text="${word}"></span>
+            </form>
         </div>
     </div>
     <div th:if="${session.users==null}" class="login-box">
@@ -123,6 +132,7 @@
 
 <script src="https://kit.fontawesome.com/7f24e97d67.js"
         crossorigin="anonymous"></script>
+
 <script th:src="@{/CountdownShort.js}"></script>
 </body>
 </html>

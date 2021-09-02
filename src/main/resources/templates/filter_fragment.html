@@ -12,15 +12,18 @@
         <form class="filter" method="get" action="/filter">
             <h3 class="heading-h3-2">Filter</h3>
             <label for="1">
-                <input name="age" type="checkbox" id="1" value="one"/>
+                <input name="age" type="checkbox" id="1" value="one"
+                       th:checked="${session.age!=null?#lists.contains(session.age,'one'):false}"/>
                 0-1 år
             </label>
             <label for="2">
-                <input name="age" type="checkbox" id="2" value="six"/>
+                <input name="age" type="checkbox" id="2" value="six"
+                       th:checked="${session.age!=null?#lists.contains(session.age,'six'):false}"/>
                 1-6 år
             </label>
             <label for="3">
-                <input name="age" type="checkbox" id="3" value="twelve"/>
+                <input name="age" type="checkbox" id="3" value="twelve"
+                       th:checked="${session.age!=null?#lists.contains(session.age,'twelve'):false}"/>
                 6-12 år
             </label>
             <br>
@@ -30,31 +33,38 @@
                 Alla
             </label>
             <label>
-                <input name="category" type="checkbox" value="Accessoarer"/>
+                <input name="category" type="checkbox" value="Accessoarer"
+                       th:checked="${session.category!=null?#lists.contains(session.category,'Accessoarer'):false}"/>
                 Accessoarer
             </label>
             <label>
-                <input name="category" type="checkbox" value="Basplagg"/>
+                <input name="category" type="checkbox" value="Basplagg"
+                       th:checked="${session.category!=null?#lists.contains(session.category,'Basplagg'):false}"/>
                 Basplagg
             </label>
             <label>
-                <input name="category" type="checkbox" value="Bodies"/>
+                <input name="category" type="checkbox" value="Bodies"
+                       th:checked="${session.category!=null?#lists.contains(session.category,'Bodies'):false}"/>
                 Bodies
             </label>
             <label>
-                <input name="category" type="checkbox" value="Byxor-shorts"/>
+                <input name="category" type="checkbox" value="Byxor-shorts"
+                       th:checked="${session.category!=null?#lists.contains(session.category,'Byxor-shorts'):false}"/>
                 Byxor-shorts
             </label>
             <label>
-                <input name="category" type="checkbox" value="Regnkläder"/>
+                <input name="category" type="checkbox" value="Regnkläder"
+                       th:checked="${session.category!=null?#lists.contains(session.category,'Regnkläder'):false}"/>
                 Regnkläder
             </label>
             <label>
-                <input name="category" type="checkbox" value="Tröjor-t-shirts"/>
+                <input name="category" type="checkbox" value="Tröjor-t-shirts"
+                       th:checked="${session.category!=null?#lists.contains(session.category,'Tröjor-t-shirts'):false}"/>
                 Tröjor/t-shirts
             </label>
             <label>
-                <input name="category" type="checkbox" value="Ytterkläder"/>
+                <input name="category" type="checkbox" value="Ytterkläder"
+                       th:checked="${session.category!=null?#lists.contains(session.category,'Ytterkläder'):false}"/>
                 Ytterkläder
             </label>
             <br>
@@ -64,59 +74,71 @@
                 Frakt hela Sverige
             </label>
             <label>
-                <input name="city" type="checkbox" value="stockholm"/>
+                <input name="city" type="checkbox" value="stockholm"
+                       th:checked="${session.city!=null?#lists.contains(session.city,'stockholm'):false}"/>
                 Stockholm
             </label>
             <label>
-                <input name="city" type="checkbox" value="göteborg"/>
+                <input name="city" type="checkbox" value="göteborg"
+                       th:checked="${session.city!=null?#lists.contains(session.city,'göteborg'):false}"/>
                 Göteborg
             </label>
             <label>
-                <input name="city" type="checkbox" value="malmö"/>
+                <input name="city" type="checkbox" value="malmö"
+                       th:checked="${session.city!=null?#lists.contains(session.city,'malmö'):false}"/>
                 Malmö
             </label>
             <label>
-                <input name="city" type="checkbox" value="uppsala"/>
+                <input name="city" type="checkbox" value="uppsala"
+                       th:checked="${session.city!=null?#lists.contains(session.city,'uppsala'):false}"/>
                 Uppsala
             </label>
             <label>
-                <input name="city" type="checkbox" value="linköping"/>
+                <input name="city" type="checkbox" value="linköping"
+                       th:checked="${session.city!=null?#lists.contains(session.city,'linköping'):false}"/>
                 Linköping
             </label>
             <label>
-                <input name="city" type="checkbox" value="örebro"/>
+                <input name="city" type="checkbox" value="örebro"
+                       th:checked="${session.city!=null?#lists.contains(session.city,'örebro'):false}"/>
                 Örebro
             </label>
             <label>
-                <input name="city" type="checkbox" value="västerås"/>
+                <input name="city" type="checkbox" value="västerås"
+                       th:checked="${session.city!=null?#lists.contains(session.city,'västerås'):false}"/>
                 Västerås
             </label>
             <label>
-                <input name="city" type="checkbox" value="helsingborg"/>
+                <input name="city" type="checkbox" value="helsingborg"
+                       th:checked="${session.city!=null?#lists.contains(session.city,'helsingborg'):false}"/>
                 Helsingborg
             </label>
             <label>
-                <input name="city" type="checkbox" value="norrköping"/>
+                <input name="city" type="checkbox" value="norrköping"
+                       th:checked="${session.city!=null?#lists.contains(session.city,'norrköping'):false}"/>
                 Norrköping
             </label>
             <label>
-                <input name="city" type="checkbox" value="Jönköping"/>
+                <input name="city" type="checkbox" value="Jönköping"
+                       th:checked="${session.city!=null?#lists.contains(session.city,'Jönköping'):false}"/>
                 Jönköping
             </label>
             <label>
-                <input name="city" type="checkbox" value="Umeå"/>
+                <input name="city" type="checkbox" value="Umeå"
+                       th:checked="${session.city!=null?#lists.contains(session.city,'Umeå'):false}"/>
                 Umeå
             </label>
             <label>
-                <input name="city" type="checkbox" value="Lund"/>
+                <input name="city" type="checkbox" value="Lund"
+                       th:checked="${session.city!=null?#lists.contains(session.city,'Lund'):false}"/>
                 Lund
             </label>
             <br>
             <button type="submit" class="btn btn-primary">Använd</button>
         </form>
     </div>
-    <button class="expand-button"><i class="fas fa-chevron-right" id="expand"></i>
-    </button>
+    <button class="expand-button"><i class="fas fa-chevron-right" id="expand"></i></button>
+</div>
 </div>
 
 
