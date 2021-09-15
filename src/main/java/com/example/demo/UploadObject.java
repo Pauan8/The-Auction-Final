@@ -29,7 +29,7 @@ public class UploadObject {
                                                  .build();
 
 
-        String bucket = "auction-photos-aw";
+        String bucket = "auction-photos-aw2";
         String contentType = "image/*";
         InputStream inputStream = multipartFile.getInputStream();
         boolean isPublic = true;

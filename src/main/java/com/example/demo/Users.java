@@ -145,17 +145,6 @@ public class Users {
         this.dateOfBirth = LocalDate.parse(dateOfBirth);
     }
 
-    /*
-    public List<Bid> getBidList() {
-        return bidList;
-    }
-
-    public void setBidList(List<Bid> bidList) {
-        this.bidList = bidList;
-    }
-
-     */
-
     public List<Auction> getAuctionList() {
         return this.auctionList;
     }

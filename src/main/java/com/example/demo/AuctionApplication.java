@@ -73,7 +73,7 @@ public class AuctionApplication {
             auctionRepository.save(auction4);
             auctionRepository.save(auction5);
 
-            ourService.checkEnd();
+//            ourService.checkEnd();
 
 
         };
