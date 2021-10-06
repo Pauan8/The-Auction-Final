@@ -1,6 +1,5 @@
 package com.example.demo;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -85,9 +84,8 @@ public class AuctionController {
                          @RequestParam(required = false, defaultValue = "0") Boolean isRedirected,
                          Model model, HttpSession session) {
 
-        List<Auction> auctions = new ArrayList<>();
-        String searchWords;
-        String[] searchWordArray;
+        List<Auction> auctions;
+        String[] searchWordArray = auctionService.searchArrayBuilder(session, searchText);
 
         if(isRedirected != true){
             session.setAttribute("category", category);
@@ -95,46 +93,34 @@ public class AuctionController {
             session.setAttribute("city", city);
         }
 
-        searchWords = searchText.equals("0")
-                ? (String)session.getAttribute("searchText")
-                : session.getAttribute("searchText") + " " + searchText;
+        auctions = auctionService.filter(searchWordArray,
+            (String[])session.getAttribute("age"),
+            (String[])session.getAttribute("city"),
+            (String[])session.getAttribute("category"));
 
-        session.setAttribute("searchText", searchWords!=null ? searchWords.toLowerCase() : null);
-
-        searchWordArray = session.getAttribute("searchText") != null
-                ? ((String) session.getAttribute("searchText")).split(" ")
-                : null;
-
-        List<Auction> search = auctionService.searchFilter(searchWordArray);
-        List<Auction> ages = auctionService.filterByType("age", (String[])session.getAttribute("age"));
-        List<Auction> cities = auctionService.filterByType("city", (String[])session.getAttribute("city"));
-        List<Auction> categories = auctionService.filterByType("category", (String[])session.getAttribute("category"));
-
-        auctions = auctionService.filter(search, ages, cities, categories, auctions);
-
-        System.out.println( "cities " + cities.size() + " categories: " + categories.size() + " ages: " + ages.size());
-        model.addAttribute("auctions", auctions);
-        session.setAttribute("searchWords", searchWordArray !=null
-                ? Arrays.stream(searchWordArray).distinct().collect(Collectors.toList())
-                : null);
+        model.addAttribute("auctions", auctions.stream().distinct().collect(Collectors.toList()));
+        session.setAttribute("searchWords",  searchWordArray != null
+            ? Arrays.stream(searchWordArray).distinct().collect(Collectors.toList())
+            : null);
         return "index";
     }
 
     @GetMapping("/filter/remove")
-    public String search(@RequestParam(required = false, defaultValue = "0") String searchText, HttpSession session, RedirectAttributes redirectAttributes){
+    public String search(@RequestParam(required = false, defaultValue = "0") String searchText,
+                         HttpSession session,
+                         RedirectAttributes redirectAttributes) {
+
         String newSearchWords= "";
-        for(String word : ((String)session.getAttribute("searchText")).split(" ")){
-            if(!word.equals(searchText)){
-                if (!word.equals("null")) {
+
+        for(String word : (List<String>)session.getAttribute("searchWords")){
+            if(!word.equals(searchText) && !word.equals("null")) {
                     newSearchWords += word + " ";
                 }
             }
-        }
-        if(newSearchWords.length() == 0){
-            newSearchWords = null;
-        }
 
-        session.setAttribute("searchText", newSearchWords!= null?newSearchWords.trim():null);
+        newSearchWords = newSearchWords.length() != 0 ? newSearchWords.trim() : null;
+
+        session.setAttribute("searchText", newSearchWords);
         redirectAttributes.addAttribute("isRedirected", true);
         return "redirect:/filter";
     }
