@@ -31,57 +31,61 @@ public class AuctionService {
 
         return highestBid.getAmount();
     }
+
     public List<Auction> searchFilter(String[] searchArray) {
-        List<Auction> auctions = new ArrayList<>();
         if (searchArray == null) {
-            auctions.addAll(auctionRepository.findAll());
-        } else {
-            for(String word : searchArray){
-                auctions.addAll(auctionRepository.findByPartialKeyword("%" + word + "%"));
-            }
+            return auctionRepository.findAll();
+        }
+
+        List<Auction> auctions = new ArrayList<>();
+        for (String word : searchArray) {
+            auctions.addAll(auctionRepository.findByPartialKeyword("%" + word + "%"));
         }
 
         return auctions;
     }
 
     public List<Auction> filterByType(String type, String[] typeArray) {
+        if(typeArray[0].equals("0")){
+            return auctionRepository.findAll();
+        }
+
         List<Auction> auctions = new ArrayList<>();
-        List<List<Auction>> auctionList;
-           auctionList = Arrays.stream(typeArray).map(selection -> {
-               switch (type) {
-                   case "age":
-                       return auctionRepository.findAuctionByAgeSpanIgnoreCase(selection);
-                   case "city":
-                       return auctionRepository.findAuctionBySalesAreaIgnoreCase(selection);
-                   case "category":
-                       return auctionRepository.findAuctionByKeyWordsIgnoreCase(selection);
-                   default: return null;
-               }
-           }).collect(Collectors.toList());
 
-            auctionList.forEach(list -> auctions.addAll(list));
+        Arrays.stream(typeArray).map(selection -> {
+            switch (type) {
+                case "age":
+                    return auctionRepository.findAuctionByAgeSpanIgnoreCase(selection);
+                case "city":
+                    return auctionRepository.findAuctionBySalesAreaIgnoreCase(selection);
+                case "category":
+                    return auctionRepository.findAuctionByKeyWordsIgnoreCase(selection);
+                default:
+                    return null;
+            }
+        }).collect(Collectors.toList())
+        .forEach(list -> auctions.addAll(list));
 
-        return typeArray[0].equals("0") ? auctionRepository.findAll() : auctions;
+        return auctions;
     }
 
     public List<Auction> filter(String[] searchWordArray, String[] age, String[] city, String[] category) {
-        List<List<Auction>> arrays = new ArrayList<>();
-        arrays.add(searchFilter(searchWordArray));
-        arrays.add(filterByType("age", age));
-        arrays.add(filterByType("city", city));
-        arrays.add(filterByType("category", category));
+        List<List<Auction>> auctionLists = new ArrayList<>();
+        auctionLists.add(searchFilter(searchWordArray));
+        auctionLists.add(filterByType("age", age));
+        auctionLists.add(filterByType("city", city));
+        auctionLists.add(filterByType("category", category));
 
-
-        return arrays.stream()
-            .reduce((arr0, arr1) -> arr0.stream()
-                .filter(auction -> arr1.contains(auction))
+        return auctionLists.stream()
+            .reduce((auctionsA, auctionsB) -> auctionsA.stream()
+                .filter(auction -> auctionsB.contains(auction))
                 .collect(Collectors.toList()))
             .stream()
             .collect(Collectors.toList())
             .get(0);
     }
 
-    public String[] searchArrayBuilder(HttpSession session, String input){
+    public String[] searchArrayBuilder(HttpSession session, String input) {
         String searchWords;
         searchWords = input.equals("0")
             ? validateInput(session.getAttribute("searchText"))
@@ -94,7 +98,7 @@ public class AuctionService {
             : null;
     }
 
-    public String validateInput(Object input){
+    public String validateInput(Object input) {
         return input == null ? null : input.toString().toLowerCase();
     }
 
